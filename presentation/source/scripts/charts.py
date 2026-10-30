@@ -40,7 +40,7 @@ def margin_lines(w=1040, h=470, show_years=True):
     for data, labels, col, lab, dy in ((cat, ["16.1", "19.5", "20.9", "17.2"], CAT, "Caterpillar (FIFO)", -18),
                                        (lh, ["3.6", "4.4", "4.6", "2.8"], Y, "Liebherr", -18)):
         pts = " ".join(f"{X(i):.1f},{Yv(v):.1f}" for i, v in enumerate(data))
-        o.append(f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>')
+        o.append(f'<polyline class="ln" pathLength="1" points="{pts}" fill="none" stroke="{col}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>')
         for i, v in enumerate(data):
             lab_v = labels[i]
             o.append(f'<circle cx="{X(i):.1f}" cy="{Yv(v):.1f}" r="10" fill="{col}" stroke="#fff" stroke-width="3"/>')
@@ -68,7 +68,7 @@ def revenue_bars(w=560, h=300):
         cx = l + pw * (i + 0.5) / 4
         bh = ph * v / 16
         col = Y if i == 3 else "#D0D3D8"
-        o.append(f'<rect x="{cx-bw/2:.1f}" y="{t+ph-bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="{col}"/>')
+        o.append(f'<rect class="gv" x="{cx-bw/2:.1f}" y="{t+ph-bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="{col}"/>')
         o.append(_t(cx, t + ph - bh - 12, f"{v:.2f}", 24, 800))
         o.append(_t(cx, h - 18, years[i], 20, 600, MUTED))
         if growth[i]:
@@ -99,7 +99,7 @@ def bridge(w=560, h=300):
             txt = f"{v:+.2f}".replace("-", "−")
             run = y1
         top, bot = max(y0, y1), min(y0, y1)
-        o.append(f'<rect x="{cx-bw/2:.1f}" y="{Yv(top):.1f}" width="{bw:.1f}" height="{max(Yv(bot)-Yv(top),3):.1f}" fill="{col}"/>')
+        o.append(f'<rect class="gv" x="{cx-bw/2:.1f}" y="{Yv(top):.1f}" width="{bw:.1f}" height="{max(Yv(bot)-Yv(top),3):.1f}" fill="{col}"/>')
         o.append(_t(cx, Yv(top) - 10, txt, 19, 800))
         o.append(_t(cx, h - 30, lab, 16.5, 600, MUTED))
     o.append(_t(w / 2, h - 6, "contribution in percentage points of revenue", 15, 400, MUTED))
@@ -128,7 +128,7 @@ def cash_bars(w=860, h=470):
         for j, (v, col) in enumerate(((ocf[i], Y), (capex[i], CAT))):
             x = cx - bw - 4 if j == 0 else cx + 4
             y = Yv(max(v, 0)); hh = abs(Yv(v) - Yv(0))
-            o.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{bw:.1f}" height="{max(hh,3):.1f}" fill="{col}"/>')
+            o.append(f'<rect class="{'gv' if v >= 0 else 'gvn'}" x="{x:.1f}" y="{y:.1f}" width="{bw:.1f}" height="{max(hh,3):.1f}" fill="{col}"/>')
             ly = Yv(v) - 10 if v >= 0 else Yv(v) + 26
             o.append(_t(x + bw / 2, ly, f"{v:,}".replace("-", "−"), 19, 800))
         o.append(_t(cx, h - 78, years[i], 21, 700))
@@ -151,7 +151,7 @@ def nfp_line(w=520, h=230):
     o = [f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" xmlns="http://www.w3.org/2000/svg">']
     o.append(f'<line x1="{l}" x2="{l+pw}" y1="{Yv(0):.1f}" y2="{Yv(0):.1f}" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="6 6"/>')
     pts = " ".join(f"{X(i):.1f},{Yv(x):.1f}" for i, x in enumerate(v))
-    o.append(f'<polyline points="{pts}" fill="none" stroke="{NAVY}" stroke-width="5"/>')
+    o.append(f'<polyline class="ln" pathLength="1" points="{pts}" fill="none" stroke="{NAVY}" stroke-width="5"/>')
     for i, x in enumerate(v):
         o.append(f'<circle cx="{X(i):.1f}" cy="{Yv(x):.1f}" r="9" fill="{Y}" stroke="{NAVY}" stroke-width="3"/>')
         o.append(_t(X(i), Yv(x) + (-16 if x > 0 else 32), f"{x:,}".replace("-", "−"), 20, 800))
@@ -174,7 +174,7 @@ def wc_days(w=900, h=440):
         for j, (v, col) in enumerate(((a, Y), (c, CAT))):
             by = y + 40 + j * 30
             bw = pw * v / 210
-            o.append(f'<rect x="{l}" y="{by}" width="{bw:.1f}" height="24" fill="{col}"/>')
+            o.append(f'<rect class="gh" x="{l}" y="{by}" width="{bw:.1f}" height="24" fill="{col}"/>')
             o.append(_t(l + bw + 10, by + 20, f"{v:.1f} days", 20, 800 if j == 0 else 600, NAVY, "start"))
     o.append("</svg>")
     return "".join(o)
@@ -187,7 +187,7 @@ def inv_share(w=520, h=270):
     for i, (lab, v, col) in enumerate(rows):
         x = 30 + i * (bw + gap)
         bh = (h - 90) * v / 45
-        o.append(f'<rect x="{x}" y="{base-bh:.1f}" width="{bw}" height="{bh:.1f}" fill="{col}"/>')
+        o.append(f'<rect class="gv" x="{x}" y="{base-bh:.1f}" width="{bw}" height="{bh:.1f}" fill="{col}"/>')
         o.append(_t(x + bw / 2, base - bh - 12, f"{v:.1f} %", 24, 800))
         o.append(_t(x + bw / 2, h - 10, lab, 19, 600, MUTED))
     o.append("</svg>")
@@ -212,7 +212,7 @@ def sensitivity(w=860, h=420):
         o.append(_t(l, y + 26, lab, 21, 700 if kind == "rep" else 600, NAVY, "start"))
         bw = pw * v / 3.2
         fill = Y if kind == "rep" else "url(#hatch)"
-        o.append(f'<rect x="{l}" y="{y+38}" width="{bw:.1f}" height="30" fill="{fill}"/>')
+        o.append(f'<rect class="gh" x="{l}" y="{y+38}" width="{bw:.1f}" height="30" fill="{fill}"/>')
         o.append(_t(l + bw + 12, y + 62, labels[i], 24, 800, NAVY, "start"))
     o.append("</svg>")
     return "".join(o)
@@ -240,7 +240,7 @@ def dupont(w=560, h=250):
             col = "#7FB77E" if v > 0 else "#D9534F"
             run = y1
         top, bot = max(y0, y1), min(y0, y1)
-        o.append(f'<rect x="{cx-bw/2:.1f}" y="{Yv(top):.1f}" width="{bw:.1f}" height="{max(Yv(bot)-Yv(top),3):.1f}" fill="{col}"/>')
+        o.append(f'<rect class="gv" x="{cx-bw/2:.1f}" y="{Yv(top):.1f}" width="{bw:.1f}" height="{max(Yv(bot)-Yv(top),3):.1f}" fill="{col}"/>')
         o.append(_t(cx, Yv(top) - 9, txt, 19, 800))
         o.append(_t(cx, h - 26, lab, 16.5, 700 if i in (1, 2, 3) else 600, MUTED))
     o.append(_t(w / 2, h - 4, "pre-tax return on equity · contributions in pp", 15, 400, MUTED))
@@ -262,7 +262,7 @@ def revenue_strip(w=1050, h=190):
     for i, v in enumerate(vals):
         bh = ph * v / 15.5
         col = Y if i == 3 else "#D0D3D8"
-        o.append(f'<rect x="{X(i)-bw/2:.1f}" y="{t+ph-bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="{col}"/>')
+        o.append(f'<rect class="gv" x="{X(i)-bw/2:.1f}" y="{t+ph-bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="{col}"/>')
         o.append(_t(X(i), t + ph - bh - 10, f"€{v:.2f} bn", 21, 800))
         if growth[i]:
             o.append(_t(X(i), t + ph - bh / 2 + 7, growth[i], 19, 800, NAVY))

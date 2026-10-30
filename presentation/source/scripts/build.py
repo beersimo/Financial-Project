@@ -3,7 +3,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import charts as C
 
 BUILD = pathlib.Path(sys.argv[1])
-FONTS = (BUILD / "fonts" / "local.css").read_text()
+# The PDF uses the system's Arial-compatible sans (Liberation Sans = Arimo design); the
+# animated present.html embeds Arimo itself (see present.py).
+FONTS = ""
 
 CSS = FONTS + """
 :root{--y:#FFCF00;--y2:#F2BF00;--navy:#00182E;--cat:#3A444E;--grey:#D0D3D8;--light:#F3F4F6;--muted:#5E6873;}
@@ -395,4 +397,6 @@ cover = (f'<section class="np cover" style="display:block"><h1>Liebherr Group â€
 (BUILD / "notes.html").write_text(f'<!doctype html><html><head><meta charset="utf-8"><title>Liebherr Speaker Notes</title><style>{NCSS}</style></head><body>{cover}{"".join(rows)}</body></html>')
 import json
 (BUILD / "notes.json").write_text(json.dumps(notes, indent=1, ensure_ascii=False))
+from present import build_present
+print("present.html", round(build_present(BUILD, CSS, slides, notes) / 1e6, 1), "MB")
 print("ok", len(slides), "slides; planned", total, "s;", words, "words")
