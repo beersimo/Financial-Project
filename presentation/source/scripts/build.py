@@ -67,7 +67,7 @@ slides, notes = [], []
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:28px;height:1080px;background:var(--y)"></div>
 <div style="position:absolute;left:390px;top:0;width:1530px;height:1000px;background:var(--y)"></div>
-{photo('5.jpg', 70, 0, 660, 1000, 'center top', 0, 'background-size:auto 114%')}
+{photo('2.jpg', 70, 0, 660, 1000, '42% center')}
 {dots(560, 830, 6, 3)}
 {swirl(1500, 640, 1.0, '#E6B800', .5, 0)}
 <div style="position:absolute;left:830px;top:150px;font-size:24px;font-weight:800;letter-spacing:4px">HAT1 FINANCIAL REPORTING · 2026</div>
@@ -130,7 +130,7 @@ slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1) and §5.7; Liebherr-I
   </div>
   <div style="font-size:19px;font-weight:600;margin-top:8px">€9,345 m vs. €5,427 m – components alone grew 35.5 %</div>
 </div>
-{photo('4.jpg', 1150, 0, 770, 620, 'center')}
+{photo('6.jpg', 1150, 0, 770, 620, '62% center')}
 {dots(1180,40,5,3)}
 <div style="position:absolute;left:98px;top:655px;width:1060px">
   <div class="h" style="font-size:28px;margin-bottom:16px">External pressures</div>
@@ -349,7 +349,7 @@ slides.append(frame(11, None, f"""
 # ---------------------------------------------------------------- 12 Thank you
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--y)"></div>
-{photo('2.jpg', 70, 40, 780, 900, '42% center')}
+{photo('9.jpg', 70, 40, 780, 900, '38% center')}
 <div style="position:absolute;left:0;top:960px;width:1920px;height:120px;background:#fff"></div>
 {swirl(1520,-30,1.0,'#E6B800',.5)}{dots(1700,760,5,3)}
 <h1 style="position:absolute;left:960px;top:250px;font-size:200px;line-height:1;letter-spacing:-4px">Thank<br>you.</h1>
