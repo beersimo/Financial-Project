@@ -1,6 +1,6 @@
 # Liebherr Group – Speaker notes
 
-Slides 1–12: talk (≈ 9:40 min). Slides 13–29: backup for questions.
+Slides 1–12: talk (≈ 9:40 min). Slides 13–30: backup for questions (30 = references).
 
 ## 01 · Title (0:25)
 
@@ -173,3 +173,7 @@ Answer 1 is the recommendation in short. Answer 2 explains why the four-year ave
 ## 29 · Backup E – Questions 2/2
 
 The red flags are reasons to ask. ROCE is low because of the low margin and the capital tied up in inventories. The balance sheet protects the investor, but it cannot replace better returns and cash conversion.
+
+## 30 · References
+
+Reference list for every source cited on the slides, in APA 7th edition. The full entries with URLs are in the report. Use this slide if someone asks where an external figure comes from.

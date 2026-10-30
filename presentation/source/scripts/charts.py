@@ -194,6 +194,9 @@ def inv_share(w=520, h=270):
     return "".join(o)
 
 
+_HATCH = [0]
+
+
 def sensitivity(w=860, h=420):
     rows = [("As reported", 2.796, "rep"),
             ("Net provision charge at 2022–2024 average", 2.4, "s"),
@@ -204,14 +207,16 @@ def sensitivity(w=860, h=420):
     l, r = 10, 110
     pw = w - l - r
     rowh = h / len(rows)
+    _HATCH[0] += 1
+    hid = f"hatch{_HATCH[0]}"   # unique per chart: a shared id resolves to the pattern of a hidden slide
     o = [f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" xmlns="http://www.w3.org/2000/svg">',
-         '<defs><pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+         f'<defs><pattern id="{hid}" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
          f'<rect width="12" height="12" fill="#E9EBEE"/><line x1="0" y1="0" x2="0" y2="12" stroke="{CAT}" stroke-width="5"/></pattern></defs>']
     for i, (lab, v, kind) in enumerate(rows):
         y = i * rowh
         o.append(_t(l, y + 26, lab, 21, 700 if kind == "rep" else 600, NAVY, "start"))
         bw = pw * v / 3.2
-        fill = Y if kind == "rep" else "url(#hatch)"
+        fill = Y if kind == "rep" else f"url(#{hid})"
         o.append(f'<rect class="gh" x="{l}" y="{y+38}" width="{bw:.1f}" height="30" fill="{fill}"/>')
         o.append(_t(l + bw + 12, y + 62, labels[i], 24, 800, NAVY, "start"))
     o.append("</svg>")

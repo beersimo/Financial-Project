@@ -11,7 +11,7 @@
 
 ## Backup slides (13–29)
 
-Slides 1–12 are the 10-minute talk. Slides 13–29 are backup for the Q&A: index (13), A business model (14–16), B accounting analysis (17–20), C financial analysis (21–24), D recommendation, scenarios and risks (25–27), E likely questions (28–29). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
+Slides 1–12 are the 10-minute talk. Slides 13–30 are backup for the Q&A: index (13), A business model (14–16), B accounting analysis (17–20), C financial analysis (21–24), D recommendation, scenarios and risks (25–27), E likely questions (28–29), references in APA (30). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
 
 ## Presenting with the animated version
 

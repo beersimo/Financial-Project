@@ -203,7 +203,7 @@ def acc(x, title, amount, sub, items, w=415, dark=False):
 <div style="font-size:20px;font-weight:700;color:var(--muted);margin-bottom:18px">{sub}</div>
 <ul class="b">{lis}</ul></div>"""
 
-slides.append(frame(5, "Report §4.1–4.4, Appendix G (Table G2) and Appendix H (Table H1); Excel workbook, sheets C2 and D9", f"""
+slides.append(frame(5, "Report §4.1–4.4, Appendix G (Table G2) and Appendix H (Table H1); Excel workbook, sheets C2 and D9; IFRS Foundation (n.d.)", f"""
 {band('Accounting analysis', 'Key figures rest on judgements we cannot verify', 'Most room for judgement: inventories, provisions and fixed assets – and one cost line without any note')}
 <div style="position:absolute;left:96px;top:240px;display:flex;gap:14px">
  <span class="tag" style="background:var(--navy);color:#fff">Reporting limit</span>
@@ -211,7 +211,7 @@ slides.append(frame(5, "Report §4.1–4.4, Appendix G (Table G2) and Appendix H
 </div>
 {acc(96,'INVENTORIES · IAS 2','€6,341 m','36.3 % of total assets',['Overhead allocated at a “normal capacity” that is not defined','Allowance for obsolete stock not disclosed'])}
 {acc(531,'PROVISIONS · IAS 37','€864 m','of which warranty €530 m',['Gross reversals rose from €90 m (2022) to €143 m (2025)','But the net charge stayed flat: €195 m → €194 m'])}
-{acc(966,'PP&E · IAS 16','€4,304 m','25 % of total assets',['Depreciation 5.5 % of cost vs. 6.6 % at Caterpillar','Own work capitalised €317 m = 77 % of the operating result'])}
+{acc(966,'PP&E · IAS 16','€4,304 m','24.6 % of total assets',['Depreciation 5.5 % of cost vs. 6.6 % at Caterpillar','Own work capitalised €317 m = 77 % of the operating result'])}
 <div class="card" style="left:1401px;top:320px;width:423px;height:520px;background:var(--navy);color:#fff;border-top:10px solid var(--y)">
 <div style="font-size:20px;font-weight:800;letter-spacing:2px;color:var(--y)">DISCLOSURE GAP</div>
 <div class="big" style="font-size:58px;margin-top:6px;color:#fff">+€228 m</div>
@@ -225,7 +225,7 @@ def box(x, y, w, h, top, big, bg="#fff", fg="var(--navy)"):
     return f"""<div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;background:{bg};color:{fg};border-radius:14px;padding:14px 18px;text-align:center">
 <div style="font-size:18px;font-weight:700;opacity:.8">{top}</div><div class="big" style="font-size:36px;margin-top:4px">{big}</div></div>"""
 
-slides.append(frame(6, "Report §4.4, §6.1, Table J9 and Table H3; Excel workbook, sheets C1 (block A), D9 and D11. Caterpillar figures in USD m, Liebherr in € m – never combined", f"""
+slides.append(frame(6, "Report §4.4, §6.1, Table J9 and Table H3; Caterpillar Inc. (2023, 2026); Excel workbook, sheets C1 (block A), D9 and D11. Caterpillar figures in USD m, Liebherr in € m – never combined", f"""
 {band('Accounting adjustments and sensitivities', 'Adjusting for comparability widens the gap', 'Actual adjustment (Caterpillar) vs. illustrative sensitivities (Liebherr)')}
 <div class="card" style="left:96px;top:250px;width:830px;height:600px;background:var(--light)">
   <span class="tag" style="background:var(--navy);color:#fff">Actual adjustment · booked in the workbook</span>
@@ -358,6 +358,7 @@ slides.append(f"""<section class="slide">
 {swirl(1520,-30,1.0,'#E6B800',.5)}{dots(1700,760,5,3)}
 <h1 style="position:absolute;left:960px;top:250px;font-size:200px;line-height:1;letter-spacing:-4px">Thank<br>you.</h1>
 <div style="position:absolute;left:96px;top:995px;font-size:22px;font-weight:700">Simon Beermann · Adam Fliegel · Zofia Narkiewicz · Philipp Hoffmann · Zarah Gilmore Islam &nbsp;·&nbsp; HAT1 Financial Reporting · Fontys Venlo</div>
+<div style="position:absolute;right:70px;top:1040px;font-size:16px;color:var(--muted)">Images: Liebherr-International AG</div>
 </section>""")
 
 from notes import NOTES as notes

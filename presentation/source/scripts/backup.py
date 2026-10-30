@@ -53,7 +53,7 @@ def add_backup(slides, frame, band, dots):
 {body}
 <div class="card" style="left:1440px;top:270px;width:384px;height:620px;background:var(--navy);color:#fff">
   <div style="font-size:19px;font-weight:800;letter-spacing:2px;color:var(--y)">HOW TO USE</div>
-  <div style="font-size:25px;line-height:1.45;margin-top:14px">Each backup slide answers one likely question in depth.<br><br>Every slide links back here with <b style="color:var(--y)">◂ INDEX</b>.<br><br>All figures come from the report and the Excel workbook.</div>
+  <div style="font-size:25px;line-height:1.45;margin-top:14px">Each backup slide answers one likely question in depth.<br><br>Every slide links back here with <b style="color:var(--y)">◂ INDEX</b>.<br><br>All figures come from the report and the Excel workbook.<br><br><a data-goto="30" style="color:var(--y);font-weight:800;text-decoration:none;cursor:pointer">References: slide 30 ▸</a></div>
 </div>"""))
 
     # ---------------------------------------------------------------- A1 DESTEP
@@ -64,7 +64,7 @@ def add_backup(slides, frame, band, dots):
               ("Ecological", "EU emission limits for non-road machinery and the target of at least 55 % net emission cuts by 2030 make low-emission machines a purchase criterion.", "white"),
               ("Demographic", "Shortages of skilled workers and machine operators push costs up. Personnel expenses reached 28.6 % of revenue in 2025.", "yellow")]
     cards = "".join(card(96 + (i % 3) * 586, 250 + (i // 3) * 318, 556, 296, t, b, k) for i, (t, b, k) in enumerate(destep))
-    slides.append(frame(14, "Report §3.1.1; CECE (2026), Eurostat (2025), European Union (2023), Liebherr-International AG (2026), Caterpillar Inc. (2026)",
+    slides.append(frame(14, "Report §3.1.1; CECE (2026), Eurostat (2025), European Union (2023), European Commission (n.d.-a, n.d.-b), Liebherr-International AG (2026), Caterpillar Inc. (2026)",
                         hdr("A | Business model", "Environment: a modest recovery, but costs rise first", "DESTEP scan") + cards))
 
     # ---------------------------------------------------------------- A2 Porter
@@ -116,7 +116,7 @@ def add_backup(slides, frame, band, dots):
     cols = [("Highest flexibility", ["Inventories: €6,341 m, 36.3 % of total assets, allowance not disclosed", "Provisions: €864 m, of which €530 m warranty", "Impairment test", "Deferred tax assets: €285 m"], "navy", ("High", "var(--y)", "var(--navy)")),
             ("Also material", ["Own work capitalised: €317 m, 77 % of the operating result", "PP&amp;E: €4,304 m, machinery written off over 5 to 21 years", "Revenue timing: advance payments €896 m, contract liabilities €289 m"], "white", ("Medium", "#FFF4C2", "#6B5300")),
             ("Lowest flexibility", ["Borrowing costs", "Lessee accounting", "Translation of foreign currency", "The standard prescribes the mechanics – little choice for management"], "grey", ("Low", "#E3F1E4", "#1E6B2A"))]
-    cc = "".join(card(96 + i * 586, 250, 556, 600, t, ul(b), k, tag=(tg[0] + " flexibility", tg[1], tg[2])) for i, (t, b, k, tg) in enumerate(cols))
+    cc = "".join(card(96 + i * 586, 250, 556, 600, t, ul(b), k) for i, (t, b, k, tg) in enumerate(cols))
     slides.append(frame(18, "Report §4.2–4.3, Table G2 (30 treatments, nine of them key)",
                         hdr("B | Accounting analysis", "Where management has room for judgement", "Rated by the judgement the standard allows and the materiality of the amount") + cc))
 
@@ -176,7 +176,7 @@ def add_backup(slides, frame, band, dots):
              f'<th style="text-align:left;padding:12px 18px;background:var(--navy);color:#fff">2025</th><th style="background:var(--y);padding:12px">LIEBHERR</th>'
              f'<th style="background:#D0D3D8;padding:12px">US INDUSTRY</th><th style="background:var(--cat);color:#fff;padding:12px">CATERPILLAR</th></tr>{trs}</table>'
              f'<div style="font-size:19px;color:var(--muted);margin-top:18px">* Not comparable – Caterpillar\'s equity is reduced by treasury shares. Caterpillar on the FIFO basis.</div>')
-    slides.append(frame(23, "Report §5.1 and §5.5, Table J14; Damodaran (2026), US machinery industry, January 2026; Excel workbook, sheets D3, D7 and D10",
+    slides.append(frame(23, "Report §5.1 and §5.5, Table J14; Damodaran (2026b, 2026c, 2026d, 2026e), US machinery industry, January 2026; Excel workbook, sheets D3, D7 and D10",
                         hdr("C | Financial analysis", "Strong solvency, far weaker returns", "Liquidity, solvency and benchmark 2025") +
                         card(96, 250, 760, 600, "Balance sheet strength", ul(["Equity ratio 53.5 %; bank and lease liabilities 23.7 % of capital (industry 39.3 %)", "Cash and current financial assets €3,147 m cover current debt of €1,215 m 2.6×", "Current ratio 2.31 vs. 1.55 at Caterpillar",
                                                                                "Net financial position €523 m (2022) → net debt €85 m (2023) → €249 m (2025)", "Debt / EBITDA 2.14 → 2.90; interest cover 11.07 (2022) → 3.90 (2025)"], 22), "white") +
@@ -187,7 +187,7 @@ def add_backup(slides, frame, band, dots):
          kpi(972, 250, 414, "28.4 %", "of EBITDA became operating cash flow, 2022–2025 (53.0 % in 2025)") + kpi(1410, 250, 414, "€530 m", "Operating cash flow 2025, down from €1,171 m (2024)", "yellow")
     slides.append(frame(24, "Report §5.6, Figure 4; Excel workbook, sheets D5, D7 and D10",
                         hdr("C | Financial analysis", "Liebherr invests ahead of its cash", "Cash flow and capital allocation") + kp +
-                        card(96, 450, 852, 400, "Liebherr invests ahead of its cash", ul(["Capex and R&amp;D 9.6 % of revenue vs. 7.4 % at Caterpillar – at a margin of 2.8 % vs. 17.2 %", "Shortfall after distributions €388 m (2023–2025)", "Bank and lease liabilities +€562 m (2022–2025)"]), "white") +
+                        card(96, 450, 852, 400, "Capex above operating cash flow", ul(["Capex and R&amp;D 9.6 % of revenue vs. 7.4 % at Caterpillar – at a margin of 2.8 % vs. 17.2 %", "Shortfall after distributions €388 m (2023–2025)", "Bank and lease liabilities +€562 m (2022–2025)"]), "white") +
                         card(972, 450, 852, 400, "Caterpillar returns cash", ul(["Free cash flow $7,453 m in 2025, 11.0 % of revenue", "73.1 % of operating cash flow returned to shareholders (2022–2025)", "Liebherr distributed €56 m in 2025 – little current income for an investor"]), "navy")))
 
     # ---------------------------------------------------------------- D1 Why 3.9 % is only a trigger
@@ -238,6 +238,37 @@ def add_backup(slides, frame, band, dots):
         ("Why is a strong balance sheet not a return?", "An equity ratio of 53.5 % and a net financial position of €249 m limit the risk, but do not earn the cost of capital. They would cover a shortfall like 2025 (−€232 m) for about 1.1 years.")],
        "Report chapters 4 to 8; Excel workbook, sheets C1, D3 and D10")
 
+    # ---------------------------------------------------------------- References (APA 7), sources cited on the slides
+    refs = [
+        "Caterpillar Inc. (2023). <i>Annual report on Form 10-K for the fiscal year ended December 31, 2022</i>. U.S. Securities and Exchange Commission.",
+        "Caterpillar Inc. (2026). <i>Annual report 2025</i> [Including the annual report on Form 10-K for the fiscal year ended December 31, 2025]. U.S. Securities and Exchange Commission.",
+        "Committee for European Construction Equipment [CECE]. (2026, February 26). <i>European construction equipment sector sees moderate recovery in 2025 with 4.6% growth in sales</i>.",
+        "Damodaran, A. (2026a). <i>Cost of equity and capital (US)</i> [Data set]. NYU Stern School of Business.",
+        "Damodaran, A. (2026b). <i>Debt fundamentals by sector (US)</i> [Data set]. NYU Stern School of Business.",
+        "Damodaran, A. (2026c). <i>Margins by sector (US)</i> [Data set]. NYU Stern School of Business.",
+        "Damodaran, A. (2026d). <i>Return on equity by sector (US)</i> [Data set]. NYU Stern School of Business.",
+        "Damodaran, A. (2026e). <i>Working capital ratios by sector (US)</i> [Data set]. NYU Stern School of Business.",
+        "EUROCONSTRUCT. (2026, June 5). <i>Press release – 101st EUROCONSTRUCT conference</i> [Press release].",
+        "European Central Bank. (2026, September 10). <i>Monetary policy decisions</i> [Press release].",
+        "European Commission. (n.d.-a). <i>Emissions from non-road mobile machinery</i>.",
+        "European Commission. (n.d.-b). <i>European climate law</i>.",
+        "European Union. (2023). Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery. <i>Official Journal of the European Union</i>, L 165, 1–102.",
+        "Eurostat. (2025). <i>Accidents at work – statistics by economic activity</i>.",
+        "IFRS Foundation. (n.d.). <i>IFRS Accounting Standards Navigator</i>.",
+        "Liebherr-International AG. (2023). <i>Annual report 2022</i>.",
+        "Liebherr-International AG. (2024). <i>Annual report 2023</i>.",
+        "Liebherr-International AG. (2025). <i>Annual report 2024</i>.",
+        "Liebherr-International AG. (2026). <i>Annual report 2025</i>.",
+    ]
+    half = 8  # long entries sit on the left, so split for equal column height
+    col = lambda items: "".join(f'<p style="font-size:21px;line-height:1.38;margin:0 0 15px;padding-left:30px;text-indent:-30px">{r}</p>' for r in items)
+    slides.append(frame(30, None, hdr("References", "References", "Sources cited on the slides (APA 7th edition) – full entries with URLs in the report") +
+        f'<div style="position:absolute;left:96px;top:240px;width:850px">{col(refs[:half])}</div>'
+        f'<div style="position:absolute;left:986px;top:240px;width:838px">{col(refs[half:])}</div>'
+        '<div style="position:absolute;left:96px;top:930px;width:1728px;font-size:18px;color:var(--muted);border-top:2px solid #E3E5E8;padding-top:12px">'
+        'Own work: Beermann, S., Fliegel, A., Narkiewicz, Z., Hoffmann, P., &amp; Gilmore Islam, Z. (2026). <i>Liebherr Group financial report: Investment analysis 2022–2025</i> and the Excel workbook '
+        '<i>Liebherr–Caterpillar restructured financial statements</i>. Fontys University of Applied Sciences, Venlo. · Images: Liebherr-International AG.</div>'))
+
 
 BACKUP_NOTES = [
     ("Backup index", "—", "Backup slides, not part of the 10-minute talk. Use them to answer questions: A covers the business model, B the accounting analysis, C the financial analysis, D the recommendation and scenarios, E likely questions. Click a section to jump there; every backup slide links back to this index."),
@@ -257,4 +288,5 @@ BACKUP_NOTES = [
     ("Backup D – Risks and drop trigger", "—", "Demand, tariffs and the cost of new technology are the main external risks. Financing is not the immediate constraint, but prolonged underperformance would make it one. The investor needs information rights because the largest cost increase of 2025 cannot be explained. The report does not assess a valuation. For a risk-averse investor an equity stake is unsuitable and a loan might fit better in principle, but its terms are not disclosed. The drop trigger is a margin near 2.8 per cent in 2026 together with a negative net financial position."),
     ("Backup E – Questions 1/2", "—", "Answer 1 is the recommendation in short. Answer 2 explains why the four-year average is only a first test. Answer 3 shows that the adjustment of Caterpillar to FIFO is small compared with the gap in margin."),
     ("Backup E – Questions 2/2", "—", "The red flags are reasons to ask. ROCE is low because of the low margin and the capital tied up in inventories. The balance sheet protects the investor, but it cannot replace better returns and cash conversion."),
+    ("References", "—", "Reference list for every source cited on the slides, in APA 7th edition. The full entries with URLs are in the report. Use this slide if someone asks where an external figure comes from."),
 ]
