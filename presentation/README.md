@@ -3,6 +3,7 @@
 | File | Use |
 |---|---|
 | `Liebherr_Presentation_animated.html` | **For presenting.** Open in Chrome, Edge or Firefox (works offline, one self-contained file). Slide transitions, staggered build-ups, growing charts and counting key figures. |
+| `Liebherr_Presentation_Backup.pptx` | **Backup if the browser version fails.** Looks identical; fade transitions, content builds in automatically (charts wipe up), speaker notes in PowerPoint's presenter view. One click per slide. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Speaker notes with timing per slide (~9:40 min). |
 
@@ -26,5 +27,9 @@ Photos: the team's original images (source/build/img/1, 2, 3, 6 and 9.jpg) and t
 Rebuild (from `source/`):
 
 ```bash
+# PDF + animated HTML
 python3 scripts/build.py build && node scripts/render.js build && python3 scripts/add_transitions.py build/deck.pdf build/deck.pdf
+# backup PowerPoint
+node scripts/capture_layers.js build pptx/layers && node scripts/build_pptx.js pptx/layers build/notes.json pptx/raw.pptx
+# unzip raw.pptx to pptx/un, then: python3 scripts/pptx_effects.py pptx/un and zip it again
 ```
