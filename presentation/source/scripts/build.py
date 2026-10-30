@@ -175,10 +175,12 @@ slides.append(frame(4, "Report §3.2–3.3, Appendix E (VRIO); Liebherr-Internat
 
 # ---------------------------------------------------------------- 4 Performance
 slides.append(frame(4, "Report §5.2–5.3, Figures 1, 2a and J2; Excel workbook, sheets D4, D6, D10 and Dashboard. Caterpillar on the FIFO basis; industry = Damodaran (2026c), 2025 reference level", f"""
-{band('Financial performance', 'Growth has stalled and the margin fell to 2.8 %', 'Revenue growth 11.5 % → 4.1 % → 1.0 % (2023–2025) · the falling return comes from profitability, not leverage')}
+{band('Financial performance', 'Growth has stalled and the margin fell to 2.8 %', 'Revenue still grows, but barely – and less of it turns into profit')}
 <div class="card" style="left:96px;top:250px;width:1110px;height:600px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.08)">
-  <div class="ctitle">Operating margin, in % of revenue</div>
-  <div style="position:absolute;left:30px;top:90px">{C.margin_lines(1050,480)}</div>
+  <div class="ctitle">Operating margin (%) and revenue (€ bn), 2022–2025</div>
+  <div style="position:absolute;left:30px;top:66px">{C.margin_lines(1050,330,False)}</div>
+  <div style="position:absolute;left:30px;top:396px;width:1050px;border-top:2px dashed #E3E5E8"></div>
+  <div style="position:absolute;left:30px;top:404px">{C.revenue_strip(1050,186)}</div>
 </div>
 <div class="card" style="left:1240px;top:250px;width:584px;height:290px;padding:22px 26px">
   <div class="ctitle">DuPont: why the return on equity fell</div>

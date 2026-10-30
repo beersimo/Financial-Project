@@ -16,7 +16,7 @@ def _t(x, y, s, size=22, weight=600, fill=NAVY, anchor="middle", extra=""):
             f'font-weight="{weight}" fill="{fill}" text-anchor="{anchor}" {extra}>{s}</text>')
 
 
-def margin_lines(w=1040, h=470):
+def margin_lines(w=1040, h=470, show_years=True):
     """Operating margin 2022-2025: Liebherr vs Caterpillar (FIFO) + industry 2025 reference."""
     years = ["2022", "2023", "2024", "2025"]
     lh = [3.606, 4.408, 4.609, 2.796]
@@ -32,7 +32,8 @@ def margin_lines(w=1040, h=470):
         o.append(f'<line x1="{l}" x2="{l+pw}" y1="{Yv(v):.1f}" y2="{Yv(v):.1f}" stroke="{GRID}" stroke-width="1.5"/>')
         o.append(_t(l - 14, Yv(v) + 7, f"{v} %", 19, 400, MUTED, "end"))
     for i, yr in enumerate(years):
-        o.append(_t(X(i), h - 22, yr, 22, 600, NAVY))
+        if show_years:
+            o.append(_t(X(i), h - 22, yr, 22, 600, NAVY))
     # industry reference
     o.append(f'<line x1="{l}" x2="{l+pw}" y1="{Yv(ind):.1f}" y2="{Yv(ind):.1f}" stroke="{MUTED}" stroke-width="3" stroke-dasharray="10 8"/>')
     o.append(_t(l + pw + 14, Yv(ind) + 26, "Industry 15.9 %", 20, 700, MUTED, "start"))
@@ -243,5 +244,29 @@ def dupont(w=560, h=250):
         o.append(_t(cx, Yv(top) - 9, txt, 19, 800))
         o.append(_t(cx, h - 26, lab, 16.5, 700 if i in (1, 2, 3) else 600, MUTED))
     o.append(_t(w / 2, h - 4, "pre-tax return on equity · contributions in pp", 15, 400, MUTED))
+    o.append("</svg>")
+    return "".join(o)
+
+
+def revenue_strip(w=1050, h=190):
+    """Revenue bars aligned with the year columns of margin_lines (same l/r margins)."""
+    vals = [12.589, 14.042, 14.622, 14.772]
+    growth = ["", "+11.5 %", "+4.1 %", "+1.0 %"]
+    years = ["2022", "2023", "2024", "2025"]
+    l, r, t, b = 70, 190, 34, 40
+    pw, ph = w - l - r, h - t - b
+    X = lambda i: l + pw * (i + 0.5) / 4
+    bw = pw / 4 * 0.42
+    o = [f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" xmlns="http://www.w3.org/2000/svg">']
+    o.append(f'<line x1="{l}" x2="{l+pw}" y1="{t+ph}" y2="{t+ph}" stroke="{NAVY}" stroke-width="2"/>')
+    for i, v in enumerate(vals):
+        bh = ph * v / 15.5
+        col = Y if i == 3 else "#D0D3D8"
+        o.append(f'<rect x="{X(i)-bw/2:.1f}" y="{t+ph-bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="{col}"/>')
+        o.append(_t(X(i), t + ph - bh - 10, f"€{v:.2f} bn", 21, 800))
+        if growth[i]:
+            o.append(_t(X(i), t + ph - bh / 2 + 7, growth[i], 19, 800, NAVY))
+        o.append(_t(X(i), h - 8, years[i], 22, 700, NAVY))
+    o.append(_t(l + pw + 14, t + ph / 2 + 7, "Revenue", 20, 700, NAVY, "start"))
     o.append("</svg>")
     return "".join(o)
