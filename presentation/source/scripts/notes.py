@@ -1,7 +1,7 @@
 NOTES = [
 ("Title", "0:25", """Good morning everyone. We are Simon, Adam, Zofia, Philipp and Zarah, and we present our analysis of the Liebherr Group for 2022 to 2025.
 
-Our report is written for a long-term investor who thinks about buying a minority stake. So our question is simple: should this investor invest – and if not, why not yet?"""),
+Our report is written for a long-term investor who thinks about buying a minority stake. Our central question is: how financially strong is Liebherr, and which factors will drive its future performance? For the investor, this leads to one decision: take a minority stake now – or not yet?"""),
 
 ("Executive summary", "0:50", """We give you the answer first: not yet.
 

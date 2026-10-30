@@ -6,7 +6,7 @@ Slides 1–12: talk (≈ 9:40 min). Slides 13–30: backup for questions (30 = r
 
 Good morning everyone. We are Simon, Adam, Zofia, Philipp and Zarah, and we present our analysis of the Liebherr Group for 2022 to 2025.
 
-Our report is written for a long-term investor who thinks about buying a minority stake. So our question is simple: should this investor invest – and if not, why not yet?
+Our report is written for a long-term investor who thinks about buying a minority stake. Our central question is: how financially strong is Liebherr, and which factors will drive its future performance? For the investor, this leads to one decision: take a minority stake now – or not yet?
 
 ## 02 · Executive summary (0:50)
 

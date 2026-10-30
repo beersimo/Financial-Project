@@ -77,7 +77,8 @@ slides.append(f"""<section class="slide">
 <div class="h" style="position:absolute;left:830px;top:330px;font-size:46px;line-height:1.15;max-width:1000px">Financial Reporting and<br>Investment Analysis 2022–2025</div>
 <div style="position:absolute;left:830px;top:490px;width:960px;background:#fff;border-radius:18px;padding:26px 34px">
   <div style="font-size:19px;font-weight:800;letter-spacing:3px;opacity:.6">CENTRAL QUESTION</div>
-  <div style="font-size:31px;font-weight:700;line-height:1.25;margin-top:6px">Should a long-term investor take a minority stake in Liebherr – and if not, why not yet?</div>
+  <div style="font-size:28px;font-weight:700;line-height:1.25;margin-top:6px">How financially strong is Liebherr, and which factors will drive its future performance?</div>
+  <div style="font-size:24px;font-weight:600;line-height:1.3;margin-top:10px;padding-top:10px;border-top:2px solid rgba(0,24,46,.12)">For a long-term investor: take a minority stake now – or not yet?</div>
 </div>
 <div style="position:absolute;left:830px;top:735px;font-size:21px;font-weight:600">Benchmark: Caterpillar Inc. and the average of 105 listed US machinery companies</div>
 <div style="position:absolute;left:830px;top:800px;font-size:20px;font-weight:800;letter-spacing:2px;opacity:.7">PRESENTED BY</div>
