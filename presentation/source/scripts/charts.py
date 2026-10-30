@@ -215,3 +215,33 @@ def sensitivity(w=860, h=420):
         o.append(_t(l + bw + 12, y + 62, labels[i], 24, 800, NAVY, "start"))
     o.append("</svg>")
     return "".join(o)
+
+
+def dupont(w=560, h=250):
+    """Pre-tax ROE 2023 -> 2025 split into the three DuPont drivers (report §5.3)."""
+    steps = [("ROE 2023", 7.6, "total", "7.6 %"), ("Profitability", -2.89, "d", "−2.89"),
+             ("Efficiency", -0.20, "d", "−0.20"), ("Leverage", 0.28, "d", "+0.28"), ("ROE 2025", 4.8, "total", "4.8 %")]
+    l, t, b = 10, 36, 52
+    pw, ph = w - 2 * l, h - t - b
+    n = len(steps)
+    bw = pw / n * 0.62
+    ymax = 8.6
+    Yv = lambda v: t + ph * (1 - v / ymax)
+    o = [f'<svg viewBox="0 0 {w} {h}" width="{w}" height="{h}" xmlns="http://www.w3.org/2000/svg">']
+    run = 0
+    for i, (lab, v, kind, txt) in enumerate(steps):
+        cx = l + pw * (i + 0.5) / n
+        if kind == "total":
+            y0, y1, col = 0, v, (CAT if i == 0 else Y)
+            run = v
+        else:
+            y0, y1 = run, run + v
+            col = "#7FB77E" if v > 0 else "#D9534F"
+            run = y1
+        top, bot = max(y0, y1), min(y0, y1)
+        o.append(f'<rect x="{cx-bw/2:.1f}" y="{Yv(top):.1f}" width="{bw:.1f}" height="{max(Yv(bot)-Yv(top),3):.1f}" fill="{col}"/>')
+        o.append(_t(cx, Yv(top) - 9, txt, 19, 800))
+        o.append(_t(cx, h - 26, lab, 16.5, 700 if i in (1, 2, 3) else 600, MUTED))
+    o.append(_t(w / 2, h - 4, "pre-tax return on equity · contributions in pp", 15, 400, MUTED))
+    o.append("</svg>")
+    return "".join(o)

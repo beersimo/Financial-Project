@@ -5,7 +5,7 @@
 - `Speaker_Notes.md` – the same notes as plain text
 
 All figures come from the report (`Liebherr-Report-PDF-fix.docx`) and the workbook
-(`Liebherr-Caterpillar-Restructured-financial-statements.xlsx`). Photos are the original images supplied by the team (source/build/img/1–5.jpg).
+(`Liebherr-Caterpillar-Restructured-financial-statements.xlsx`). Photos: the team's original images (source/build/img/1–5.jpg) and three photos from the Canva working design (canva_*.jpg).
 
 Rebuild (from `source/`):
 

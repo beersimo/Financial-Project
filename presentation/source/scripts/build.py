@@ -146,26 +146,26 @@ slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1) and §5.7; Liebherr-I
 </div>"""))
 
 # ---------------------------------------------------------------- 4 Competitive advantage
-def adv(x, n, title, text, metric, mlabel, cost):
-    return f"""<div class="card" style="left:{x}px;top:300px;width:420px;height:560px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.10);padding:0;overflow:hidden">
-<div style="background:var(--y);padding:22px 28px 18px"><div style="font-size:19px;font-weight:800;letter-spacing:2px;opacity:.7">ADVANTAGE {n}</div>
-<div class="h" style="font-size:29px;line-height:1.15;margin-top:4px">{title}</div></div>
-<div style="padding:20px 28px 0"><div style="font-size:21px;line-height:1.35;color:#2B3540;height:86px">{text}</div>
-<div class="big" style="font-size:52px;margin-top:10px">{metric}</div><div style="font-size:19px;font-weight:700;color:var(--muted)">{mlabel}</div></div>
-<div style="position:absolute;left:0;right:0;bottom:0;background:var(--light);padding:16px 28px;height:132px">
+def adv(x, n, img, title, text, metric, mlabel, cost):
+    return f"""<div class="card" style="left:{x}px;top:262px;width:420px;height:640px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.12);padding:0;overflow:hidden">
+<div style="height:190px;background:url(img/{img}) center/cover"></div>
+<div style="position:absolute;left:24px;top:166px;background:var(--y);border-radius:30px;padding:9px 22px;font-family:Arimo,Arial,sans-serif;font-weight:700;font-size:23px;box-shadow:0 3px 10px rgba(0,0,0,.15)">{title}</div>
+<div style="padding:44px 28px 0"><div style="font-size:20px;line-height:1.35;color:#2B3540;height:82px">{text}</div>
+<div class="big" style="font-size:50px;margin-top:6px">{metric}</div><div style="font-size:18.5px;font-weight:700;color:var(--muted);line-height:1.3">{mlabel}</div></div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--light);padding:14px 28px;height:112px">
 <div style="font-size:17px;font-weight:800;letter-spacing:2px;color:#A11B1B">THE PRICE</div>
 <div style="font-size:20px;line-height:1.3;margin-top:4px">{cost}</div></div></div>"""
 
 slides.append(frame(4, "Report §3.2–3.3, Appendix E (VRIO); Liebherr-International AG (2023–2026); Caterpillar Inc. (2026)", f"""
-<div style="position:absolute;left:0;top:0;width:1920px;height:250px;background:var(--y)"></div>
-{photo('3.jpg', 1400, 0, 520, 250, 'center 55%')}
+<div style="position:absolute;left:0;top:0;width:1920px;height:230px;background:var(--y)"></div>
+{swirl(1560,-40,1.0)}{dots(1740,150)}
 <div class="eyebrow">Business model and competitive strategy</div>
 <h2 style="position:absolute;left:96px;top:72px;font-size:54px;line-height:1.08;width:1260px">How Liebherr creates competitive advantage</h2>
 <div style="position:absolute;left:98px;top:158px;font-size:26px;font-weight:600;width:1260px">Differentiation in custom segments, scale in volume segments – financed by patient family capital</div>
-{adv(96,1,'Diversified product portfolio','13 segments, from mining excavators to aerospace components, spread the market risk.','+14.7 %','other segments 2025, while construction & mining fell 5.5 %','Stabilises revenue, but does not raise the margin.')}
-{adv(536,2,'Vertical integration and own sales network','Key technologies built in-house; own sales and service companies instead of independent dealers.','29.1 %','PP&amp;E in % of revenue (Caterpillar 22.4 %)','Capital tied up in assets and stock – inventories 42.9 % of revenue.')}
-{adv(976,3,'Innovation and research','Research and development rose every year, fully expensed, financed from retained profit.','€708 m','R&amp;D 2025 = 4.8 % of revenue (Caterpillar 3.2 %)','Spending kept rising while operating profit fell 39 % in 2025.')}
-<div class="card" style="left:1416px;top:300px;width:408px;height:560px;background:var(--navy);color:#fff;padding:34px 32px">
+{adv(96,1,'3.jpg','Diversified product portfolio','13 segments, from mining excavators to aerospace components, spread the market risk.','+14.7 %','other segments 2025, while construction & mining fell 5.5 %','Stabilises revenue, but does not raise the margin.')}
+{adv(536,2,'canva_factory.jpg','Vertical integration','Key technologies built in-house; own sales and service companies instead of dealers.','29.1 %','PP&amp;E in % of revenue (Caterpillar 22.4 %)','Capital tied up in assets and stock – inventories 42.9 % of revenue.')}
+{adv(976,3,'canva_loader.jpg','Innovation &amp; research','Research and development rose every year, fully expensed, financed from retained profit.','€708 m','R&amp;D 2025 = 4.8 % of revenue (Caterpillar 3.2 %)','Spending kept rising while operating profit fell 39 % in 2025.')}
+<div class="card" style="left:1416px;top:262px;width:408px;height:640px;background:var(--navy);color:#fff;padding:34px 32px">
   <div style="font-size:19px;font-weight:800;letter-spacing:2px;color:var(--y)">WHAT IT MEANS</div>
   <div class="h" style="font-size:34px;line-height:1.2;color:#fff;margin-top:14px">The advantage is real – but it sits in the asset base, not yet in the margin.</div>
   <div style="font-size:21px;line-height:1.4;margin-top:22px;opacity:.9">For the investor the question is not <i>whether</i> the advantage exists, but whether it is turned into returns.</div>
@@ -174,15 +174,15 @@ slides.append(frame(4, "Report §3.2–3.3, Appendix E (VRIO); Liebherr-Internat
 """))
 
 # ---------------------------------------------------------------- 4 Performance
-slides.append(frame(4, "Report §5.2, Figure 1 and Figure J2; Excel workbook, sheets D6, D10 and Dashboard. Caterpillar on the FIFO basis; industry = Damodaran (2026c), 2025 reference level", f"""
-{band('Financial performance', 'Growth has stalled and the margin fell to 2.8 %', 'Operating margin 2022–2025: Liebherr vs. Caterpillar vs. US machinery industry')}
+slides.append(frame(4, "Report §5.2–5.3, Figures 1, 2a and J2; Excel workbook, sheets D4, D6, D10 and Dashboard. Caterpillar on the FIFO basis; industry = Damodaran (2026c), 2025 reference level", f"""
+{band('Financial performance', 'Growth has stalled and the margin fell to 2.8 %', 'Revenue growth 11.5 % → 4.1 % → 1.0 % (2023–2025) · the falling return comes from profitability, not leverage')}
 <div class="card" style="left:96px;top:250px;width:1110px;height:600px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.08)">
   <div class="ctitle">Operating margin, in % of revenue</div>
   <div style="position:absolute;left:30px;top:90px">{C.margin_lines(1050,480)}</div>
 </div>
 <div class="card" style="left:1240px;top:250px;width:584px;height:290px;padding:22px 26px">
-  <div class="ctitle">Revenue, € bn · growth</div>
-  <div style="position:absolute;left:12px;top:50px">{C.revenue_bars(560,235)}</div>
+  <div class="ctitle">DuPont: why the return on equity fell</div>
+  <div style="position:absolute;left:12px;top:44px">{C.dupont(560,240)}</div>
 </div>
 <div class="card" style="left:1240px;top:560px;width:584px;height:290px;padding:22px 26px">
   <div class="ctitle">Margin bridge 2024 → 2025</div>
@@ -349,7 +349,7 @@ slides.append(frame(11, None, f"""
 # ---------------------------------------------------------------- 12 Thank you
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--y)"></div>
-{photo('5.jpg', 70, 40, 780, 900, 'center top', 0, 'background-size:auto 120%')}
+{photo('canva_crawler.jpg', 70, 40, 780, 900, 'center')}
 <div style="position:absolute;left:0;top:960px;width:1920px;height:120px;background:#fff"></div>
 {swirl(1520,-30,1.0,'#E6B800',.5)}{dots(1700,760,5,3)}
 <h1 style="position:absolute;left:960px;top:250px;font-size:200px;line-height:1;letter-spacing:-4px">Thank<br>you.</h1>

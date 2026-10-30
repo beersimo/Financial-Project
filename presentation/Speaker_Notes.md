@@ -1,6 +1,6 @@
 # Liebherr Group – Speaker notes
 
-HAT1 Financial Reporting · 12 slides · planned speaking time ≈ 9:30–10:00 min (~1,380 words)
+HAT1 Financial Reporting · 12 slides · planned speaking time ≈ 10 min (~1,440 words)
 
 ## 01 · Title (0:25)
 
@@ -36,13 +36,15 @@ But each advantage has a price. Diversification does not raise the margin. Verti
 
 So the advantage is real, but it sits in the asset base, not yet in the margin. The question for the investor is whether it is turned into returns – and that is what the numbers show next.
 
-## 05 · Financial performance (1:05)
+## 05 · Financial performance (1:15)
 
 Revenue growth slowed from 11.5 per cent in 2023 to only 1 per cent in 2025.
 
 The bigger problem is the margin. The yellow line is Liebherr: around 4 per cent, then down to 2.8 per cent in 2025. Caterpillar, on a FIFO basis, earned 16 to 21 per cent, and the industry average is 15.9 per cent. The gap was 12.5 to 16.2 points in every single year – so this is not one bad year. Business models differ, but Caterpillar's machinery segment alone still earned 17 per cent.
 
 The bridge on the right explains 2025: personnel costs grew five times faster than revenue and cost 1.2 points, and other operating items cost another 1.25 points – without any explanation in the notes.
+
+The DuPont analysis above it shows what this means for the owners. The pre-tax return on equity fell from 7.6 to 4.8 per cent. Almost all of it – 2.89 points – comes from lower profitability. Efficiency cost only 0.2 points, and leverage even added a little. So the problem is the margin, not the debt.
 
 For the investor, each margin point is worth about 148 million euro. But can we trust the reported margin?
 
