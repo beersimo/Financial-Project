@@ -140,7 +140,64 @@ show((parseInt(location.hash.slice(1))||1)-1);
 """
 
 
-def build_present(build: pathlib.Path, css: str, slides: list, notes: list):
+PRESENT_CSS_B = r"""
+/* Version B: camera-focus transition, wipe reveals, springy bars, marker highlights, Ken Burns, focus steps */
+#stage .slide{transform:scale(1.045);filter:blur(8px);
+  transition:opacity .7s ease,transform 1s cubic-bezier(.16,1,.3,1),filter .8s ease,visibility 0s linear 1s}
+#stage .slide.active{transform:none;filter:none;transition:opacity .7s ease,transform 1s cubic-bezier(.16,1,.3,1),filter .8s ease,visibility 0s}
+#stage .slide.past{transform:scale(.96)}
+@keyframes wipeIn{from{clip-path:inset(-60px 100% -60px -60px);opacity:.3}to{clip-path:inset(-60px -60px -60px -60px);opacity:1}}
+.slide.in .fx{animation:wipeIn .9s cubic-bezier(.65,0,.35,1) both;animation-delay:var(--d)}
+.slide.in .fx.fade{animation:fxFade .7s both;animation-delay:0ms}
+.slide.in .fx.photo{animation:fxFade 1s both;animation-delay:0ms}
+.slide.in .fx.pill{animation:wipeIn 1s cubic-bezier(.65,0,.35,1) both;animation-delay:var(--d)}
+.slide.in .gv,.slide.in .gvn{animation:growV 1s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--d) + 450ms + var(--b,0ms))}
+.slide.in .gh{animation:growH 1s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--d) + 450ms + var(--b,0ms))}
+.slide.in .ln{animation:draw 1.8s cubic-bezier(.65,0,.35,1) both;animation-delay:calc(var(--d) + 300ms)}
+.slide.in svg text,.slide.in svg circle{animation:fxFade .5s both;animation-delay:calc(var(--d) + 1100ms)}
+.slide .big.mark{display:inline-block;background:linear-gradient(transparent 62%,rgba(255,207,0,.6) 62%) no-repeat 0 0/0% 100%}
+.slide.in .big.mark{animation:mark .7s ease-out forwards;animation-delay:calc(var(--d) + 1500ms)}
+@keyframes mark{to{background-size:100% 100%}}
+.slide .focus-step{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,filter .45s}
+.slide.focusing .fx:not(.focus-on):not(.fade):not(.photo):not(h2):not(.eyebrow){filter:opacity(.25) grayscale(.7)}
+.slide.focusing .focus-on{transform:scale(1.05);box-shadow:0 0 0 6px #FFCF00,0 22px 50px rgba(0,24,46,.28)!important;z-index:3}
+#progress{display:none}
+#dots{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
+#dots i{width:10px;height:10px;border-radius:5px;background:rgba(0,24,46,.28);transition:all .4s}
+#dots i.on{width:30px;background:#00182E}
+"""
+
+PRESENT_JS_B = r"""
+// Version B additions
+(function(){
+  const dots=document.createElement('div');dots.id='dots';
+  slides.forEach(()=>dots.appendChild(document.createElement('i')));document.body.appendChild(dots);
+  slides.forEach(s=>s.querySelectorAll('svg').forEach(svg=>svg.querySelectorAll('.gv,.gvn,.gh').forEach((b,k)=>b.style.setProperty('--b',(k*130)+'ms'))));
+  slides.forEach(s=>s.querySelectorAll('.big').forEach(el=>{const t=el.textContent;if(!/[–→]/.test(t)&&/\d/.test(t))el.classList.add('mark')}));
+  let step=-1, kb=[];
+  function kenBurns(s){kb.forEach(a=>a.cancel());kb=[];
+    s.querySelectorAll('.photo').forEach(ph=>{const url=(ph.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/)||[])[1];if(!url)return;
+      const img=new Image();img.onload=()=>{const W=ph.offsetWidth,H=ph.offsetHeight,r=Math.max(W/img.width,H/img.height);
+        const w=img.width*r,h=img.height*r;
+        kb.push(ph.animate([{backgroundSize:`${w}px ${h}px`},{backgroundSize:`${w*1.1}px ${h*1.1}px`}],{duration:24000,easing:'linear',fill:'both'}));};img.src=url;});}
+  function applyFocus(s){const st=[...s.querySelectorAll('.focus-step')];
+    s.classList.toggle('focusing',step>=0);st.forEach((e,i)=>e.classList.toggle('focus-on',i===step));}
+  const baseShow=show;
+  show=function(n){step=-1;slides.forEach(s=>{s.classList.remove('focusing');s.querySelectorAll('.focus-on').forEach(e=>e.classList.remove('focus-on'))});
+    baseShow(n);[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));kenBurns(slides[cur]);};
+  go=function(d){const s=slides[cur],st=s.querySelectorAll('.focus-step');
+    if(st.length&&d>0&&step<st.length){step++; if(step<st.length){applyFocus(s);return;} step=-1;}
+    else if(st.length&&d<0&&step>=0){step--;applyFocus(s);return;}
+    show(cur+d);};
+  const baseUpd=updatePresenter;
+  updatePresenter=function(){baseUpd(); if(!pres||pres.closed)return; const n=slides[cur].querySelectorAll('.focus-step').length;
+    if(n){const el=pres.document.getElementById('next'); el.textContent='▶ '+n+' focus clicks on this slide, then: '+el.textContent.replace(/^Next: /,'');}};
+  show(cur);
+})();
+"""
+
+
+def build_present(build: pathlib.Path, css: str, slides: list, notes: list, variant: str = "A"):
     def data_uri(path: pathlib.Path, mime: str) -> str:
         return f"data:{mime};base64," + base64.b64encode(path.read_bytes()).decode()
 
@@ -155,10 +212,11 @@ def build_present(build: pathlib.Path, css: str, slides: list, notes: list):
     html_slides = "".join(slides)
     for name in sorted(set(re.findall(r"url\(img/([^)]+)\)", html_slides))):
         html_slides = html_slides.replace(f"url(img/{name})", f"url({data_uri(build / 'img' / name, 'image/jpeg')})")
-    js = PRESENT_JS.replace("__NOTES__", json.dumps(notes, ensure_ascii=False))
+    js = PRESENT_JS.replace("__NOTES__", json.dumps(notes, ensure_ascii=False)) + (PRESENT_JS_B if variant == "B" else "")
+    extra_css = PRESENT_CSS_B if variant == "B" else ""
     hint = '<div id="hint">→ / Space: next · ←: back · F: fullscreen · P: presenter view · B: blank</div>'
     doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-           f'<title>Liebherr Group Investment Analysis</title><style>{font_css}{css}{PRESENT_CSS}</style></head>'
+           f'<title>Liebherr Group Investment Analysis</title><style>{font_css}{css}{PRESENT_CSS}{extra_css}</style></head>'
            f'<body><div id="stage">{html_slides}</div><div id="progress"></div><div id="blank"></div>{hint}<script>{js}</script></body></html>')
-    (build / "present.html").write_text(doc)
+    (build / ("present.html" if variant == "A" else f"present_{variant}.html")).write_text(doc)
     return len(doc)

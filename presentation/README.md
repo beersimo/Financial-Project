@@ -3,6 +3,7 @@
 | File | Use |
 |---|---|
 | `Liebherr_Presentation_animated.html` | **For presenting.** Open in Chrome, Edge or Firefox (works offline, one self-contained file). Slide transitions, staggered build-ups, growing charts and counting key figures. |
+| `Liebherr_Presentation_animated_B.html` | Alternative effect style for comparison: camera-focus transition, wipe reveals, springy bars, marker highlights on key figures, slow photo zoom, dot progress. On slide 10 the three conditions are highlighted one by one (3 extra clicks). |
 | `Liebherr_Presentation_Backup.pptx` | **Backup if the browser version fails.** Looks identical; fade transitions, content builds in automatically (charts wipe up), speaker notes in PowerPoint's presenter view. One click per slide. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Speaker notes with timing per slide (~9:40 min). |

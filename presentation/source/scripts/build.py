@@ -301,7 +301,7 @@ slides.append(frame(8, "Report §5.4, Figure 2b, Table J5; Excel workbook, sheet
 
 # ---------------------------------------------------------------- 10 Investment assessment
 def cond(x, n, title, status, ok=False):
-    return f"""<div style="position:absolute;left:{x}px;top:470px;width:560px;height:200px;background:#fff;border-radius:18px;padding:22px 26px;box-shadow:0 6px 24px rgba(0,24,46,.10)">
+    return f"""<div class="focus-step" style="position:absolute;left:{x}px;top:470px;width:560px;height:200px;background:#fff;border-radius:18px;padding:22px 26px;box-shadow:0 6px 24px rgba(0,24,46,.10)">
 <div style="display:flex;gap:16px;align-items:flex-start"><div style="min-width:52px;height:52px;border-radius:50%;background:var(--y);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px">{n}</div>
 <div style="font-size:24px;font-weight:800;line-height:1.25">{title}</div></div>
 <div style="position:absolute;left:26px;bottom:20px;right:26px;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--light);padding-top:12px">
@@ -399,4 +399,5 @@ import json
 (BUILD / "notes.json").write_text(json.dumps(notes, indent=1, ensure_ascii=False))
 from present import build_present
 print("present.html", round(build_present(BUILD, CSS, slides, notes) / 1e6, 1), "MB")
+print("present_B.html", round(build_present(BUILD, CSS, slides, notes, variant="B") / 1e6, 1), "MB")
 print("ok", len(slides), "slides; planned", total, "s;", words, "words")
