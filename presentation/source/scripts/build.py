@@ -306,7 +306,7 @@ def cond(x, n, title, status, ok=False):
 
 slides.append(frame(10, "Report §5.3, §5.7 and chapter 8, Table 3; Excel workbook, sheets D3, D10 and D11; benchmark: Damodaran (2026a)", f"""
 <div style="position:absolute;left:0;top:0;width:1920px;height:420px;background:var(--y)"></div>
-{photo('2.jpg', 1240, 0, 680, 420, 'center 40%')}
+{photo('canva_crane_night.jpg', 1240, 0, 680, 420, 'center 30%')}
 {dots(1180,40,3,3)}
 <div class="eyebrow">Overall assessment and investment perspective</div>
 <h2 style="position:absolute;left:96px;top:72px;font-size:56px;line-height:1.08;width:1100px">What would have to change: three conditions for a reassessment</h2>
@@ -349,7 +349,7 @@ slides.append(frame(11, None, f"""
 # ---------------------------------------------------------------- 12 Thank you
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--y)"></div>
-{photo('canva_crawler.jpg', 70, 40, 780, 900, 'center')}
+{photo('2.jpg', 70, 40, 780, 900, '42% center')}
 <div style="position:absolute;left:0;top:960px;width:1920px;height:120px;background:#fff"></div>
 {swirl(1520,-30,1.0,'#E6B800',.5)}{dots(1700,760,5,3)}
 <h1 style="position:absolute;left:960px;top:250px;font-size:200px;line-height:1;letter-spacing:-4px">Thank<br>you.</h1>
