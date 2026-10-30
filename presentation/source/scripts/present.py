@@ -158,9 +158,6 @@ PRESENT_CSS_B = r"""
 .slide .big.mark{display:inline-block;background:linear-gradient(transparent 62%,rgba(255,207,0,.6) 62%) no-repeat 0 0/0% 100%}
 .slide.in .big.mark{animation:mark .7s ease-out forwards;animation-delay:calc(var(--d) + 1500ms)}
 @keyframes mark{to{background-size:100% 100%}}
-.slide .focus-step{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,filter .45s}
-.slide.focusing .fx:not(.focus-on):not(.fade):not(.photo):not(h2):not(.eyebrow){filter:opacity(.25) grayscale(.7)}
-.slide.focusing .focus-on{transform:scale(1.05);box-shadow:0 0 0 6px #FFCF00,0 22px 50px rgba(0,24,46,.28)!important;z-index:3}
 #progress{display:none}
 #dots{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
 #dots i{width:10px;height:10px;border-radius:5px;background:rgba(0,24,46,.28);transition:all .4s}
@@ -168,23 +165,39 @@ PRESENT_CSS_B = r"""
 """
 
 PRESENT_JS_B = r"""
-// Version B additions
+// Version B additions: dot progress, springier bar stagger, marker highlights, Ken Burns zoom
 (function(){
   const dots=document.createElement('div');dots.id='dots';
   slides.forEach(()=>dots.appendChild(document.createElement('i')));document.body.appendChild(dots);
   slides.forEach(s=>s.querySelectorAll('svg').forEach(svg=>svg.querySelectorAll('.gv,.gvn,.gh').forEach((b,k)=>b.style.setProperty('--b',(k*130)+'ms'))));
   slides.forEach(s=>s.querySelectorAll('.big').forEach(el=>{const t=el.textContent;if(!/[–→]/.test(t)&&/\d/.test(t))el.classList.add('mark')}));
-  let step=-1, kb=[];
+  let kb=[];
   function kenBurns(s){kb.forEach(a=>a.cancel());kb=[];
     s.querySelectorAll('.photo').forEach(ph=>{const url=(ph.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/)||[])[1];if(!url)return;
       const img=new Image();img.onload=()=>{const W=ph.offsetWidth,H=ph.offsetHeight,r=Math.max(W/img.width,H/img.height);
         const w=img.width*r,h=img.height*r;
         kb.push(ph.animate([{backgroundSize:`${w}px ${h}px`},{backgroundSize:`${w*1.1}px ${h*1.1}px`}],{duration:24000,easing:'linear',fill:'both'}));};img.src=url;});}
+  const baseShow=show;
+  show=function(n){baseShow(n);[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));kenBurns(slides[cur]);};
+  show(cur);
+})();
+"""
+
+
+FOCUS_CSS = r"""
+/* Focus steps: elements with .focus-step are highlighted one per click (yellow frame), the rest dims */
+.slide .focus-step{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,filter .45s}
+.slide.focusing .fx:not(.focus-on):not(.fade):not(.photo):not(h2):not(.eyebrow){filter:opacity(.25) grayscale(.7)}
+.slide.focusing .focus-on{transform:scale(1.05);box-shadow:0 0 0 6px #FFCF00,0 22px 50px rgba(0,24,46,.28)!important;z-index:3}
+"""
+
+FOCUS_JS = r"""
+(function(){
+  let step=-1;
   function applyFocus(s){const st=[...s.querySelectorAll('.focus-step')];
     s.classList.toggle('focusing',step>=0);st.forEach((e,i)=>e.classList.toggle('focus-on',i===step));}
   const baseShow=show;
-  show=function(n){step=-1;slides.forEach(s=>{s.classList.remove('focusing');s.querySelectorAll('.focus-on').forEach(e=>e.classList.remove('focus-on'))});
-    baseShow(n);[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===cur));kenBurns(slides[cur]);};
+  show=function(n){step=-1;slides.forEach(s=>{s.classList.remove('focusing');s.querySelectorAll('.focus-on').forEach(e=>e.classList.remove('focus-on'))});baseShow(n);};
   go=function(d){const s=slides[cur],st=s.querySelectorAll('.focus-step');
     if(st.length&&d>0&&step<st.length){step++; if(step<st.length){applyFocus(s);return;} step=-1;}
     else if(st.length&&d<0&&step>=0){step--;applyFocus(s);return;}
@@ -192,7 +205,6 @@ PRESENT_JS_B = r"""
   const baseUpd=updatePresenter;
   updatePresenter=function(){baseUpd(); if(!pres||pres.closed)return; const n=slides[cur].querySelectorAll('.focus-step').length;
     if(n){const el=pres.document.getElementById('next'); el.textContent='▶ '+n+' focus clicks on this slide, then: '+el.textContent.replace(/^Next: /,'');}};
-  show(cur);
 })();
 """
 
@@ -212,8 +224,8 @@ def build_present(build: pathlib.Path, css: str, slides: list, notes: list, vari
     html_slides = "".join(slides)
     for name in sorted(set(re.findall(r"url\(img/([^)]+)\)", html_slides))):
         html_slides = html_slides.replace(f"url(img/{name})", f"url({data_uri(build / 'img' / name, 'image/jpeg')})")
-    js = PRESENT_JS.replace("__NOTES__", json.dumps(notes, ensure_ascii=False)) + (PRESENT_JS_B if variant == "B" else "")
-    extra_css = PRESENT_CSS_B if variant == "B" else ""
+    js = PRESENT_JS.replace("__NOTES__", json.dumps(notes, ensure_ascii=False)) + FOCUS_JS + (PRESENT_JS_B if variant == "B" else "")
+    extra_css = FOCUS_CSS + (PRESENT_CSS_B if variant == "B" else "")
     hint = '<div id="hint">→ / Space: next · ←: back · F: fullscreen · P: presenter view · B: blank</div>'
     doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
            f'<title>Liebherr Group Investment Analysis</title><style>{font_css}{css}{PRESENT_CSS}{extra_css}</style></head>'
