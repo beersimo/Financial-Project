@@ -38,7 +38,7 @@ html,body{margin:0;height:100%;background:#000;overflow:hidden}
 
 PRESENT_JS = r"""
 const slides=[...document.querySelectorAll('#stage .slide')];
-const NOTES=__NOTES__;
+const NOTES=__NOTES__; const MAIN=12;
 let cur=0, pres=null, t0=null, slideT0=Date.now();
 const stage=document.getElementById('stage');
 function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);
@@ -86,7 +86,7 @@ function show(n,instant){
   slides.forEach((s,i)=>{s.classList.toggle('active',i===n);s.classList.toggle('past',i<n);if(i!==n)s.classList.remove('in');});
   const s=slides[n]; s.classList.remove('in'); void s.offsetWidth; s.classList.add('in');
   countUp(s);
-  document.getElementById('progress').style.width=((n+1)/slides.length*100)+'%';
+  document.getElementById('progress').style.width=(Math.min(1,(n+1)/MAIN)*100)+'%';
   history.replaceState(null,'','#'+(n+1));
   if(prev!==n)slideT0=Date.now();
   if(t0===null&&n>0)t0=Date.now();
@@ -96,12 +96,13 @@ function go(d){show(cur+d)}
 addEventListener('keydown',e=>{
   if(['ArrowRight','PageDown',' ','Enter','ArrowDown'].includes(e.key)){e.preventDefault();go(1)}
   else if(['ArrowLeft','PageUp','Backspace','ArrowUp'].includes(e.key)){e.preventDefault();go(-1)}
-  else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='Home')show(0); else if(e.key==='End')show(MAIN-1); else if(e.key==='i'||e.key==='I')show(MAIN);
   else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
   else if(e.key==='b'||e.key==='B'||e.key==='.'){const b=document.getElementById('blank');b.style.display=b.style.display==='block'?'none':'block'}
   else if(e.key==='p'||e.key==='P')openPresenter();
 });
-document.getElementById('stage').addEventListener('click',e=>{ if(e.clientX<innerWidth*0.25)go(-1); else go(1); });
+document.getElementById('stage').addEventListener('click',e=>{ const g=e.target.closest('[data-goto]'); if(g){e.preventDefault();show(parseInt(g.dataset.goto)-1);return;} if(e.clientX<innerWidth*0.25)go(-1); else go(1); });
+document.querySelectorAll('[data-goto]').forEach(a=>a.style.cursor='pointer');
 let tx=null;addEventListener('touchstart',e=>tx=e.touches[0].clientX);
 addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)go(dx<0?1:-1);tx=null});
 
@@ -127,7 +128,7 @@ function openPresenter(){
 const mmss=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
 function updatePresenter(){
   if(!pres||pres.closed)return; const d=pres.document, n=NOTES[cur]||['','',''];
-  d.getElementById('cur').textContent=(cur+1)+' / '+slides.length+' · '+n[0];
+  d.getElementById('cur').textContent=(cur<MAIN?(cur+1)+' / '+MAIN:'Backup '+(cur+1))+' · '+n[0];
   d.getElementById('notes').innerHTML=n[2].split('\n\n').map(p=>'<p>'+p.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</p>').join('');
   const nx=NOTES[cur+1]; d.getElementById('next').textContent=nx?'Next: '+nx[0]:'End of presentation';
 }
@@ -168,7 +169,7 @@ PRESENT_JS_B = r"""
 // Version B additions: dot progress, springier bar stagger, marker highlights, Ken Burns zoom
 (function(){
   const dots=document.createElement('div');dots.id='dots';
-  slides.forEach(()=>dots.appendChild(document.createElement('i')));document.body.appendChild(dots);
+  slides.slice(0,MAIN).forEach(()=>dots.appendChild(document.createElement('i')));document.body.appendChild(dots);
   slides.forEach(s=>s.querySelectorAll('svg').forEach(svg=>svg.querySelectorAll('.gv,.gvn,.gh').forEach((b,k)=>b.style.setProperty('--b',(k*130)+'ms'))));
   slides.forEach(s=>s.querySelectorAll('.big').forEach(el=>{const t=el.textContent;if(!/[–→]/.test(t)&&/\d/.test(t))el.classList.add('mark')}));
   let kb=[];
@@ -226,7 +227,7 @@ def build_present(build: pathlib.Path, css: str, slides: list, notes: list, vari
         html_slides = html_slides.replace(f"url(img/{name})", f"url({data_uri(build / 'img' / name, 'image/jpeg')})")
     js = PRESENT_JS.replace("__NOTES__", json.dumps(notes, ensure_ascii=False)) + FOCUS_JS + (PRESENT_JS_B if variant == "B" else "")
     extra_css = FOCUS_CSS + (PRESENT_CSS_B if variant == "B" else "")
-    hint = '<div id="hint">→ / Space: next · ←: back · F: fullscreen · P: presenter view · B: blank</div>'
+    hint = '<div id="hint">→ / Space: next · ←: back · F: fullscreen · P: presenter view · B: blank · I: backup index</div>'
     doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
            f'<title>Liebherr Group Investment Analysis</title><style>{font_css}{css}{PRESENT_CSS}{extra_css}</style></head>'
            f'<body><div id="stage">{html_slides}</div><div id="progress"></div><div id="blank"></div>{hint}<script>{js}</script></body></html>')

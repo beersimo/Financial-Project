@@ -50,7 +50,8 @@ const { chromium } = require('playwright'); const path = require('path'); const 
     }
     await p.evaluate((s) => { const sl = document.querySelectorAll('section.slide')[s]; sl.style.background = '';
       [...sl.children].forEach(el => el.style.visibility = ''); document.body.style.background = ''; document.documentElement.style.background = ''; }, s);
-    manifest.push({ base, layers });
+    const links = await p.evaluate((s) => [...document.querySelectorAll('section.slide')[s].querySelectorAll('[data-goto]')].map(e => { const r = e.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height, to: +e.dataset.goto }; }), s);
+    manifest.push({ base, layers, links });
   }
   fs.writeFileSync(path.join(out, 'manifest.json'), JSON.stringify(manifest, null, 1));
   console.log(manifest.map((m, i) => `${i + 1}:${m.layers.length}`).join(' '));

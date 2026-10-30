@@ -32,7 +32,7 @@ def click_step(ctn, spid):
 for f in sorted((root / "ppt" / "slides").glob("slide*.xml")):
     x = f.read_text(encoding="utf-8")
     pics = re.findall(r'<p:cNvPr id="(\d+)" name="([^"]+)"', x)
-    layers = [(i, n) for i, n in pics if n != "Base" and not n.startswith("Focus")]
+    layers = [(i, n) for i, n in pics if n != "Base" and not n.startswith("Focus") and not n.startswith("Link")]
     focus = [i for i, n in pics if n.startswith("Focus")]
     timing = ""
     if layers:

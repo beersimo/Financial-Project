@@ -361,6 +361,10 @@ slides.append(f"""<section class="slide">
 </section>""")
 
 from notes import NOTES as notes
+from backup import add_backup, BACKUP_NOTES
+add_backup(slides, frame, band, dots)
+notes = list(notes) + BACKUP_NOTES
+MAIN = 12
 import re as _re
 slides = [_re.sub(r"(\d) %", "\\1&nbsp;%", x) for x in slides]
 slides = [_re.sub(r"(\d) (m|pp|bn)\b", "\\1&nbsp;\\2", x) for x in slides]
@@ -387,9 +391,9 @@ img{width:100%;border:1px solid #D0D3D8}
 .cover h1{font-family:Arimo;font-size:26pt;margin:20mm 0 4mm}
 """
 total = sum(int(d.split(":")[0]) * 60 + int(d.split(":")[1]) for _, d, _ in notes if ":" in d)
-words = sum(len(t.split()) for _, _, t in notes[:-1])
+words = sum(len(t.split()) for _, _, t in notes[:MAIN - 1])
 cover = (f'<section class="np cover" style="display:block"><h1>Liebherr Group – Speaker notes</h1>'
-         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 slides · planned speaking time {total//60}:{total%60:02d} min · {words} words of notes (≈ 125 words per minute, calm B2 pace)</p>'
+         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 talk slides + 17 backup slides (13–29) · planned speaking time {total//60}:{total%60:02d} min · {words} words of notes (≈ 125 words per minute, calm B2 pace)</p>'
          '<p style="font-size:12pt;margin-top:6mm">Red line: <b>Should a long-term investor take a minority stake in Liebherr – and if not, why not yet?</b><br>'
          'Answer first (slide 2) → why: company and model (3) → performance (4) → can we trust the figures? (5–6) → position, cash and working capital (7–8) → '
          'how the workbook supports it (9) → conditions for reassessment (10) → conclusion (11).</p>'
