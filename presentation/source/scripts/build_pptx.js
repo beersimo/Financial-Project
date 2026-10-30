@@ -14,6 +14,10 @@ manifest.forEach((m, i) => {
   s.addImage({ path: path.join(layersDir, m.base), x: 0, y: 0, w: 13.333, h: 7.5, altText: `Slide ${i + 1}: ${notes[i][0]}`, objectName: 'Base' });
   m.layers.forEach((l, k) => s.addImage({ path: path.join(layersDir, l.file), x: IN(l.x), y: IN(l.y), w: IN(l.w), h: IN(l.h),
     altText: `${notes[i][0]} – element ${k + 1}`, objectName: (l.chart ? 'Chart ' : 'Element ') + (k + 1) }));
+  // focus states (one condition framed in yellow, rest dimmed) appear on click, see pptx_effects.py
+  for (let k = 1; fs.existsSync(path.join(layersDir, `s${i + 1}_focus${k}.jpg`)); k++)
+    s.addImage({ path: path.join(layersDir, `s${i + 1}_focus${k}.jpg`), x: 0, y: 0, w: 13.333, h: 7.5,
+      altText: `${notes[i][0]} – condition ${k} highlighted`, objectName: `Focus ${k}` });
   s.addNotes(notes[i][2]);
 });
 pres.writeFile({ fileName: outFile }).then(f => console.log('written', f));

@@ -21,10 +21,19 @@ def effect(ctn, spid, delay, chart):
             f'<p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl></p:cBhvr></p:animEffect></p:childTnLst></p:cTn></p:par>')
 
 
+def click_step(ctn, spid):
+    """One click: fade in a full-slide focus overlay (uses ids ctn .. ctn+4)."""
+    return (f'<p:par><p:cTn id="{ctn}" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst>'
+            f'<p:par><p:cTn id="{ctn + 1}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
+            + effect(ctn + 2, spid, 0, False).replace('nodeType="withEffect"', 'nodeType="clickEffect"').replace('dur="600"', 'dur="350"') +
+            '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>')
+
+
 for f in sorted((root / "ppt" / "slides").glob("slide*.xml")):
     x = f.read_text(encoding="utf-8")
     pics = re.findall(r'<p:cNvPr id="(\d+)" name="([^"]+)"', x)
-    layers = [(i, n) for i, n in pics if n != "Base"]
+    layers = [(i, n) for i, n in pics if n != "Base" and not n.startswith("Focus")]
+    focus = [i for i, n in pics if n.startswith("Focus")]
     timing = ""
     if layers:
         ctn, eff = 5, []
@@ -37,7 +46,9 @@ for f in sorted((root / "ppt" / "slides").glob("slide*.xml")):
                   '<p:cond evt="onBegin" delay="0"><p:tn val="2"/></p:cond></p:stCondLst><p:childTnLst>'
                   '<p:par><p:cTn id="4" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
                   + "".join(eff).replace('nodeType="withEffect"', 'nodeType="afterEffect"', 1) +
-                  '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn>'
+                  '</p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>'
+                  + "".join(click_step(ctn + 3 * k + 2 * k, spid) for k, spid in enumerate(focus)) +
+                  '</p:childTnLst></p:cTn>'
                   '<p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>'
                   '<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst>'
                   '</p:seq></p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>')
