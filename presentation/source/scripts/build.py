@@ -387,7 +387,7 @@ img{width:100%;border:1px solid #D0D3D8}
 total = sum(int(d.split(":")[0]) * 60 + int(d.split(":")[1]) for _, d, _ in notes if ":" in d)
 words = sum(len(t.split()) for _, _, t in notes[:-1])
 cover = (f'<section class="np cover" style="display:block"><h1>Liebherr Group – Speaker notes</h1>'
-         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 slides · planned speaking time {total//60}:{total%60:02d} min · {words} words of notes (≈ 130 words per minute)</p>'
+         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 slides · planned speaking time {total//60}:{total%60:02d} min · {words} words of notes (≈ 125 words per minute, calm B2 pace)</p>'
          '<p style="font-size:12pt;margin-top:6mm">Red line: <b>Should a long-term investor take a minority stake in Liebherr – and if not, why not yet?</b><br>'
          'Answer first (slide 2) → why: company and model (3) → performance (4) → can we trust the figures? (5–6) → position, cash and working capital (7–8) → '
          'how the workbook supports it (9) → conditions for reassessment (10) → conclusion (11).</p>'
