@@ -242,7 +242,7 @@ def add_backup(slides, frame, band, dots):
     refs = [
         "Caterpillar Inc. (2023). <i>Annual report on Form 10-K for the fiscal year ended December 31, 2022</i>. U.S. Securities and Exchange Commission.",
         "Caterpillar Inc. (2026). <i>Annual report 2025</i> [Including the annual report on Form 10-K for the fiscal year ended December 31, 2025]. U.S. Securities and Exchange Commission.",
-        "Committee for European Construction Equipment [CECE]. (2026, February 26). <i>European construction equipment sector sees moderate recovery in 2025 with 4.6% growth in sales</i>.",
+        "Committee for European Construction Equipment. (2026, February 26). <i>European construction equipment sector sees moderate recovery in 2025 with 4.6% growth in sales</i>.",
         "Damodaran, A. (2026a). <i>Cost of equity and capital (US)</i> [Data set]. NYU Stern School of Business.",
         "Damodaran, A. (2026b). <i>Debt fundamentals by sector (US)</i> [Data set]. NYU Stern School of Business.",
         "Damodaran, A. (2026c). <i>Margins by sector (US)</i> [Data set]. NYU Stern School of Business.",
@@ -252,7 +252,7 @@ def add_backup(slides, frame, band, dots):
         "European Central Bank. (2026, September 10). <i>Monetary policy decisions</i> [Press release].",
         "European Commission. (n.d.-a). <i>Emissions from non-road mobile machinery</i>.",
         "European Commission. (n.d.-b). <i>European climate law</i>.",
-        "European Union. (2023). Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery. <i>Official Journal of the European Union</i>, L 165, 1–102.",
+        "European Union. (2023). Regulation (EU) 2023/1230 of the European Parliament and of the Council of 14 June 2023 on machinery and repealing Directive 2006/42/EC of the European Parliament and of the Council and Council Directive 73/361/EEC. <i>Official Journal of the European Union</i>, L 165, 1–102.",
         "Eurostat. (2025). <i>Accidents at work – statistics by economic activity</i>.",
         "IFRS Foundation. (n.d.). <i>IFRS Accounting Standards Navigator</i>.",
         "Liebherr-International AG. (2023). <i>Annual report 2022</i>.",
@@ -262,12 +262,12 @@ def add_backup(slides, frame, band, dots):
     ]
     half = 8  # long entries sit on the left, so split for equal column height
     col = lambda items: "".join(f'<p style="font-size:21px;line-height:1.38;margin:0 0 15px;padding-left:30px;text-indent:-30px">{r}</p>' for r in items)
-    slides.append(frame(30, None, hdr("References", "References", "Sources cited on the slides (APA 7th edition) – full entries with URLs in the report") +
+    slides.append(frame(30, None, hdr("References", "References", "Sources cited in the presentation, including the backup slides (APA 7th edition)") +
         f'<div style="position:absolute;left:96px;top:240px;width:850px">{col(refs[:half])}</div>'
         f'<div style="position:absolute;left:986px;top:240px;width:838px">{col(refs[half:])}</div>'
         '<div style="position:absolute;left:96px;top:930px;width:1728px;font-size:18px;color:var(--muted);border-top:2px solid #E3E5E8;padding-top:12px">'
         'Own work: Beermann, S., Fliegel, A., Narkiewicz, Z., Hoffmann, P., &amp; Gilmore Islam, Z. (2026). <i>Liebherr Group financial report: Investment analysis 2022–2025</i> and the Excel workbook '
-        '<i>Liebherr–Caterpillar restructured financial statements</i>. Fontys University of Applied Sciences, Venlo. · Images: Liebherr-International AG.</div>'))
+        '<i>Liebherr–Caterpillar restructured financial statements</i>. Fontys University of Applied Sciences, Venlo. · Images: Liebherr-International AG. · Full entries with URLs: report, References.</div>'))
 
 
 BACKUP_NOTES = [

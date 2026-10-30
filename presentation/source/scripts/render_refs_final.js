@@ -9,7 +9,7 @@ const { chromium } = require('playwright'); const path = require('path');
     all.forEach(x => { if (x !== s) x.remove(); });
     s.querySelectorAll('.backlink').forEach(e => e.remove());
     s.querySelector('.eyebrow').textContent = 'References';
-    s.querySelector('.sub').textContent = 'Sources cited on the slides (APA 7th edition) – full entries with URLs in the report';
+    s.querySelector('.sub').textContent = 'Sources cited in the presentation, including the backup slides (APA 7th edition)';
     s.querySelector('.pno').textContent = '13';
   });
   await p.pdf({ path: out, width: '1920px', height: '1080px', printBackground: true, preferCSSPageSize: true });
