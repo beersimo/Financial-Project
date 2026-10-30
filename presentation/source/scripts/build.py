@@ -51,6 +51,7 @@ def photo(name, x, y, w, h, pos="center", radius=0, extra=""):
             f'background-image:url(img/{name});background-position:{pos};border-radius:{radius}px;{extra}"></div>')
 
 def frame(n, src, body, pill=None, pill_y=905):
+    n = len(slides) + 1
     p = f'<div class="pill" style="top:{pill_y}px">{pill}</div>' if pill else ""
     s = f'<div class="src">Source: {src}</div>' if src else ""
     return f'<section class="slide">{body}{p}{s}<div class="pno">{n:02d}</div><div class="strip"></div></section>'
@@ -66,7 +67,7 @@ slides, notes = [], []
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:28px;height:1080px;background:var(--y)"></div>
 <div style="position:absolute;left:390px;top:0;width:1530px;height:1000px;background:var(--y)"></div>
-{photo('title_dumper.jpg', 70, 0, 660, 1000, 'center 40%')}
+{photo('5.jpg', 70, 0, 660, 1000, 'center top', 0, 'background-size:auto 114%')}
 {dots(560, 830, 6, 3)}
 {swirl(1500, 640, 1.0, '#E6B800', .5, 0)}
 <div style="position:absolute;left:830px;top:150px;font-size:24px;font-weight:800;letter-spacing:4px">HAT1 FINANCIAL REPORTING · 2026</div>
@@ -112,7 +113,7 @@ def kpi(x, y, big, small, w=255):
     return f"""<div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:135px;background:#fff;border-radius:14px;padding:18px 22px;border-top:6px solid var(--y)">
 <div class="big" style="font-size:44px">{big}</div><div style="font-size:19px;font-weight:600;color:var(--muted);margin-top:2px">{small}</div></div>"""
 
-slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1, §3.2); Liebherr-International AG (2026); EUROCONSTRUCT (2026); European Central Bank (2026)", f"""
+slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1) and §5.7; Liebherr-International AG (2026); EUROCONSTRUCT (2026); European Central Bank (2026)", f"""
 <div style="position:absolute;left:0;top:0;width:1150px;height:620px;background:var(--y)"></div>
 {swirl(-60,430,.9,'#E6B800',.45,-10)}
 <div class="eyebrow">Company and environment</div>
@@ -129,7 +130,7 @@ slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1, §3.2); Liebherr-Inte
   </div>
   <div style="font-size:19px;font-weight:600;margin-top:8px">€9,345 m vs. €5,427 m – components alone grew 35.5 %</div>
 </div>
-{photo('city_cranes.jpg', 1150, 0, 770, 620, 'center')}
+{photo('4.jpg', 1150, 0, 770, 620, 'center')}
 {dots(1180,40,5,3)}
 <div style="position:absolute;left:98px;top:655px;width:1060px">
   <div class="h" style="font-size:28px;margin-bottom:16px">External pressures</div>
@@ -140,9 +141,37 @@ slides.append(frame(3, "Report, chapters 2 and 3 (§3.1.1, §3.2); Liebherr-Inte
   </ul>
 </div>
 <div class="card" style="left:1220px;top:660px;width:600px;height:215px;background:var(--navy);color:#fff">
-  <div style="font-size:18px;font-weight:800;letter-spacing:2px;color:var(--y)">STRATEGY → FIGURES</div>
-  <div style="font-size:23px;line-height:1.35;margin-top:10px">In-house production, own sales companies and financing from retained profit should show as <b style="color:var(--y)">high inventories</b> and a <b style="color:var(--y)">high equity ratio</b>.</div>
+  <div style="font-size:18px;font-weight:800;letter-spacing:2px;color:var(--y)">LIEBHERR'S OWN OUTLOOK</div>
+  <div style="font-size:23px;line-height:1.35;margin-top:10px">Orders at the start of 2026 above the previous year – further growth expected, but <b style="color:var(--y)">no significant upswing before 2027</b>. US tariff policy remains a risk.</div>
 </div>"""))
+
+# ---------------------------------------------------------------- 4 Competitive advantage
+def adv(x, n, title, text, metric, mlabel, cost):
+    return f"""<div class="card" style="left:{x}px;top:300px;width:420px;height:560px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.10);padding:0;overflow:hidden">
+<div style="background:var(--y);padding:22px 28px 18px"><div style="font-size:19px;font-weight:800;letter-spacing:2px;opacity:.7">ADVANTAGE {n}</div>
+<div class="h" style="font-size:29px;line-height:1.15;margin-top:4px">{title}</div></div>
+<div style="padding:20px 28px 0"><div style="font-size:21px;line-height:1.35;color:#2B3540;height:86px">{text}</div>
+<div class="big" style="font-size:52px;margin-top:10px">{metric}</div><div style="font-size:19px;font-weight:700;color:var(--muted)">{mlabel}</div></div>
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--light);padding:16px 28px;height:132px">
+<div style="font-size:17px;font-weight:800;letter-spacing:2px;color:#A11B1B">THE PRICE</div>
+<div style="font-size:20px;line-height:1.3;margin-top:4px">{cost}</div></div></div>"""
+
+slides.append(frame(4, "Report §3.2–3.3, Appendix E (VRIO); Liebherr-International AG (2023–2026); Caterpillar Inc. (2026)", f"""
+<div style="position:absolute;left:0;top:0;width:1920px;height:250px;background:var(--y)"></div>
+{photo('3.jpg', 1400, 0, 520, 250, 'center 55%')}
+<div class="eyebrow">Business model and competitive strategy</div>
+<h2 style="position:absolute;left:96px;top:72px;font-size:54px;line-height:1.08;width:1260px">How Liebherr creates competitive advantage</h2>
+<div style="position:absolute;left:98px;top:158px;font-size:26px;font-weight:600;width:1260px">Differentiation in custom segments, scale in volume segments – financed by patient family capital</div>
+{adv(96,1,'Diversified product portfolio','13 segments, from mining excavators to aerospace components, spread the market risk.','+14.7 %','other segments 2025, while construction & mining fell 5.5 %','Stabilises revenue, but does not raise the margin.')}
+{adv(536,2,'Vertical integration and own sales network','Key technologies built in-house; own sales and service companies instead of independent dealers.','29.1 %','PP&amp;E in % of revenue (Caterpillar 22.4 %)','Capital tied up in assets and stock – inventories 42.9 % of revenue.')}
+{adv(976,3,'Innovation and research','Research and development rose every year, fully expensed, financed from retained profit.','€708 m','R&amp;D 2025 = 4.8 % of revenue (Caterpillar 3.2 %)','Spending kept rising while operating profit fell 39 % in 2025.')}
+<div class="card" style="left:1416px;top:300px;width:408px;height:560px;background:var(--navy);color:#fff;padding:34px 32px">
+  <div style="font-size:19px;font-weight:800;letter-spacing:2px;color:var(--y)">WHAT IT MEANS</div>
+  <div class="h" style="font-size:34px;line-height:1.2;color:#fff;margin-top:14px">The advantage is real – but it sits in the asset base, not yet in the margin.</div>
+  <div style="font-size:21px;line-height:1.4;margin-top:22px;opacity:.9">For the investor the question is not <i>whether</i> the advantage exists, but whether it is turned into returns.</div>
+  <div style="position:absolute;left:32px;bottom:30px;right:32px;font-size:19px;line-height:1.35;color:var(--y);font-weight:700">Only €56 m of a €272 m profit was distributed in 2025.</div>
+</div>
+"""))
 
 # ---------------------------------------------------------------- 4 Performance
 slides.append(frame(4, "Report §5.2, Figure 1 and Figure J2; Excel workbook, sheets D6, D10 and Dashboard. Caterpillar on the FIFO basis; industry = Damodaran (2026c), 2025 reference level", f"""
@@ -162,31 +191,28 @@ slides.append(frame(4, "Report §5.2, Figure 1 and Figure J2; Excel workbook, sh
 """, pill="<b>Investor lens</b> Each percentage point of margin is worth about €148 m of operating profit", pill_y=880))
 
 # ---------------------------------------------------------------- 5 Accounting judgements
-def acc(x, title, amount, sub, items):
+def acc(x, title, amount, sub, items, w=415, dark=False):
     lis = "".join(f"<li>{i}</li>" for i in items)
-    return f"""<div class="card" style="left:{x}px;top:320px;width:440px;height:520px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.08);border-top:10px solid var(--y)">
+    return f"""<div class="card" style="left:{x}px;top:320px;width:{w}px;height:520px;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.08);border-top:10px solid var(--y)">
 <div style="font-size:20px;font-weight:800;letter-spacing:2px;color:var(--muted)">{title}</div>
 <div class="big" style="font-size:58px;margin-top:6px">{amount}</div>
 <div style="font-size:20px;font-weight:700;color:var(--muted);margin-bottom:18px">{sub}</div>
 <ul class="b">{lis}</ul></div>"""
 
 slides.append(frame(5, "Report §4.1–4.4, Appendix G (Table G2) and Appendix H (Table H1); Excel workbook, sheets C2 and D9", f"""
-{band('Accounting analysis', 'Key figures rest on judgements we cannot verify', 'Most room for judgement: inventories, provisions and fixed assets')}
+{band('Accounting analysis', 'Key figures rest on judgements we cannot verify', 'Most room for judgement: inventories, provisions and fixed assets – and one cost line without any note')}
 <div style="position:absolute;left:96px;top:240px;display:flex;gap:14px">
  <span class="tag" style="background:var(--navy);color:#fff">Reporting limit</span>
  <span style="font-size:22px;font-weight:600;padding-top:4px">Summary statements only (ISA 810) · full audited statements not public · no segment note (IFRS 8 not applicable)</span>
 </div>
 {acc(96,'INVENTORIES · IAS 2','€6,341 m','36.3 % of total assets',['Overhead allocated at a “normal capacity” that is not defined','Allowance for obsolete stock not disclosed'])}
-{acc(556,'PROVISIONS · IAS 37','€864 m','of which warranty €530 m',['Gross reversals rose from €90 m (2022) to €143 m (2025)','But the net charge stayed flat: €195 m → €194 m'])}
-{acc(1016,'PP&E · IAS 16 / IAS 38','€4,304 m','25 % of total assets',['Depreciation 5.5 % of cost vs. 6.6 % at Caterpillar','No development costs capitalised – but own work capitalised €317 m = 77 % of operating result'])}
-<div class="card" style="left:1486px;top:330px;width:340px;height:510px;background:var(--navy);color:#fff;text-align:center;padding:30px 24px">
-  <div style="font-size:20px;font-weight:800;letter-spacing:2px;color:var(--y)">RED-FLAG SCREEN</div>
-  <div style="font-size:19px;margin-top:4px;opacity:.85">9 tests over 4 years</div>
-  <div style="display:flex;flex-direction:column;gap:14px;margin-top:26px">
-    <div style="background:var(--y);color:var(--navy);border-radius:14px;padding:10px"><span class="big" style="font-size:58px">4</span><div style="font-size:21px;font-weight:800">flags raised</div></div>
-    <div style="background:#fff;color:var(--navy);border-radius:14px;padding:10px"><span class="big" style="font-size:44px">3</span><div style="font-size:20px;font-weight:700">clean</div></div>
-    <div style="background:#5A6570;border-radius:14px;padding:10px"><span class="big" style="font-size:44px">2</span><div style="font-size:20px;font-weight:700">not testable</div></div>
-  </div>
+{acc(531,'PROVISIONS · IAS 37','€864 m','of which warranty €530 m',['Gross reversals rose from €90 m (2022) to €143 m (2025)','But the net charge stayed flat: €195 m → €194 m'])}
+{acc(966,'PP&E · IAS 16','€4,304 m','25 % of total assets',['Depreciation 5.5 % of cost vs. 6.6 % at Caterpillar','Own work capitalised €317 m = 77 % of the operating result'])}
+<div class="card" style="left:1401px;top:320px;width:423px;height:520px;background:var(--navy);color:#fff;border-top:10px solid var(--y)">
+<div style="font-size:20px;font-weight:800;letter-spacing:2px;color:var(--y)">DISCLOSURE GAP</div>
+<div class="big" style="font-size:58px;margin-top:6px;color:#fff">+€228 m</div>
+<div style="font-size:20px;font-weight:700;opacity:.8;margin-bottom:18px">other operating expenses 2025 (+11.7 %)</div>
+<ul class="b" style="color:#fff"><li>The largest cost increase of 2025 has no note at all</li><li>4 of 9 red-flag tests raised a flag</li></ul>
 </div>
 """, pill="<b>Investor lens</b> The 2025 operating result is not a reliable base for extrapolation", pill_y=876))
 
@@ -269,37 +295,6 @@ slides.append(frame(8, "Report §5.4, Figure 2b, Table J5; Excel workbook, sheet
 </div>
 """, pill="<b>Investor lens</b> 77 days longer cash cycle than Caterpillar – limits Liebherr’s financial flexibility", pill_y=880))
 
-# ---------------------------------------------------------------- 9 Excel workbook
-def step(y, code, title, text, hl=False):
-    bg = "var(--navy)" if hl else "#fff"
-    fg = "#fff" if hl else "var(--navy)"
-    return f"""<div style="position:absolute;left:96px;top:{y}px;width:590px;height:104px;background:{bg};color:{fg};border-radius:14px;display:flex;align-items:center;gap:18px;padding:0 20px;box-shadow:0 4px 14px rgba(0,24,46,.08)">
-<div style="min-width:104px;height:64px;background:var(--y);color:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px">{code}</div>
-<div><div style="font-size:23px;font-weight:800">{title}</div><div style="font-size:18.5px;opacity:.85;line-height:1.25">{text}</div></div></div>"""
-
-def shot(img, x, y, w, h, cap, pos="top left"):
-    return f"""<div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;border-radius:12px;overflow:hidden;box-shadow:0 8px 26px rgba(0,24,46,.22);border:2px solid #fff;background:#fff">
-<div style="width:100%;height:100%;background:url(img/{img}) {pos}/cover no-repeat"></div>
-<div style="position:absolute;left:0;bottom:0;right:0;background:rgba(0,24,46,.88);color:#fff;font-size:18px;font-weight:700;padding:6px 12px">{cap}</div></div>"""
-
-slides.append(frame(9, "Excel workbook “Liebherr–Caterpillar restructured financial statements”, sheets Method, Dashboard, B1, C1, E1 and E2; Report §4.5 and Appendix K", f"""
-<div style="position:absolute;left:0;top:0;width:720px;height:1080px;background:var(--y)"></div>
-{swirl(-40,700,.9,'#E6B800',.45)}
-<div class="eyebrow">Excel workbook</div>
-<h2 style="position:absolute;left:96px;top:72px;font-size:46px;line-height:1.1;width:600px">Every figure is traceable, reconciled and documented</h2>
-{step(236,'A1–A4','Published statements','Typed exactly as printed (blue)')}
-{step(352,'B1–B3','Recast into one format by nature','Formulas only · 21 mapping decisions')}
-{step(468,'C1–C2','Accounting adjustments','LIFO → FIFO · goodwill · note data')}
-{step(584,'D1–D11','Ratios, DuPont, sensitivities','Benchmark, scenarios, dashboard')}
-{step(700,'E1–E2','Judgements and checks','44 judgements · every subtotal reconciled',True)}
-<div style="position:absolute;left:760px;top:60px;font-size:20px;font-weight:800;letter-spacing:2px;color:var(--muted)">SCREENSHOTS FROM THE WORKBOOK</div>
-{shot('xl_dashboard.png',760,100,1080,468,'Dashboard · key results 2025 and chart data, all linked to the analysis sheets')}
-{shot('xl_c1.png',760,598,530,290,'C1 · Caterpillar LIFO → FIFO restatement','left top')}
-{shot('xl_e2.png',1310,598,530,290,'E2 · reconciliation: 0 open differences','0 0')}
-<div style="position:absolute;left:1660px;top:560px;width:180px;background:#1E6B2A;color:#fff;border-radius:12px;padding:10px 14px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.25)"><div class="big" style="font-size:44px">0</div><div style="font-size:16px;font-weight:800">open differences across all checks</div></div>
-<div style="position:absolute;left:96px;top:840px;width:590px;font-size:21px;line-height:1.35;font-weight:600">Liebherr in €, Caterpillar in $ – never added or divided across companies. Comparisons rest on ratios within each group.</div>
-"""))
-
 # ---------------------------------------------------------------- 10 Investment assessment
 def cond(x, n, title, status, ok=False):
     return f"""<div style="position:absolute;left:{x}px;top:470px;width:560px;height:200px;background:#fff;border-radius:18px;padding:22px 26px;box-shadow:0 6px 24px rgba(0,24,46,.10)">
@@ -311,11 +306,11 @@ def cond(x, n, title, status, ok=False):
 
 slides.append(frame(10, "Report §5.3, §5.7 and chapter 8, Table 3; Excel workbook, sheets D3, D10 and D11; benchmark: Damodaran (2026a)", f"""
 <div style="position:absolute;left:0;top:0;width:1920px;height:420px;background:var(--y)"></div>
-{photo('tower_crane_night.jpg', 1240, 0, 680, 420, 'center')}
+{photo('2.jpg', 1240, 0, 680, 420, 'center 40%')}
 {dots(1180,40,3,3)}
 <div class="eyebrow">Overall assessment and investment perspective</div>
-<h2 style="position:absolute;left:96px;top:72px;font-size:56px;line-height:1.08;width:1100px">Not yet: none of the three conditions for a reassessment is met</h2>
-<div style="position:absolute;left:98px;top:250px;width:1080px;font-size:25px;line-height:1.35;font-weight:600">Reassess on the 2026 statements – and only if <b>all three</b> conditions are met. Meeting them triggers a new assessment, not an automatic purchase.</div>
+<h2 style="position:absolute;left:96px;top:72px;font-size:56px;line-height:1.08;width:1100px">What would have to change: three conditions for a reassessment</h2>
+<div style="position:absolute;left:98px;top:250px;width:1080px;font-size:25px;line-height:1.35;font-weight:600">Check them on the 2026 statements – a new assessment only if <b>all three</b> are met. In 2025 none of them is.</div>
 {cond(96,1,'Operating margin of at least 3.9 % (four-year average)','2.8 %')}
 {cond(680,2,'Free cash flow positive and, over time, covering distributions','−€176 m')}
 {cond(1264,3,'Information rights: audited statements and other operating expenses','Not secured')}
@@ -327,7 +322,7 @@ slides.append(frame(10, "Report §5.3, §5.7 and chapter 8, Table 3; Excel workb
   <div style="font-size:19px;font-weight:800;letter-spacing:2px;color:var(--y)">RISK AND LIMITS</div>
   <div style="font-size:22px;line-height:1.35;margin-top:6px">ROCE 3.5 % (pre-tax) vs. 7.70 % benchmark – needs a margin of ~6–8 % · minority stake: little influence, low payout, hard to sell</div>
 </div>
-<div style="position:absolute;left:98px;top:885px;font-size:19px;color:var(--muted);font-weight:600">No valuation in the report – any price would need a discount for a minority stake without a market.</div>
+<div style="position:absolute;left:98px;top:885px;font-size:19px;color:var(--muted);font-weight:600">Even then: meeting the conditions triggers a new analysis, not a purchase – a minority stake in an unlisted group would only make sense at a discounted price.</div>
 """))
 
 # ---------------------------------------------------------------- 11 Conclusion
@@ -336,8 +331,8 @@ def take(y, n, head, text):
 <div class="big" style="min-width:70px;height:70px;border-radius:50%;background:var(--y);display:flex;align-items:center;justify-content:center;font-size:34px">{n}</div>
 <div><div style="font-size:27px;font-weight:800">{head}</div><div style="font-size:22px;line-height:1.35;color:#2B3540;margin-top:4px">{text}</div></div></div>"""
 
-slides.append(frame(11, "Report chapters 7 and 8", f"""
-{photo('excavator_quarry.jpg', 0, 0, 760, 1058, 'center')}
+slides.append(frame(11, None, f"""
+{photo('1.jpg', 0, 0, 760, 1058, 'center')}
 <div style="position:absolute;left:760px;top:0;width:1160px;height:300px;background:var(--y)"></div>
 {swirl(1580,40,.8,'#E6B800',.5)}{dots(1460,230,5,2)}
 <div class="eyebrow" style="left:840px">Conclusion</div>
@@ -354,17 +349,14 @@ slides.append(frame(11, "Report chapters 7 and 8", f"""
 # ---------------------------------------------------------------- 12 Thank you
 slides.append(f"""<section class="slide">
 <div style="position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--y)"></div>
-{photo('crawler_night.jpg', 70, 40, 780, 900, 'center')}
+{photo('5.jpg', 70, 40, 780, 900, 'center top', 0, 'background-size:auto 120%')}
 <div style="position:absolute;left:0;top:960px;width:1920px;height:120px;background:#fff"></div>
 {swirl(1520,-30,1.0,'#E6B800',.5)}{dots(1700,760,5,3)}
-<h1 style="position:absolute;left:980px;top:330px;font-size:120px;line-height:1">Thank you.</h1>
-<div class="h" style="position:absolute;left:984px;top:480px;font-size:46px">Questions welcome.</div>
-<div style="position:absolute;left:984px;top:580px;font-size:28px;font-weight:700;max-width:820px;line-height:1.3">Liebherr: financially sound – not yet an adequate return.</div>
+<h1 style="position:absolute;left:960px;top:250px;font-size:200px;line-height:1;letter-spacing:-4px">Thank<br>you.</h1>
 <div style="position:absolute;left:96px;top:995px;font-size:22px;font-weight:700">Simon Beermann · Adam Fliegel · Zofia Narkiewicz · Philipp Hoffmann · Zarah Gilmore Islam &nbsp;·&nbsp; HAT1 Financial Reporting · Fontys Venlo</div>
 </section>""")
 
 from notes import NOTES as notes
-slides[8] = slides[8].replace('<div class="src">', '<div class="src" style="left:760px;max-width:1040px">')
 import re as _re
 slides = [_re.sub(r"(\d) %", "\\1&nbsp;%", x) for x in slides]
 slides = [_re.sub(r"(\d) (m|pp|bn)\b", "\\1&nbsp;\\2", x) for x in slides]

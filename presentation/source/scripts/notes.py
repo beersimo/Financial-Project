@@ -11,13 +11,19 @@ But a strong balance sheet is not the same as a good investment. The operating m
 
 Our accounting tests do not improve this picture. They put the margin somewhere between 1.6 and 2.8 per cent. So our advice is: do not invest now, and reassess on the 2026 statements. Let us show you why."""),
 
-("Company and environment", "0:55", """Liebherr is a family-owned, unlisted group, founded in 1949, with almost 56,000 employees in 13 product segments.
+("Company and environment", "0:50", """Liebherr is a family-owned, unlisted group, founded in 1949, with almost 56,000 employees in 13 product segments.
 
-Diversification matters here. In 2025 construction machinery and mining – almost two thirds of revenue – fell by 5.5 per cent, but the other segments grew by 14.7 per cent. That is why the group still grew a little.
+In 2025 construction machinery and mining – almost two thirds of revenue – fell by 5.5 per cent, but the other segments grew by 14.7 per cent. That is why the group still grew a little.
 
-The environment is difficult: slow European construction growth, US tariffs and low-cost competitors, and higher interest rates, which make machines more expensive to finance.
+The environment is difficult: European construction is expected to grow only about 2 per cent a year until 2028, US tariffs and low-cost competitors press on prices, and higher interest rates make machines more expensive to finance. Liebherr itself expects further growth in 2026, but no real upswing before 2027. So how does Liebherr compete in this market?"""),
 
-Liebherr's answer is a capital-intensive strategy: in-house production, its own sales companies and financing from retained profit. So we expect a lot of inventory and a strong equity base in the figures. Let us check."""),
+("Competitive advantage", "0:55", """Liebherr competes in two ways: differentiation in its custom businesses, like cranes and mining, and scale in its volume businesses, like earthmoving. Three advantages support this.
+
+First, diversification: 13 segments spread the risk – in 2025 the other segments grew while construction fell. Second, vertical integration: Liebherr builds key technologies itself and sells through its own companies, not through dealers. Third, innovation: research and development rose every year to 708 million euro, 4.8 per cent of revenue, more than Caterpillar.
+
+But each advantage has a price. Diversification does not raise the margin. Vertical integration ties up capital – fixed assets are 29 per cent of revenue and inventories 43 per cent. And R&D kept rising while operating profit fell.
+
+So the advantage is real, but it sits in the asset base, not yet in the margin. The question for the investor is whether it is turned into returns – and that is what the numbers show next."""),
 
 ("Financial performance", "1:05", """Revenue growth slowed from 11.5 per cent in 2023 to only 1 per cent in 2025.
 
@@ -27,11 +33,11 @@ The bridge on the right explains 2025: personnel costs grew five times faster th
 
 For the investor, each margin point is worth about 148 million euro. But can we trust the reported margin?"""),
 
-("Accounting analysis – judgements", "0:55", """Liebherr publishes only summary statements. The auditor confirms they are consistent with the full statements – but those are not public. And there is no segment note.
+("Accounting analysis – judgements", "0:55", """Before we trust the margin, we have to know what the figures measure. Liebherr publishes only summary statements – the full audited statements are not public, and there is no segment note.
 
-Three accounts carry most of the judgement. Inventories of 6.3 billion euro: overhead is allocated at a normal capacity that is not defined, and the allowance for obsolete stock is not disclosed. Provisions: gross reversals rose to 143 million euro, but additions rose too, so the net charge stayed flat – we keep the flag because we cannot see why provisions are released. And fixed assets: Liebherr depreciates more slowly than Caterpillar, and own work capitalised equals 77 per cent of the operating result.
+Three accounts carry most of the judgement. Inventories of 6.3 billion euro: overhead is allocated at a normal capacity that is not defined, and the allowance for obsolete stock is not disclosed. Provisions: gross reversals rose to 143 million euro, but additions rose too, so the net charge stayed flat. Fixed assets: Liebherr depreciates more slowly than Caterpillar, and own work capitalised equals 77 per cent of the operating result.
 
-In total, four of nine red-flag tests raised a flag."""),
+The fourth box matters most for the investor: other operating expenses rose by 228 million euro, and there is no note at all. So the biggest cost increase of 2025 cannot be explained. In total, four of our nine red-flag tests raised a flag."""),
 
 ("Accounting adjustments vs. sensitivities", "1:05", """We separate two things clearly. On the left is an actual adjustment we booked in the workbook; on the right are sensitivities we only measured.
 
@@ -53,19 +59,13 @@ Measured in days of revenue – a proxy, because Liebherr reports no cost of sal
 
 This is the biggest lever management controls: ten days less would release about 405 million euro. But only once – so it cannot replace a better margin."""),
 
-("Excel workbook", "0:55", """All these numbers come from our workbook, which follows the course's recasting steps.
+("Investment assessment", "1:00", """So what would have to change before an investment makes sense? We set three conditions, and we check them on the 2026 statements.
 
-The A sheets hold the published statements exactly as printed. The B sheets recast both companies into one format by nature – every cell is a formula, and 21 mapping decisions are documented. The C sheets hold the adjustments, like the LIFO restatement. The D sheets calculate ratios, DuPont, sensitivities and the benchmark, and feed the dashboard you see here.
-
-For reliability, E1 documents all 44 judgements, and E2 reconciles every recast subtotal with the published figure as a live formula – with zero open differences, apart from three labelled reclassifications. So every figure in this presentation can be traced back to the annual reports."""),
-
-("Investment assessment", "1:00", """So what does this mean for the investor? We set three conditions for a reassessment, and in 2025 none is met.
-
-First, the margin should return to at least its four-year average of 3.9 per cent – it was 2.8. Second, free cash flow should be positive and cover distributions – it was minus 176 million. Third, the investor needs information rights: the audited statements and the content of other operating expenses.
+First, the operating margin should return to at least its four-year average of 3.9 per cent – in 2025 it was 2.8. Second, free cash flow should be positive and cover distributions – it was minus 176 million. Third, the investor needs information rights: the audited statements and the content of other operating expenses – the 228 million euro we just could not explain.
 
 Even 3.9 per cent is only a trigger, not a good return. The return on capital employed was 3.5 per cent before tax, against a 7.7 per cent benchmark – that would need a margin of about 6 to 8 per cent.
 
-The reward is real: a resilient group, and the average margin alone adds 157 million euro of profit. But a minority shareholder has little influence, a low payout and shares that are hard to sell. We did not value the shares, so there is no price target."""),
+The reward is real: the average margin alone adds 157 million euro of profit. But a minority shareholder has little influence, a low payout and shares that are hard to sell. So even if all three conditions are met, that starts a new analysis – and the price would have to include a discount for this."""),
 
 ("Conclusion", "0:40", """So, our answer to the central question: Liebherr is financially strong, but operationally challenged.
 
