@@ -212,6 +212,83 @@ def add_ratios(slides, frame, hdr, card, ul):
         card(972, 570, 852, 290, "Left out – and why", "Borrowing costs, lessee accounting and currency translation: the standard prescribes the mechanics. "
              "Development costs: never capitalised, kept only for the comparison. <span style='color:var(--y)'>The two “9”s are different counts.</span>", "navy")))
 
+    # ------------------------------------------------------------- A8 Key accounts (Table G1)
+    ka = [("Inventories", "B1, B2", "6,341", "42.9 % of revenue", "IAS 2", "Fixed overheads absorbed at an undefined normal capacity; allowance not disclosed", "High",
+           "Largest account – 36.3 % of total assets; quality cannot be verified"),
+          ("Provisions", "C1–C3", "864", "of which warranty 530", "IAS 37", "Recognition, measurement and reversal of the estimate", "High",
+           "Reversals €143 m = 34.6 % of the operating result if credited within it"),
+          ("PP&amp;E and rental fleet", "B5–B7", "4,304", "24.6 % of total assets", "IAS 16 / IAS 36", "Useful lives, residual values, indicator-based impairment", "High (impairment), medium (lives)",
+           "Depreciation 5.5 % of cost vs. 6.6 % at Caterpillar"),
+          ("Own work capitalised", "B3", "317", "77 % of the operating result", "IAS 16 / IAS 38", "Which production cost is capitalised rather than expensed", "Medium to high",
+           "Moves cost out of the year – returns later as depreciation"),
+          ("Trade receivables and contract assets", "B11", "3,116", "17.8 % of total assets", "IFRS 9", "Simplified lifetime expected credit loss through a provision matrix", "Medium",
+           "Grew 9.1 % against revenue +1.0 % in 2025; allowance not disclosed"),
+          ("Revenue", "A1, A2", "14,772", "", "IFRS 15", "Point in time against over time; cost-to-cost estimate", "Medium",
+           "Share recognised over time not disclosed – affects every ratio"),
+          ("Deferred tax assets and tax charge", "D1", "285", "tax rate 37.8–99.2 %", "IAS 12", "Probability of future taxable profit; announced instead of enacted rates", "High",
+           "No tax reconciliation – after-tax ratios not usable")]
+    flexcol = {"High": ("#FBE3E3", "#A11B1B"), "Medium": ("#FFF4C2", "#6B5300"), "Medium to high": ("#FDEBD3", "#8A4B00")}
+    trs = ""
+    for a, ll, amt, sub, std, j, fl, why in ka:
+        bg, fg = flexcol.get(fl, ("#FBE3E3", "#A11B1B"))
+        trs += (f'<tr><td><div style="font-weight:800">{a}</div><div style="font-size:15px;color:var(--muted)">long list {ll}</div></td>'
+                f'<td class="n l">{amt}<div style="font-size:15px;font-weight:600;color:var(--muted)">{sub}</div></td>'
+                f'<td><b>{std}</b> – {j}</td>'
+                f'<td><span style="display:inline-block;background:{bg};color:{fg};font-weight:800;font-size:16px;padding:5px 10px;border-radius:8px">{fl}</span></td>'
+                f'<td>{why}</td></tr>')
+    table = (f'<table class="rt"><tr><th style="width:250px">Key account</th><th class="l" style="width:170px">2025, € m</th><th>Standard and judgement</th>'
+             f'<th style="width:190px">Flexibility</th><th style="width:420px">Why it is on the short list</th></tr>{trs}</table>')
+    slides.append(frame(0, "Report §4.2–4.3, Tables G1 and G2; Liebherr-International AG (2026); IFRS Foundation (n.d.)",
+        scope("t22", [(".rt", "font-size:21px"), (".rt td", "padding:15px 12px;line-height:1.3")]) +
+        hdr(SEC, "Seven key accounts carry the judgement", "Key accounts × flexibility = the nine key treatments of the long list") +
+        f'<div class="t22" style="position:absolute;left:96px;top:236px;width:1728px">{table}</div>'))
+
+    # ------------------------------------------------------------- A9/A10 Short list of 22 findings (Table H2)
+    groups = [("Not adjustable – red flags and disclosure gaps", 7, "#FBE3E3", "#A11B1B", [
+                  ("Provision reversals rise as the result falls (test 1)", "Provisions, 864", "Not adjustable: the income line carrying the reversal is not disclosed"),
+                  ("Inventories and receivables grow faster than sales (test 2)", "Inventories 6,341, receivables 3,116", "Not adjustable: neither allowance is disclosed"),
+                  ("Volatile and unreconciled tax charge (test 3)", "Deferred tax assets, 285 (IAS 12)", "Not adjustable: no tax reconciliation is published"),
+                  ("Impairment spike in 2023 (test 5)", "PP&amp;E, impairment 55", "Not adjustable: no test assumptions are disclosed"),
+                  ("Composition of other operating expenses not disclosed", "Other operating expenses, 2,170", "Not adjustable: the line has no note"),
+                  ("No related party disclosure in four years (test 8)", "Whole group", "The information is not in the published statements"),
+                  ("Customer credit risk carried off balance sheet", "Financial guarantees, not quantified", "Not adjustable: no amount is disclosed")]),
+              ("Reversed in the workbook", 5, "#E3F1E4", "#1E6B2A", [
+                  ("Caterpillar inventories on LIFO", "Inventories, equity, operating profit", "FIFO excess disclosed – exact correction: $4,305 m"),
+                  ("Caterpillar goodwill impairment 2022 inside operating costs", "Operating profit 2022", "Moved to other income as a non-recurring item"),
+                  ("Liebherr change in inventories and own work shown as income", "Revenue, cost of materials", "Both mapped into the cost line (standardised format)"),
+                  ("Caterpillar finance receivables inside trade receivables", "Trade receivables", "Mapped to other current assets and non-operating investments"),
+                  ("Liebherr trade payables not shown on the balance sheet", "Trade payables", "Taken from note 7, published subtotal preserved")]),
+              ("Not reversible – disclosure too thin", 10, "#E9EBEE", "#3A444E", [
+                  ("Gross presentation of rental machine disposals", "Revenue, cost of materials", "The amount is not disclosed"),
+                  ("The interest element of the finance result", "Finance income 1,043, expenses 1,015", "No split is published"),
+                  ("No segment note under IFRS 8", "Whole income statement", "Segment data only in the management report"),
+                  ("The effect of hyperinflation accounting", "Turkish and Ghanaian entities", "Not quantified in any year"),
+                  ("Actuarial assumptions behind the pension obligation", "Post-employment benefits, 791", "No discount rate and no sensitivity disclosed"),
+                  ("Inventory and receivable allowances", "Inventories 6,341, receivables 3,116", "Neither balance nor charge is disclosed"),
+                  ("The two groups do not depreciate at the same rate", "PP&amp;E, 4,304", "Measured (Table H3), not carried into the recast – asset mixes differ"),
+                  ("Cat Financial inside every Caterpillar figure", "Caterpillar balance sheet", "The consolidated basis was set by the assignment"),
+                  ("Caterpillar discloses no cost of materials or personnel expense", "Cost structure comparison", "Not estimated – operating costs shown as one line"),
+                  ("Potential refund of US tariffs after the balance sheet date", "Not recognised; note 12", "Non-adjusting event (IAS 10), no reliable estimate")])]
+
+    def ftable(gs):
+        out = '<table class="rt"><tr><th style="width:44px">#</th><th>Finding</th><th style="width:430px">Account affected (€ m / $ m)</th><th style="width:600px">Treatment</th></tr>'
+        k = sum(len(g[4]) for g in groups[:groups.index(gs[0])])
+        for title, n, bg, fg, items in gs:
+            out += f'<tr><td colspan="4" style="background:{bg};color:{fg};font-weight:800;font-size:17px;letter-spacing:1.5px;text-transform:uppercase">{title} · {n}</td></tr>'
+            for f, a, t in items:
+                k += 1
+                out += f'<tr><td class="n" style="color:var(--muted)">{k}</td><td style="font-weight:700">{f}</td><td>{a}</td><td>{t}</td></tr>'
+        return out + "</table>"
+
+    slides.append(frame(0, "Report §4.4, Table H2 (short list, 22 findings); Excel workbook, sheets B3, C1, C2, E1 and E2",
+        scope("t23", [(".rt", "font-size:20px"), (".rt td", "padding:10px 12px;line-height:1.25")]) +
+        hdr(SEC, "Short list I: what cannot be fixed – and what we fixed", "Findings 1–12 of 22 (Table H2)") +
+        f'<div class="t23" style="position:absolute;left:96px;top:236px;width:1728px">{ftable(groups[:2])}</div>'))
+    slides.append(frame(0, "Report §4.4, Table H2 (short list, 22 findings); Excel workbook, sheets B3, C1, C2, E1 and E2",
+        scope("t24", [(".rt", "font-size:21px"), (".rt td", "padding:16px 12px;line-height:1.25")]) +
+        hdr(SEC, "Short list II: what the disclosure does not let us reverse", "Findings 13–22 of 22 (Table H2)") +
+        f'<div class="t24" style="position:absolute;left:96px;top:236px;width:1728px">{ftable(groups[2:])}</div>'))
+
     # ------------------------------------------------------------- A8 Workbook
     wf = [("A1–A4", "Published statements", "typed exactly as printed"),
           ("B1–B3", "Recast by nature", "formulas only · 21 mapping decisions"),
@@ -250,6 +327,9 @@ NOTES = [
     ("Backup A – Provisions", "—", "Provisions under IAS 37 need a present obligation from a past event, a probable outflow and a reliable estimate. In 2025 the opening balance of 855 million euro rose by 337 of additions, fell by 185 of usage and by 143 of reversals, to 864. Usage is the real outflow and has no profit effect; only additions and reversals touch profit. The net charge – additions less reversals – stayed at 194 against 195, so a hidden reserve being released to support profit is not visible. We keep the flag because other provisions built up in 2023 are now being released and the notes cannot explain why."),
     ("Backup A – Sensitivity", "—", "We measure two effects without booking them. If the net provision charge had been at its 2022 to 2024 average of 1.76 per cent of revenue instead of 1.31, EBIT would be 347 million euro and the margin 2.35 per cent; without the high charge of 2023 it would be 2.68. At Caterpillar's depreciation rate depreciation would be 105 million euro higher and the margin 2.08 per cent. Both together give 242 million euro, or 1.64 per cent. Sheet D9 also shows a gross-reversal view, but the report uses the net charge because additions rose with the reversals."),
     ("Backup A – Long list to short list", "—", "Step one is the long list of 30 accounting treatments with room for choice. Step two keeps the nine that combine a key account with high or medium-to-high flexibility. Step three is the red-flag screen: eight tests plus one consistency check, with four flags, three clean and two not testable. Step four is the short list of 22 findings: seven that no adjustment can remove, five reversed in the workbook and ten the disclosure does not allow us to reverse. The two counts of nine are a coincidence."),
+    ("Backup A – Key accounts", "—", "Seven key accounts carry the judgement. Inventories under IAS 2, provisions under IAS 37, property, plant and equipment under IAS 16 and 36, own work capitalised, receivables under IFRS 9, revenue under IFRS 15 and deferred taxes under IAS 12. They are on the short list because they combine a material amount with high or medium flexibility: inventories are 36.3 per cent of total assets, provision reversals equal 34.6 per cent of the operating result, own work capitalised 77 per cent, and the tax rate swings between 37.8 and 99.2 per cent without a reconciliation."),
+    ("Backup A – Short list I", "—", "The short list has 22 findings. Seven are red flags or disclosure gaps that no adjustment can remove – for example the provision reversals, the unexplained tax charge and the other operating expenses without a note. Five distortions we reversed in the workbook – the most important is Caterpillar's LIFO inventory, restated to FIFO with the disclosed excess of 4,305 million dollars."),
+    ("Backup A – Short list II", "—", "Ten distortions cannot be reversed because the disclosure is too thin: for example the gross presentation of rental machine disposals, the missing interest split, the missing segment note, the pension assumptions and the undisclosed allowances. The different depreciation rates we measured in a sensitivity, but did not book, because the asset mixes differ."),
     ("Backup A – Workbook", "—", "The workbook starts with the published statements typed exactly as printed. The B sheets recast both companies into one format by nature using formulas only, with 21 documented mapping decisions. The C sheets hold the LIFO to FIFO restatement and the note data, the D sheets the analysis. Sheet E1 documents 44 judgements and sheet E2 reconciles every recast subtotal with the published figure: zero open differences, apart from three labelled ones."),
 ]
 

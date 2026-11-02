@@ -35,29 +35,8 @@ def add_backup(slides, frame, band, dots):
                 f'padding:20px 24px;box-shadow:0 6px 24px rgba(0,24,46,.10)"><div class="big" style="font-size:52px;color:inherit">{big}</div>'
                 f'<div style="font-size:21px;font-weight:700;line-height:1.3;margin-top:4px;opacity:.85">{label}</div></div>')
 
-    # ---------------------------------------------------------------- 13 Backup index
-    rows = [("A", "Ratios, workbook and what-if", "Formulas · what-if logic · provisions · sensitivities · long list · workbook", 14, "yellow"),
-            ("B", "Business model and environment", "DESTEP · Porter's five forces · VRIO and SWOT", 22, "navy"),
-            ("C", "Accounting analysis", "Red flags · room for judgement · adjustments · reliability of ratios", 25, "yellow"),
-            ("D", "Financial analysis", "Growth and costs · DuPont · liquidity and benchmark · cash flow", 29, "navy"),
-            ("E", "Recommendation, scenarios and risks", "Why 3.9 % is a trigger · scenarios · risks and drop trigger", 33, "yellow"),
-            ("F", "Likely questions and answers", "Eleven short answers for the Q&amp;A", 36, "navy")]
-    ends = [21, 24, 28, 32, 35, 38]
-    body = "".join(
-        f'<a data-goto="{g}" style="position:absolute;left:96px;top:{252 + i * 108}px;width:1300px;height:94px;display:flex;align-items:center;gap:30px;'
-        f'background:#fff;border-radius:16px;box-shadow:0 6px 24px rgba(0,24,46,.10);text-decoration:none;color:var(--navy);cursor:pointer">'
-        f'<div class="big" style="width:94px;height:94px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:54px;'
-        f'background:{"var(--y)" if k == "yellow" else "var(--navy)"};color:{"var(--navy)" if k == "yellow" else "var(--y)"}">{L}</div>'
-        f'<div><div class="h" style="font-size:30px">{t}</div><div style="font-size:21px;color:var(--muted);margin-top:4px">{d}</div></div>'
-        f'<div style="margin-left:auto;margin-right:34px;font-size:22px;font-weight:800">{"<span style='background:var(--y);border-radius:6px;padding:3px 8px;font-size:15px;letter-spacing:1px;margin-right:12px'>MOST ASKED</span>" if i == 0 else ""}Slides {g}–{ends[i]} ▸</div></a>'
-        for i, (L, t, d, g, k) in enumerate(rows))
-    slides.append(frame(INDEX, None, f"""
-{band('Backup', 'Backup slides for the questions', 'Not part of the 10-minute talk – click a section to jump there')}
-{body}
-<div class="card" style="left:1440px;top:252px;width:384px;height:634px;background:var(--navy);color:#fff">
-  <div style="font-size:19px;font-weight:800;letter-spacing:2px;color:var(--y)">HOW TO USE</div>
-  <div style="font-size:25px;line-height:1.45;margin-top:14px">Each backup slide answers one likely question in depth.<br><br>Every slide links back here with <b style="color:var(--y)">◂ INDEX</b>.<br><br>All figures come from the report and the Excel workbook.<br><br><a data-goto="39" style="color:var(--y);font-weight:800;text-decoration:none;cursor:pointer">References: slide 39 ▸</a></div>
-</div>"""))
+    # ---------------------------------------------------------------- 13 Backup index (filled in at the end, see build_index)
+    slides.append("")
 
     # ---------------------------------------------------------------- A Ratios, workbook and what-if (ratios.py)
     add_ratios(slides, frame, hdr, card, ul)
@@ -278,6 +257,54 @@ def add_backup(slides, frame, band, dots):
         '<div style="position:absolute;left:96px;top:930px;width:1728px;font-size:18px;color:var(--muted);border-top:2px solid #E3E5E8;padding-top:12px">'
         'Own work: Beermann, S., Fliegel, A., Narkiewicz, Z., Hoffmann, P., &amp; Gilmore Islam, Z. (2026). <i>Liebherr Group financial report: Investment analysis 2022–2025</i> and the Excel workbook '
         '<i>Liebherr–Caterpillar restructured financial statements</i>. Fontys University of Applied Sciences, Venlo. · Images: Liebherr-International AG. · Full entries with URLs: report, References.</div>'))
+
+    build_index(slides, frame, band)
+
+
+SECTIONS = {"A": "Ratios, workbook and what-if", "B": "Business model and environment", "C": "Accounting analysis",
+            "D": "Financial analysis", "E": "Recommendation, scenarios and risks", "F": "Likely questions and answers"}
+
+
+def build_index(slides, frame, band):
+    """Index of every backup slide, grouped by section; each entry jumps to its slide."""
+    groups, refs = {}, None
+    for n, (title, _, _) in enumerate(BACKUP_NOTES[1:], INDEX + 1):
+        if title.startswith("Backup "):
+            letter, label = title[7], title.split(" – ", 1)[1]
+            groups.setdefault(letter, []).append((n, label))
+        else:
+            refs = n
+    cols = [["A"], ["B", "C", "D"], ["E", "F"]]
+    html = ""
+    for c, letters in enumerate(cols):
+        x, y = 96 + c * 586, 236
+        for L in letters:
+            items = groups[L]
+            dark = L in "BDF"
+            html += (f'<a data-goto="{items[0][0]}" style="position:absolute;left:{x}px;top:{y}px;width:556px;height:52px;display:flex;align-items:center;gap:14px;'
+                     f'text-decoration:none;color:var(--navy);cursor:pointer"><span class="big" style="width:48px;height:48px;border-radius:10px;display:flex;align-items:center;'
+                     f'justify-content:center;font-size:28px;background:{"var(--navy)" if dark else "var(--y)"};color:{"var(--y)" if dark else "var(--navy)"}">{L}</span>'
+                     f'<span class="h" style="font-size:25px">{SECTIONS[L]}</span>'
+                     + ('<span style="margin-left:auto;background:var(--y);border-radius:6px;padding:3px 8px;font-size:13px;font-weight:800;letter-spacing:1px">MOST ASKED</span>' if L == "A" else "")
+                     + '</a>')
+            y += 60
+            for n, label in items:
+                html += (f'<a data-goto="{n}" class="ix" style="position:absolute;left:{x}px;top:{y}px;width:556px;height:42px;display:flex;align-items:center;'
+                         f'text-decoration:none;color:var(--navy);cursor:pointer;border-bottom:1px solid #E3E5E8">'
+                         f'<span style="width:62px;font-weight:800;font-size:20px;color:var(--muted)">{n}</span><span style="font-size:22px;font-weight:600">{label}</span>'
+                         f'<span style="margin-left:auto;font-weight:800;color:var(--muted)">▸</span></a>')
+                y += 44
+            y += 22
+    if refs:
+        html += (f'<a data-goto="{refs}" style="position:absolute;left:{96 + 2 * 586}px;top:880px;width:556px;height:64px;display:flex;align-items:center;gap:14px;'
+                 f'background:var(--navy);color:#fff;border-radius:12px;padding:0 18px;text-decoration:none;cursor:pointer">'
+                 f'<span style="font-weight:800;color:var(--y);font-size:18px">{refs}</span><span class="h" style="font-size:22px;color:#fff">References (APA)</span>'
+                 f'<span style="margin-left:auto;color:var(--y);font-weight:800">▸</span></a>')
+    page = frame(INDEX, None, band("Backup", "Backup slides for the questions",
+                                   "Not part of the 10-minute talk – click a slide to jump there; ◂ INDEX on every slide brings you back") +
+                 "<style>.ix:hover{background:#FFF8D6}</style>" + html)
+    slides[INDEX - 1] = page.replace(f'<div class="pno">{len(slides) + 1:02d}</div>', f'<div class="pno">{INDEX}</div>')
+
 
 
 BACKUP_NOTES_BASE = [

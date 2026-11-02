@@ -6,13 +6,13 @@
 | `Liebherr_Presentation_animated_B.html` | Alternative effect style for comparison: camera-focus transition, wipe reveals, springy bars, marker highlights on key figures, slow photo zoom, dot progress. Same focus clicks on slide 10. |
 | `Liebherr_Presentation_Backup.pptx` | **Backup if the browser version fails.** Looks identical; fade transitions, content builds in automatically (charts wipe up), speaker notes in PowerPoint's presenter view. One click per slide; on slide 10 three extra clicks highlight the conditions, as in the HTML version. |
 | `Liebherr_Investment_Analysis_Presentation_FINAL.pdf` | **Final hand-in version:** the 12 talk slides plus the reference list (page 13), without backup slides. Fade transitions in full-screen mode. |
-| `Liebherr_Backup_Slides.pdf` | Backup slides 13–39 only (index, A–F, references), with clickable index and ◂ INDEX links. |
+| `Liebherr_Backup_Slides.pdf` | Backup slides 13–42 only (index, A–F, references), with clickable index and ◂ INDEX links. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Speaker notes with timing per slide (~9:40 min). |
 
-## Backup slides (13–39)
+## Backup slides (13–42)
 
-Slides 1–12 are the 10-minute talk. Slides 13–39 are backup for the Q&A: index (13), A ratios, formulas, what-if logic, provisions, sensitivities, long list and workbook (14–21), B business model (22–24), C accounting analysis (25–28), D financial analysis (29–32), E recommendation, scenarios and risks (33–35), F likely questions (36–38), references in APA (39). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
+Slides 1–12 are the 10-minute talk. Slides 13–42 are backup for the Q&A: index of every backup slide, each clickable (13), A ratios, formulas, what-if logic, provisions, sensitivities, long and short list with key accounts and the 22 findings, workbook (14–24), B business model (25–27), C accounting analysis (28–31), D financial analysis (32–35), E recommendation, scenarios and risks (36–38), F likely questions (39–41), references in APA (42). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
 
 ## Presenting with the animated version
 
