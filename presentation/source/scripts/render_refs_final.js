@@ -5,7 +5,7 @@ const { chromium } = require('playwright'); const path = require('path');
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
   await p.goto('file://' + path.join(dir, 'deck.html')); await p.waitForTimeout(500);
   await p.evaluate(() => {
-    const all = [...document.querySelectorAll('section.slide')], s = all[29];
+    const all = [...document.querySelectorAll('section.slide')], s = all[all.length - 1];  // the references slide is the last one
     all.forEach(x => { if (x !== s) x.remove(); });
     s.querySelectorAll('.backlink').forEach(e => e.remove());
     s.querySelector('.eyebrow').textContent = 'References';
