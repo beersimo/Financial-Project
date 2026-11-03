@@ -21,6 +21,6 @@ manifest.forEach((m, i) => {
   // invisible clickable areas for index / back links (slide jumps in the slide show)
   (m.links || []).forEach(l => s.addText('', { x: IN(l.x), y: IN(l.y), w: IN(l.w), h: IN(l.h), isTextBox: true,
     hyperlink: { slide: l.to, tooltip: 'Go to slide ' + l.to }, fill: { color: 'FFFFFF', transparency: 100 }, objectName: 'Link ' + l.to }));
-  s.addNotes(notes[i][2]);
+  s.addNotes(notes[i][0] + '\n\n' + notes[i][2]);
 });
 pres.writeFile({ fileName: outFile }).then(f => console.log('written', f));

@@ -374,36 +374,67 @@ doc = f'<!doctype html><html><head><meta charset="utf-8"><title>Liebherr Group I
 (BUILD / "deck.html").write_text(doc)
 
 # speaker notes document
+import re as _re2
+from notes import SPEAKERS
+SPK_COL = {"Adam": "#FFCF00", "Zarah": "#9ED0F0", "Philipp": "#B8E0B0", "Simon": "#F6B8B8"}
+def _fmt(p):
+    p = html.escape(p)
+    p = _re2.sub(r"\[(Handover)\]", r'<span class="cue ho">→ HANDOVER</span>', p)
+    p = _re2.sub(r"\[(CLICK[^\]]*)\]", lambda m: f'<span class="cue ck">● {m.group(1).upper()}</span>', p)
+    p = _re2.sub(r"\[(Q&amp;A)\]", r'<span class="cue qa">Q&amp;A</span>', p)
+    return p
 rows = []
 for i, (t, d, txt) in enumerate(notes, 1):
-    paras = "".join(f"<p>{html.escape(p)}</p>" for p in txt.split("\n\n"))
-    rows.append(f'<section class="np"><div class="hd"><span class="n">{i:02d}</span><span class="t">{html.escape(t)}</span><span class="d">{d}</span></div>'
+    paras = "".join(f"<p>{_fmt(p)}</p>" for p in txt.split("\n\n"))
+    who = SPEAKERS.get(i)
+    title = t.rsplit(" – ", 1)[0] if who else t
+    badge = f'<span class="who" style="background:{SPK_COL[who]}">{who}</span>' if who else '<span class="who" style="background:#E9EBEE">Backup</span>'
+    rows.append(f'<section class="np"><div class="hd"><span class="n">{i:02d}</span>{badge}<span class="t">{html.escape(title)}</span><span class="d">{d}</span></div>'
                 f'<img src="shots/s{i:02d}.png"><div class="tx">{paras}</div></section>')
 NCSS = FONTS + """
 @page{size:A4 landscape;margin:12mm}
-body{font-family:Assistant,sans-serif;color:#00182E}
+body{font-family:Arimo,Arial,sans-serif;color:#00182E}
 .np{page-break-after:always;display:grid;grid-template-columns:52% 1fr;grid-template-rows:auto 1fr;gap:6mm 8mm;height:178mm;overflow:hidden}
 .np:last-child{page-break-after:auto}
 .hd{grid-column:1/3;display:flex;align-items:center;gap:4mm;border-bottom:3px solid #FFCF00;padding-bottom:2mm}
-.n{background:#FFCF00;font-weight:800;padding:1mm 3mm;border-radius:2mm;font-size:13pt}
-.t{font-family:Arimo,sans-serif;font-weight:700;font-size:16pt;flex:1}
+.n{background:#00182E;color:#FFCF00;font-weight:800;padding:1mm 3mm;border-radius:2mm;font-size:13pt}
+.who{font-weight:800;padding:1mm 4mm;border-radius:6mm;font-size:12pt}
+.t{font-weight:700;font-size:16pt;flex:1}
 .d{font-weight:800;font-size:12pt;color:#5E6873}
 img{width:100%;border:1px solid #D0D3D8}
 .tx p{font-size:11.5pt;line-height:1.45;margin:0 0 3mm}
-.cover h1{font-family:Arimo;font-size:26pt;margin:20mm 0 4mm}
+.cue{display:inline-block;font-weight:800;font-size:9.5pt;letter-spacing:.5pt;border-radius:1.5mm;padding:.3mm 2mm;margin-right:1.5mm}
+.ho{background:#00182E;color:#FFCF00}.ck{background:#FFCF00;color:#00182E}.qa{background:#E9EBEE;color:#00182E}
+.cover h1{font-size:26pt;margin:14mm 0 4mm}
+table.plan{border-collapse:collapse;margin-top:6mm;font-size:12pt}
+table.plan td,table.plan th{padding:2.5mm 5mm;border-bottom:1px solid #D0D3D8;text-align:left;vertical-align:top}
+table.plan th{background:#00182E;color:#fff;font-size:10pt;letter-spacing:.5pt}
 """
-total = sum(int(d.split(":")[0]) * 60 + int(d.split(":")[1]) for _, d, _ in notes if ":" in d)
-words = sum(len(t.split()) for _, _, t in notes[:MAIN - 1])
-cover = (f'<section class="np cover" style="display:block"><h1>Liebherr Group – Speaker notes</h1>'
-         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 talk slides + 17 backup slides (13–29) · planned speaking time {total//60}:{total%60:02d} min · {words} words of notes (≈ 125 words per minute, calm B2 pace)</p>'
-         '<p style="font-size:12pt;margin-top:6mm">Red line: <b>Should a long-term investor take a minority stake in Liebherr – and if not, why not yet?</b><br>'
-         'Answer first (slide 2) → why: company and model (3) → performance (4) → can we trust the figures? (5–6) → position, cash and working capital (7–8) → '
-         'how the workbook supports it (9) → conditions for reassessment (10) → conclusion (11).</p>'
-         '<p style="font-size:11pt;color:#5E6873;margin-top:6mm">All figures are taken from the report and the Excel workbook. Actual adjustments (Caterpillar LIFO → FIFO, 2022 goodwill reclassification) are kept separate from illustrative sensitivities (provision charge, depreciation rate).</p></section>')
+def _secs(d): return int(d.split(":")[0]) * 60 + int(d.split(":")[1]) if ":" in d else 0
+total = sum(_secs(d) for _, d, _ in notes[:MAIN])
+words = sum(len(_re2.sub(r"\[[^\]]*\]", "", t.split("[Q&A]")[0]).split()) for _, _, t in notes[:MAIN])
+plan = ""
+for who in ["Adam", "Zarah", "Philipp", "Simon"]:
+    idx = [i for i in range(1, MAIN + 1) if SPEAKERS.get(i) == who]
+    secs = sum(_secs(notes[i - 1][1]) for i in idx)
+    last = notes[idx[-1] - 1][2]
+    ho = _re2.search(r"\[Handover\]\s*(.*)", last)
+    plan += (f'<tr><td><span class="who" style="background:{SPK_COL[who]}">{who}</span></td><td>{idx[0]}–{idx[-1]}</td>'
+             f'<td>{"; ".join(notes[i - 1][0].rsplit(" – ", 1)[0] for i in idx)}</td><td><b>{secs // 60}:{secs % 60:02d}</b></td>'
+             f'<td style="max-width:95mm">{html.escape(ho.group(1)) if ho else "Closes the talk and opens the Q&amp;A"}</td></tr>')
+cover = (f'<section class="np cover" style="display:block"><h1>Liebherr Group – Final speaker notes</h1>'
+         f'<p style="font-size:13pt">HAT1 Financial Reporting · 12 talk slides · planned speaking time ≈ {total // 60}:{total % 60:02d} min '
+         f'({words} words at ≈ 125 words per minute) · backup slides 13–{len(notes)} for the Q&amp;A</p>'
+         '<p style="font-size:12pt;margin-top:4mm">Central question: <b>How financially strong is Liebherr, and which factors will drive its future performance? '
+         'For a long-term investor: take a minority stake now – or not yet?</b></p>'
+         '<table class="plan"><tr><th>SPEAKER</th><th>SLIDES</th><th>TOPICS</th><th>TIME</th><th>HANDOVER LINE</th></tr>' + plan + '</table>'
+         '<p style="font-size:11pt;margin-top:6mm"><span class="cue ho">→ HANDOVER</span> last sentence before the next speaker · '
+         '<span class="cue ck">● CLICK</span> slide 10: one click per condition (3 clicks), then one click to slide 11 · '
+         'In the HTML version press <b>P</b> for the presenter view and <b>I</b> for the backup index.</p></section>')
 (BUILD / "notes.html").write_text(f'<!doctype html><html><head><meta charset="utf-8"><title>Liebherr Speaker Notes</title><style>{NCSS}</style></head><body>{cover}{"".join(rows)}</body></html>')
 import json
 (BUILD / "notes.json").write_text(json.dumps(notes, indent=1, ensure_ascii=False))
 from present import build_present
 print("present.html", round(build_present(BUILD, CSS, slides, notes) / 1e6, 1), "MB")
 print("present_B.html", round(build_present(BUILD, CSS, slides, notes, variant="B") / 1e6, 1), "MB")
-print("ok", len(slides), "slides; planned", total, "s;", words, "words")
+print("ok", len(slides), "slides; talk", total, "s;", words, "words")

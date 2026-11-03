@@ -8,7 +8,8 @@
 | `Liebherr_Investment_Analysis_Presentation_FINAL.pdf` | **Final hand-in version:** the 12 talk slides plus the reference list (page 13), without backup slides. Fade transitions in full-screen mode. |
 | `Liebherr_Backup_Slides.pdf` | Backup slides 13–42 only (index, A–F, references), with clickable index and ◂ INDEX links. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
-| `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Speaker notes with timing per slide (~9:40 min). |
+| `Liebherr_Speaker_Notes_FINAL.pdf` | **Final speaker notes for the talk:** speaker plan (Adam 1–3, Zarah 4–5, Philipp 6–8, Simon 9–12), handover lines and click cues, ≈ 9:45 min. |
+| `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Same notes plus the backup slides. |
 
 ## Backup slides (13–42)
 
