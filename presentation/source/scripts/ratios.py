@@ -101,6 +101,50 @@ def add_ratios(slides, frame, hdr, card, ul):
             '<b style="color:var(--y)">Interest cover:</b> not computable – no interest expense disclosed. Indicator: operating profit / interest paid 3.90.</div>',
             "var(--navy)", False)))
 
+    # ------------------------------------------------------------- A3 From workbook to ratio (sheet D3, real cell formulas)
+    rows = [(7, "Revenue", "14,772", "='B1 Income statement by nature'!B5"),
+            (8, "Operating profit (EBIT)", "413", "='C1 Accounting adjustments'!B30"),
+            (10, "Profit after tax", "272", "='B1 Income statement by nature'!B18+'C1…'!B27"),
+            (14, "Total equity", "9,354", "='C1 Accounting adjustments'!B21"),
+            (16, "Inventories", "6,341", "='C1 Accounting adjustments'!B13"),
+            (19, "Current assets", "12,709", "='B2 Restructured balance sheet'!B17+'C1…'!B12"),
+            (20, "Current liabilities", "5,498", "='B2 Restructured balance sheet'!B33"),
+            (27, "Average total equity", "9,128", "=(B14+C14)/2"),
+            (29, "Average inventories", "6,373", "=(B16+C16)/2"),
+            (35, "Operating margin", "2.80 %", "=B8/B7"),
+            (40, "Return on equity (ROE)", "2.98 %", "=B10/B27"),
+            (49, "Days inventory outstanding", "157.5", "=B29/B7*365"),
+            (60, "Current ratio", "2.31", "=B19/B20")]
+    hl = {40: "#FFE680", 60: "#CDE8FF", 49: "#D6F0D0"}
+    grid = ('<div style="font-family:Arial,sans-serif;font-size:22px;border:1px solid #C6C6C6;background:#fff;box-shadow:0 6px 24px rgba(0,24,46,.12)">'
+            '<div style="background:#217346;color:#fff;font-size:16px;font-weight:700;padding:6px 12px">Liebherr-Caterpillar-Restructured-financial-statements.xlsx · sheet D3 Ratios</div>'
+            '<div style="display:flex;border-bottom:1px solid #C6C6C6;font-size:17px"><div style="width:70px;padding:6px 10px;border-right:1px solid #C6C6C6;color:#555">B40</div>'
+            '<div style="padding:6px 12px;font-style:italic;color:#555">fx</div><div style="padding:6px 4px;font-family:Consolas,monospace">=B10/B27</div></div>'
+            '<table style="border-collapse:collapse;width:100%">'
+            '<tr style="background:#F3F3F3;color:#555;font-size:15px;text-align:center"><td style="width:46px;border:1px solid #D4D4D4"></td><td style="border:1px solid #D4D4D4">A</td>'
+            '<td style="width:120px;border:1px solid #D4D4D4">B · 2025</td><td style="width:430px;border:1px solid #D4D4D4">formula in column B</td></tr>')
+    for r, lab, v, f in rows:
+        bg = hl.get(r, "#fff")
+        grid += (f'<tr><td style="background:#F3F3F3;color:#555;font-size:15px;text-align:center;border:1px solid #D4D4D4">{r}</td>'
+                 f'<td style="padding:9px 12px;border:1px solid #E1E1E1">{lab}</td>'
+                 f'<td style="padding:9px 12px;border:1px solid #E1E1E1;text-align:right;background:{bg};{"font-weight:700;outline:2px solid #217346" if r == 40 else ""}">{v}</td>'
+                 f'<td style="padding:9px 12px;border:1px solid #E1E1E1;font-family:Consolas,monospace;font-size:16px;color:#2B3540">{f}</td></tr>')
+    grid += "</table></div>"
+    calc = [("#FFE680", "Return on equity", "=B10/B27", "272 / 9,128", "3.0 %"),
+            ("#D6F0D0", "Days inventory outstanding", "=B29/B7*365", "6,373 / 14,772 × 365", "157.5 days"),
+            ("#CDE8FF", "Current ratio", "=B19/B20", "12,709 / 5,498", "2.31")]
+    cc = "".join(f'<div style="background:#fff;border-radius:14px;box-shadow:0 6px 24px rgba(0,24,46,.10);padding:22px 24px;margin-bottom:22px;border-left:12px solid {c}">'
+                 f'<div style="font-size:20px;font-weight:800">{n} <span style="font-family:Consolas,monospace;font-size:17px;font-weight:400;color:var(--muted)">{f}</span></div>'
+                 f'<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:4px"><span style="font-size:21px">{x}</span>'
+                 f'<span class="big" style="font-size:36px">{r}</span></div></div>' for c, n, f, x, r in calc)
+    slides.append(frame(0, "Excel workbook, sheet D3 Ratios (cell formulas as in the file), column B = Liebherr 2025, € m; checks on sheet E2",
+        hdr(SEC, "From workbook to ratio: every figure is a formula", "Excerpt of sheet D3 – inputs link to the recast statements, ratios link to the inputs") +
+        f'<div style="position:absolute;left:96px;top:236px;width:1110px">{grid}</div>' +
+        f'<div style="position:absolute;left:1236px;top:236px;width:588px">{cc}'
+        f'<div style="background:#1E6B2A;color:#fff;border-radius:14px;padding:16px 22px"><span class="big" style="font-size:40px;color:#fff">0</span>'
+        f'<span style="font-size:20px;font-weight:700;margin-left:12px">open differences on sheet E2</span>'
+        f'<div style="font-size:18px;line-height:1.35;margin-top:4px;opacity:.9">Inputs come from the recast statements B1/B2 and the adjustments on C1 – nothing is typed in.</div></div></div>'))
+
     # ------------------------------------------------------------- A3 What-if I: balance sheet and liquidity
     wi = [("Suppliers paid in cash", f"Current ratio {UP} &nbsp; Cash {DN}",
            "Both sides fall by the same amount, so a ratio above 1 rises: €500 m paid → 2.31 to 2.44 (illustration)."),
@@ -243,6 +287,27 @@ def add_ratios(slides, frame, hdr, card, ul):
         hdr(SEC, "Seven key accounts carry the judgement", "Key accounts × flexibility = the nine key treatments of the long list") +
         f'<div class="t22" style="position:absolute;left:96px;top:236px;width:1728px">{table}</div>'))
 
+    # ------------------------------------------------------------- A9 Red-flag screen (Table H1)
+    tests = [("1", "Unexplained transactions that boost profits", "Provision reversals 90 → 143 (2022–2025) = 34.6 % of 2025 EBIT; net charge flat (195 → 194); credited line not disclosed", "Raised"),
+             ("2", "Inventories or receivables rise faster than sales", "Inventories +27.3 % vs. revenue +8.2 % (2022); receivables +9.1 % vs. revenue +1.0 % (2025)", "Raised twice"),
+             ("3", "Gap between profit and cash flow or taxable profit", "Operating cash flow −415 and −10 (2022–23) against profit; tax rate 99.2 % → 37.8 %, no reconciliation", "Raised"),
+             ("4", "R&amp;D partnerships, special purpose entities, sold receivables", "None disclosed in four years; R&amp;D fully expensed", "No flag"),
+             ("5", "Unexpected large asset write-offs", "PP&amp;E impairment 8, 55, 9, 3 – 2023 six times the other years, same one-sentence explanation", "Raised for 2023"),
+             ("6", "Large year-end adjustments", "No interim figures published, so no within-year comparison", "Not testable"),
+             ("7", "Qualified opinions or auditor changes", "Ernst &amp; Young all four years, no qualification, no restatement (ISA 810 opinion)", "No flag"),
+             ("8", "Related party transactions", "No note in four years – family-owned group that also runs six hotels", "Not testable"),
+             ("9", "Changes in accounting policies or estimates", "Policies worded identically; new standards without material effect", "No flag")]
+    vc = {"Raised": ("#FBE3E3", "#A11B1B"), "Raised twice": ("#FBE3E3", "#A11B1B"), "Raised for 2023": ("#FBE3E3", "#A11B1B"),
+          "No flag": ("#E3F1E4", "#1E6B2A"), "Not testable": ("#E9EBEE", "#3A444E")}
+    trs = "".join(f'<tr><td class="n" style="color:var(--muted)">{n}</td><td style="font-weight:700">{t}</td><td>{e}</td>'
+                  f'<td><span style="display:inline-block;background:{vc[v][0]};color:{vc[v][1]};font-weight:800;font-size:17px;padding:5px 12px;border-radius:8px;white-space:nowrap">{v}</span></td></tr>'
+                  for n, t, e, v in tests)
+    table = (f'<table class="rt"><tr><th style="width:44px">#</th><th style="width:470px">Test</th><th>Evidence 2022–2025</th><th style="width:200px">Verdict</th></tr>{trs}</table>')
+    slides.append(frame(0, "Report §4.4, Table H1 (8 tests of step 5 + consistency check of step 3); Liebherr-International AG (2023–2026)",
+        scope("t25", [(".rt", "font-size:20px"), (".rt td", "padding:12px 12px;line-height:1.3")]) +
+        hdr(SEC, "Red-flag screen: nine tests, four flags", "4 raised · 3 clean · 2 not testable – reasons to ask, not proof of manipulation") +
+        f'<div class="t25" style="position:absolute;left:96px;top:236px;width:1728px">{table}</div>'))
+
     # ------------------------------------------------------------- A9/A10 Short list of 22 findings (Table H2)
     groups = [("Not adjustable – red flags and disclosure gaps", 7, "#FBE3E3", "#A11B1B", [
                   ("Provision reversals rise as the result falls (test 1)", "Provisions, 864", "Not adjustable: the income line carrying the reversal is not disclosed"),
@@ -322,12 +387,14 @@ def add_ratios(slides, frame, hdr, card, ul):
 NOTES = [
     ("Backup A – Ratios I", "—", "Return on equity is profit after tax divided by average equity: 272 over 9,128 is 3.0 per cent. Before tax it is 4.8 per cent. DuPont splits it into net margin, asset turnover and leverage, where leverage is average total assets over average equity. Leverage works on return on equity, not on the EBIT margin, because EBIT is measured before interest. ROA is measured on EBIT because Liebherr does not disclose its interest expense. Caterpillar's return on equity is inflated by its treasury shares and is not comparable."),
     ("Backup A – Ratios II", "—", "The current ratio and the quick ratio are liquidity ratios; equity ratio, debt to equity and debt to EBITDA are solvency ratios. The working-capital days are calculated on revenue, because Liebherr reports no cost of sales; on its own cost basis inventory days would be 299 and not comparable. There are two debt measures: debt including pensions of 3,714 million euro, which gives debt to equity of 0.40, and bank and lease liabilities of 2,898 million euro, which match the Damodaran benchmark and give 23.7 per cent of capital and 2.90 times EBITDA. Interest cover cannot be computed for Liebherr."),
+    ("Backup A – Workbook to ratio", "—", "This is an excerpt of sheet D3 for Liebherr in 2025. Every input is a formula that links to the recast statements or to the adjustments sheet, so nothing is typed in. Return on equity in cell B40 is B10 divided by B27, so 272 over the average equity of 9,128, which gives 3.0 per cent. Inventory days are average inventories divided by revenue times 365, which gives 157.5 days. The current ratio is current assets of 12,709 divided by current liabilities of 5,498, which gives 2.31. Sheet E2 reconciles every subtotal, with zero open differences."),
     ("Backup A – What-if I", "—", "If suppliers are paid in cash, current assets and current liabilities fall by the same amount, so a current ratio above one rises – with 500 million euro it would go from 2.31 to 2.44. An inventory write-down lowers profit and the current ratio, but also the inventory days, so the ratio looks better while the position is weaker. New debt lowers the equity ratio and raises leverage, but leaves the EBIT margin unchanged. A shorter cash conversion cycle releases cash once, it does not improve the margin."),
     ("Backup A – What-if II", "—", "Accounting choices move profit, not cash. A provision addition is an expense, usage settles the obligation in cash without a profit effect, and a reversal increases profit without cash. Slower depreciation and more own work capitalised raise EBIT today. Caterpillar's switch from LIFO to FIFO raises profit and equity. That is why operating cash flow, only 28.4 per cent of EBITDA over four years, is our check on the accruals."),
     ("Backup A – Provisions", "—", "Provisions under IAS 37 need a present obligation from a past event, a probable outflow and a reliable estimate. In 2025 the opening balance of 855 million euro rose by 337 of additions, fell by 185 of usage and by 143 of reversals, to 864. Usage is the real outflow and has no profit effect; only additions and reversals touch profit. The net charge – additions less reversals – stayed at 194 against 195, so a hidden reserve being released to support profit is not visible. We keep the flag because other provisions built up in 2023 are now being released and the notes cannot explain why."),
     ("Backup A – Sensitivity", "—", "We measure two effects without booking them. If the net provision charge had been at its 2022 to 2024 average of 1.76 per cent of revenue instead of 1.31, EBIT would be 347 million euro and the margin 2.35 per cent; without the high charge of 2023 it would be 2.68. At Caterpillar's depreciation rate depreciation would be 105 million euro higher and the margin 2.08 per cent. Both together give 242 million euro, or 1.64 per cent. Sheet D9 also shows a gross-reversal view, but the report uses the net charge because additions rose with the reversals."),
     ("Backup A – Long list to short list", "—", "Step one is the long list of 30 accounting treatments with room for choice. Step two keeps the nine that combine a key account with high or medium-to-high flexibility. Step three is the red-flag screen: eight tests plus one consistency check, with four flags, three clean and two not testable. Step four is the short list of 22 findings: seven that no adjustment can remove, five reversed in the workbook and ten the disclosure does not allow us to reverse. The two counts of nine are a coincidence."),
     ("Backup A – Key accounts", "—", "Seven key accounts carry the judgement. Inventories under IAS 2, provisions under IAS 37, property, plant and equipment under IAS 16 and 36, own work capitalised, receivables under IFRS 9, revenue under IFRS 15 and deferred taxes under IAS 12. They are on the short list because they combine a material amount with high or medium flexibility: inventories are 36.3 per cent of total assets, provision reversals equal 34.6 per cent of the operating result, own work capitalised 77 per cent, and the tax rate swings between 37.8 and 99.2 per cent without a reconciliation."),
+    ("Backup A – Red-flag screen", "—", "We ran the eight red-flag tests of step five over four years, plus one consistency check of step three. Four raised a flag. Provision reversals rose while the result fell, inventories and receivables grew faster than sales, the tax rate swung without a reconciliation, and the impairment of 2023 was six times the normal level. Three tests are clean, namely off-balance-sheet structures, the audit opinion and policy changes. Two cannot be run, because there are no interim figures and no related party note. A red flag is a reason to ask, not proof of manipulation."),
     ("Backup A – Short list I", "—", "The short list has 22 findings. Seven are red flags or disclosure gaps that no adjustment can remove – for example the provision reversals, the unexplained tax charge and the other operating expenses without a note. Five distortions we reversed in the workbook – the most important is Caterpillar's LIFO inventory, restated to FIFO with the disclosed excess of 4,305 million dollars."),
     ("Backup A – Short list II", "—", "Ten distortions cannot be reversed because the disclosure is too thin: for example the gross presentation of rental machine disposals, the missing interest split, the missing segment note, the pension assumptions and the undisclosed allowances. The different depreciation rates we measured in a sensitivity, but did not book, because the asset mixes differ."),
     ("Backup A – Workbook", "—", "The workbook starts with the published statements typed exactly as printed. The B sheets recast both companies into one format by nature using formulas only, with 21 documented mapping decisions. The C sheets hold the LIFO to FIFO restatement and the note data, the D sheets the analysis. Sheet E1 documents 44 judgements and sheet E2 reconciles every recast subtotal with the published figure: zero open differences, apart from three labelled ones."),
