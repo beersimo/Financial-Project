@@ -10,6 +10,7 @@
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes_FINAL.pdf` | **Final speaker notes for the talk:** speaker plan (Adam 1–3, Zarah 4–5, Philipp 6–8, Simon 9–12), handover lines and click cues, ≈ 9:45 min. |
 | `Moderation_Cards_Simon.pdf` | Moderator cards for Simon (slides 9–12): A4, three cards per page (210 × 99 mm), cut along the dashed lines. Back side, two versions: `Moderation_Cards_Simon_back_yellow.pdf` (black logo on Liebherr yellow) or `Moderation_Cards_Simon_back_white.pdf` (black logo on white); print double-sided, flip on long edge. Build others with `python3 scripts/cards.py build <Name> out.pdf` and `python3 scripts/cards_back.py <cards> out.pdf yellow|white build/img/liebherr_black.png`. |
+| `Moderation_Cards_Simon_2per_page.pdf` + `_back.pdf` | Alternative: two cards on one A4 page (210 × 148.5 mm), card 1 = slides 9–10, card 2 = slides 11–12 plus key figures; back with the black logo on white. |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Same notes plus the backup slides. |
 
 ## Backup slides (13–52)
