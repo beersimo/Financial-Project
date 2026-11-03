@@ -6,14 +6,14 @@
 | `Liebherr_Presentation_animated_B.html` | Alternative effect style for comparison: camera-focus transition, wipe reveals, springy bars, marker highlights on key figures, slow photo zoom, dot progress. Same focus clicks on slide 10. |
 | `Liebherr_Presentation_Backup.pptx` | **Backup if the browser version fails.** Looks identical; fade transitions, content builds in automatically (charts wipe up), speaker notes in PowerPoint's presenter view. One click per slide; on slide 10 three extra clicks highlight the conditions, as in the HTML version. |
 | `Liebherr_Investment_Analysis_Presentation_FINAL.pdf` | **Final hand-in version:** the 12 talk slides plus the reference list (page 13), without backup slides. Fade transitions in full-screen mode. |
-| `Liebherr_Backup_Slides.pdf` | Backup slides 13–44 only (index, A–F, references), with clickable index and ◂ INDEX links. |
+| `Liebherr_Backup_Slides.pdf` | Backup slides 13–52 only (index, A–F, references), with clickable index and ◂ INDEX links. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes_FINAL.pdf` | **Final speaker notes for the talk:** speaker plan (Adam 1–3, Zarah 4–5, Philipp 6–8, Simon 9–12), handover lines and click cues, ≈ 9:45 min. |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Same notes plus the backup slides. |
 
-## Backup slides (13–44)
+## Backup slides (13–52)
 
-Slides 1–12 are the 10-minute talk. Slides 13–44 are backup for the Q&A: index of every backup slide, each clickable (13), A ratios by profitability, efficiency, leverage and liquidity, workbook-to-ratio excerpt, what-if logic, provisions, sensitivities, long list, key accounts, red-flag screen, short list of 22 findings, workbook (14–26), B business model (27–29), C accounting analysis (30–33), D financial analysis (34–37), E recommendation, scenarios and risks (38–40), F likely questions (41–43), references in APA (44). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
+Slides 1–12 are the 10-minute talk. Slides 13–52 are backup for the Q&A: index of every backup slide, each clickable (13); A ratios (profitability, efficiency, leverage, liquidity, cash flow and growth), workbook-to-ratio excerpt, what-if logic, provisions, sensitivities, long list (Table G2), key accounts, red-flag screen, short list, workbook (14–29); B business model (30–32); C accounting analysis incl. conservative vs. aggressive and Table J13 (33–37); D financial analysis incl. common size (38–42); E recommendation, levers, changes to monitor and Table 3 (43–47); F likely questions (48–51); references in APA (52). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
 
 ## Presenting with the animated version
 
