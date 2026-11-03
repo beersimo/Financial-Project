@@ -39,11 +39,11 @@ def add_ratios(slides, frame, hdr, card, ul):
         return f'<div class="pill" style="top:{y}px">{text}</div>'
 
     # ------------------------------------------------------------- A1 Ratios I: profitability and returns
-    rows = [("Profitability", [("Operating margin", "EBIT / revenue", "2.8 %", "17.2 %"),
+    rows = [('Profitability<div style="font-size:15px;letter-spacing:.3px;text-transform:none;font-weight:600;margin-top:4px;color:#5E6873">margins</div>', [("Operating margin", "EBIT / revenue", "2.8 %", "17.2 %"),
                                ("Pre-tax margin", "Profit before tax / revenue", "3.0 %", "17.9 %"),
                                ("Net profit margin", "Profit after tax / revenue", "1.8 %", "13.8 %"),
                                ("EBITDA margin", "EBITDA / revenue", "6.8 %", "19.8 %")]),
-            ("Returns", [("ROA", "EBIT / average total assets", "2.4 %", "11.9 %"),
+            ('Profitability<div style="font-size:15px;letter-spacing:.3px;text-transform:none;font-weight:600;margin-top:4px;color:#5E6873">returns on capital</div>', [("ROA", "EBIT / average total assets", "2.4 %", "11.9 %"),
                          ("ROCE", "EBIT / (avg. equity + avg. non-current debt)", "3.5 %", "20.2 %"),
                          ("ROE", "Profit after tax / average equity", "3.0 %", "38.1 %*"),
                          ("Pre-tax ROE", "Profit before tax / average equity", "4.8 %", "49.4 %")])]
@@ -56,7 +56,8 @@ def add_ratios(slides, frame, hdr, card, ul):
     dupont = (
         '<div style="font-size:18px;font-weight:800;letter-spacing:2px;color:var(--y)">DUPONT</div>'
         '<div class="h" style="font-size:28px;color:#fff;margin:8px 0 14px;line-height:1.25">ROE = net margin × asset turnover × leverage</div>'
-        '<div style="font-size:19px;opacity:.85;margin-bottom:18px">leverage = average total assets / average equity</div>'
+        '<div style="font-size:19px;opacity:.85;margin-bottom:8px">leverage = average total assets / average equity</div>'
+        '<div style="font-size:19px;margin-bottom:14px">= <b style="color:var(--y)">profitability</b> × <b style="color:var(--y)">efficiency</b> × <b style="color:var(--y)">leverage</b> – the ratio groups of slides 14 and 15</div>'
         '<table style="width:100%;border-collapse:collapse;font-size:22px;color:#fff;margin-top:6px">'
         '<tr style="color:var(--y);font-size:16px;letter-spacing:1px"><td></td><td>MARGIN</td><td>TURNOVER</td><td>LEVERAGE</td><td>ROE</td></tr>'
         '<tr><td style="padding:8px 0;font-weight:700">2025</td><td>1.84 %</td><td>× 0.85</td><td>× 1.89</td><td style="font-weight:800">3.0 %</td></tr>'
@@ -65,38 +66,43 @@ def add_ratios(slides, frame, hdr, card, ul):
         '<div style="font-size:20px;line-height:1.4;margin-top:20px;border-top:1px solid rgba(255,255,255,.2);padding-top:16px">'
         'Leverage works on ROE, <b style="color:var(--y)">not on the EBIT margin</b> – EBIT is measured before interest.</div>')
     slides.append(frame(0, "Excel workbook, sheets D3 (blocks C and D) and D4; Report §5.3, Table J14. 2025; Caterpillar on the FIFO basis",
-        CSS + scope("t14", [(".rt", "font-size:22px"), (".rt td", "padding:12px 14px"), (".rt td.f", "font-size:18.5px"), ("td.g", "width:130px")]) + hdr(SEC, "Ratios I: returns are low because the margin is low", "Profitability and returns – formula, Liebherr and Caterpillar, 2025") +
+        CSS + scope("t14", [(".rt", "font-size:22px"), (".rt td", "padding:12px 14px"), (".rt td.f", "font-size:18.5px"), ("td.g", "width:170px;font-size:19px;color:var(--navy)")]) + hdr(SEC, "Profitability: returns are low because the margin is low", "Margins and returns on capital – formula, Liebherr and Caterpillar, 2025") +
         f'<div class="t14" style="position:absolute;left:96px;top:240px;width:1130px">{table}</div>' +
         box(1256, 240, 568, 640, dupont, "var(--navy)", False) +
         note(820, "* Not comparable – treasury shares reduce Caterpillar's equity. ROA is measured on EBIT,<br>because Liebherr's interest expense is not disclosed.", w=1130)))
 
     # ------------------------------------------------------------- A2 Ratios II: utilisation, working capital, liquidity, solvency
-    rows = [("Asset utilisation", [("Asset turnover", "Revenue / average total assets", "0.85", "0.69"),
-                                   ("Fixed asset turnover", "Revenue / average PP&amp;E", "3.49", "4.74")]),
-            ("Working capital", [("Days inventory outstanding", "Avg. inventories / revenue × 365", "157.5", "116.5"),
-                                 ("Days sales outstanding", "Avg. receivables / revenue × 365", "73.8", "54.5"),
-                                 ("Days payables outstanding", "Avg. payables / revenue × 365", "28.6", "44.9"),
-                                 ("Cash conversion cycle", "DIO + DSO − DPO", "202.7", "126.1")]),
-            ("Liquidity", [("Current ratio", "Current assets / current liabilities", "2.31", "1.55"),
-                           ("Quick ratio", "(Current assets − inventories) / current liab.", "1.16", "0.94"),
-                           ("Cash cover", "Cash + current fin. assets / current debt", "2.6×", "–")]),
-            ("Solvency", [("Equity ratio", "Equity / total assets", "53.5 %", "24.9 %"),
-                          ("Debt / equity", "Debt incl. pensions / equity", "0.40", "1.84"),
-                          ("Debt / capital", "Bank + lease liab. / (those + equity)", "23.7 %", "64.8 %"),
-                          ("Debt / EBITDA", "Bank + lease liabilities / EBITDA", "2.90", "3.52")])]
+    rows = [('Efficiency<div style="font-size:15px;letter-spacing:.3px;text-transform:none;font-weight:600;margin-top:4px;color:#5E6873">asset utilisation · working capital</div>', [
+                ("Asset turnover", "Revenue / average total assets", "0.85", "0.69"),
+                ("Fixed asset turnover", "Revenue / average PP&amp;E", "3.49", "4.74"),
+                ("Days inventory outstanding", "Avg. inventories / revenue × 365", "157.5", "116.5"),
+                ("Days sales outstanding", "Avg. receivables / revenue × 365", "73.8", "54.5"),
+                ("Days payables outstanding", "Avg. payables / revenue × 365", "28.6", "44.9"),
+                ("Cash conversion cycle", "DIO + DSO − DPO", "202.7", "126.1")]),
+            ('Leverage<div style="font-size:15px;letter-spacing:.3px;text-transform:none;font-weight:600;margin-top:4px;color:#5E6873">solvency</div>', [
+                ("Equity ratio", "Equity / total assets", "53.5 %", "24.9 %"),
+                ("Leverage (DuPont)", "Avg. total assets / avg. equity", "1.89", "3.97"),
+                ("Debt / equity", "Debt incl. pensions / equity", "0.40", "1.84"),
+                ("Debt / capital", "Bank + lease liab. / (those + equity)", "23.7 %", "64.8 %"),
+                ("Debt / EBITDA", "Bank + lease liabilities / EBITDA", "2.90", "3.52")]),
+            ('Liquidity<div style="font-size:15px;letter-spacing:.3px;text-transform:none;font-weight:600;margin-top:4px;color:#5E6873">short term</div>', [
+                ("Current ratio", "Current assets / current liabilities", "2.31", "1.55"),
+                ("Quick ratio", "(Current assets − inventories) / current liab.", "1.16", "0.94"),
+                ("Cash cover", "Cash + current fin. assets / current debt", "2.6×", "–")])]
     trs = ""
     for g, items in rows:
         for i, (r, f, l, c) in enumerate(items):
             gcell = f'<td class="g" rowspan="{len(items)}">{g}</td>' if i == 0 else ""
             trs += f'<tr>{gcell}<td style="font-weight:700">{r}</td><td class="f">{f}</td><td class="n l">{l}</td><td class="n">{c}</td></tr>'
     table = (f'<table class="rt" style="font-size:20px"><tr><th>Group</th><th>Ratio</th><th>Formula</th><th class="l">Liebherr</th><th class="c">Caterpillar</th></tr>{trs}</table>')
-    slides.append(frame(0, "Excel workbook, sheets D3 (blocks D, E, G, H) and D7; Report Tables J5 and J14. 2025; days on average balances; Caterpillar on the FIFO basis",
-        scope("t15", [(".rt", "font-size:21px"), (".rt td", "padding:10px 14px"), (".rt td.f", "font-size:18px")]) + hdr(SEC, "Ratios II: strong liquidity, slow capital", "Asset utilisation, working capital, liquidity and solvency – 2025") +
+    slides.append(frame(0, "Excel workbook, sheets D3 (blocks D, E, G, H), D4 and D7; Report Tables J5 and J14. 2025; days on average balances; Caterpillar on the FIFO basis",
+        scope("t15", [(".rt", "font-size:20px"), (".rt td", "padding:8px 14px"), (".rt td.f", "font-size:17px"), ("td.g", "width:190px;font-size:19px;color:var(--navy)")]) + hdr(SEC, "Efficiency, leverage, liquidity: slow capital, solid finance", "How capital is used, how it is financed and how liquid Liebherr is – 2025") +
         f'<div class="t15" style="position:absolute;left:96px;top:236px;width:1310px">{table}</div>' +
-        box(1436, 236, 388, 650,
+        box(1436, 236, 388, 660,
             '<div style="font-size:18px;font-weight:800;letter-spacing:2px;color:var(--y)">READ WITH CARE</div>'
             '<div style="font-size:21px;line-height:1.45;margin-top:14px;color:#fff">'
-            '<b style="color:var(--y)">Days on a revenue basis:</b> Liebherr reports no cost of sales. On its own cost basis DIO would be 299 days – not comparable.<br><br>'
+            '<b style="color:var(--y)">Days = efficiency, but they drive liquidity:</b> 203 days of revenue must be financed.<br><br>'
+            '<b style="color:var(--y)">Revenue basis:</b> Liebherr reports no cost of sales; on its own cost basis DIO would be 299 days – not comparable.<br><br>'
             '<b style="color:var(--y)">Two debt measures:</b> “debt” includes pensions (€3,714 m); bank and lease liabilities (€2,898 m) match the Damodaran benchmark.<br><br>'
             '<b style="color:var(--y)">Interest cover:</b> not computable – no interest expense disclosed. Indicator: operating profit / interest paid 3.90.</div>',
             "var(--navy)", False)))
@@ -385,8 +391,8 @@ def add_ratios(slides, frame, hdr, card, ul):
 
 
 NOTES = [
-    ("Backup A – Ratios I", "—", "Return on equity is profit after tax divided by average equity: 272 over 9,128 is 3.0 per cent. Before tax it is 4.8 per cent. DuPont splits it into net margin, asset turnover and leverage, where leverage is average total assets over average equity. Leverage works on return on equity, not on the EBIT margin, because EBIT is measured before interest. ROA is measured on EBIT because Liebherr does not disclose its interest expense. Caterpillar's return on equity is inflated by its treasury shares and is not comparable."),
-    ("Backup A – Ratios II", "—", "The current ratio and the quick ratio are liquidity ratios; equity ratio, debt to equity and debt to EBITDA are solvency ratios. The working-capital days are calculated on revenue, because Liebherr reports no cost of sales; on its own cost basis inventory days would be 299 and not comparable. There are two debt measures: debt including pensions of 3,714 million euro, which gives debt to equity of 0.40, and bank and lease liabilities of 2,898 million euro, which match the Damodaran benchmark and give 23.7 per cent of capital and 2.90 times EBITDA. Interest cover cannot be computed for Liebherr."),
+    ("Backup A – Profitability ratios", "—", "We group the ratios into four families. This slide shows profitability, both margins and returns on capital. Return on equity is profit after tax divided by average equity, so 272 over 9,128, which is 3.0 per cent, or 4.8 per cent before tax. ROA, ROCE and ROE belong to profitability, because they measure profit against the capital used. DuPont links the families. ROE equals profitability times efficiency times leverage, and leverage is average total assets over average equity. Leverage works on ROE, not on the EBIT margin, because EBIT is measured before interest. Caterpillar's ROE is inflated by its treasury shares and is not comparable."),
+    ("Backup A – Efficiency, leverage, liquidity", "—", "The other three families are efficiency, leverage and liquidity. Efficiency, also called asset utilisation, covers the turnover ratios and the working-capital days. The days are efficiency ratios, but they drive liquidity, because 203 days of revenue have to be financed. Leverage, or solvency, shows how Liebherr is financed in the long run, with an equity ratio of 53.5 per cent and a DuPont leverage of 1.89 against 3.97 at Caterpillar. Liquidity is short term. The current ratio of 2.31 and the quick ratio of 1.16 are liquidity ratios, not leverage ratios. Days are on a revenue basis because Liebherr reports no cost of sales, and there are two debt measures, one including pensions of 3,714 million euro and the bank and lease liabilities of 2,898 million euro used for the benchmark."),
     ("Backup A – Workbook to ratio", "—", "This is an excerpt of sheet D3 for Liebherr in 2025. Every input is a formula that links to the recast statements or to the adjustments sheet, so nothing is typed in. Return on equity in cell B40 is B10 divided by B27, so 272 over the average equity of 9,128, which gives 3.0 per cent. Inventory days are average inventories divided by revenue times 365, which gives 157.5 days. The current ratio is current assets of 12,709 divided by current liabilities of 5,498, which gives 2.31. Sheet E2 reconciles every subtotal, with zero open differences."),
     ("Backup A – What-if I", "—", "If suppliers are paid in cash, current assets and current liabilities fall by the same amount, so a current ratio above one rises – with 500 million euro it would go from 2.31 to 2.44. An inventory write-down lowers profit and the current ratio, but also the inventory days, so the ratio looks better while the position is weaker. New debt lowers the equity ratio and raises leverage, but leaves the EBIT margin unchanged. A shorter cash conversion cycle releases cash once, it does not improve the margin."),
     ("Backup A – What-if II", "—", "Accounting choices move profit, not cash. A provision addition is an expense, usage settles the obligation in cash without a profit effect, and a reversal increases profit without cash. Slower depreciation and more own work capitalised raise EBIT today. Caterpillar's switch from LIFO to FIFO raises profit and equity. That is why operating cash flow, only 28.4 per cent of EBITDA over four years, is our check on the accruals."),

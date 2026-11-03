@@ -13,7 +13,7 @@
 
 ## Backup slides (13–44)
 
-Slides 1–12 are the 10-minute talk. Slides 13–44 are backup for the Q&A: index of every backup slide, each clickable (13), A ratios, workbook-to-ratio excerpt, what-if logic, provisions, sensitivities, long list, key accounts, red-flag screen, short list of 22 findings, workbook (14–26), B business model (27–29), C accounting analysis (30–33), D financial analysis (34–37), E recommendation, scenarios and risks (38–40), F likely questions (41–43), references in APA (44). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
+Slides 1–12 are the 10-minute talk. Slides 13–44 are backup for the Q&A: index of every backup slide, each clickable (13), A ratios by profitability, efficiency, leverage and liquidity, workbook-to-ratio excerpt, what-if logic, provisions, sensitivities, long list, key accounts, red-flag screen, short list of 22 findings, workbook (14–26), B business model (27–29), C accounting analysis (30–33), D financial analysis (34–37), E recommendation, scenarios and risks (38–40), F likely questions (41–43), references in APA (44). The index sections and every ◂ INDEX button are clickable (HTML and PowerPoint slide show). In the HTML version press **I** to jump to the index; End returns to the last talk slide.
 
 ## Presenting with the animated version
 

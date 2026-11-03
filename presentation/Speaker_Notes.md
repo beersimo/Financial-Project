@@ -147,13 +147,13 @@ On behalf of the whole team, thank you very much for your attention. We are happ
 
 Backup slides, not part of the 10-minute talk. Use them to answer questions: A covers ratios, formulas, what-if logic, provisions, sensitivities, the long and short list and the workbook – the most likely questions. B covers the business model, C the accounting analysis, D the financial analysis, E the recommendation and scenarios, F likely questions. Click a section to jump there; every backup slide links back to this index.
 
-## 14 · Backup A – Ratios I
+## 14 · Backup A – Profitability ratios
 
-Return on equity is profit after tax divided by average equity: 272 over 9,128 is 3.0 per cent. Before tax it is 4.8 per cent. DuPont splits it into net margin, asset turnover and leverage, where leverage is average total assets over average equity. Leverage works on return on equity, not on the EBIT margin, because EBIT is measured before interest. ROA is measured on EBIT because Liebherr does not disclose its interest expense. Caterpillar's return on equity is inflated by its treasury shares and is not comparable.
+We group the ratios into four families. This slide shows profitability, both margins and returns on capital. Return on equity is profit after tax divided by average equity, so 272 over 9,128, which is 3.0 per cent, or 4.8 per cent before tax. ROA, ROCE and ROE belong to profitability, because they measure profit against the capital used. DuPont links the families. ROE equals profitability times efficiency times leverage, and leverage is average total assets over average equity. Leverage works on ROE, not on the EBIT margin, because EBIT is measured before interest. Caterpillar's ROE is inflated by its treasury shares and is not comparable.
 
-## 15 · Backup A – Ratios II
+## 15 · Backup A – Efficiency, leverage, liquidity
 
-The current ratio and the quick ratio are liquidity ratios; equity ratio, debt to equity and debt to EBITDA are solvency ratios. The working-capital days are calculated on revenue, because Liebherr reports no cost of sales; on its own cost basis inventory days would be 299 and not comparable. There are two debt measures: debt including pensions of 3,714 million euro, which gives debt to equity of 0.40, and bank and lease liabilities of 2,898 million euro, which match the Damodaran benchmark and give 23.7 per cent of capital and 2.90 times EBITDA. Interest cover cannot be computed for Liebherr.
+The other three families are efficiency, leverage and liquidity. Efficiency, also called asset utilisation, covers the turnover ratios and the working-capital days. The days are efficiency ratios, but they drive liquidity, because 203 days of revenue have to be financed. Leverage, or solvency, shows how Liebherr is financed in the long run, with an equity ratio of 53.5 per cent and a DuPont leverage of 1.89 against 3.97 at Caterpillar. Liquidity is short term. The current ratio of 2.31 and the quick ratio of 1.16 are liquidity ratios, not leverage ratios. Days are on a revenue basis because Liebherr reports no cost of sales, and there are two debt measures, one including pensions of 3,714 million euro and the bank and lease liabilities of 2,898 million euro used for the benchmark.
 
 ## 16 · Backup A – Workbook to ratio
 
