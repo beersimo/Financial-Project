@@ -9,6 +9,7 @@
 | `Liebherr_Backup_Slides.pdf` | Backup slides 13–52 only (index, A–F, references), with clickable index and ◂ INDEX links. |
 | `Liebherr_Investment_Analysis_Presentation.pdf` | Backup and hand-in. Fade transitions play in full-screen mode (Acrobat: Ctrl+L). |
 | `Liebherr_Speaker_Notes_FINAL.pdf` | **Final speaker notes for the talk:** speaker plan (Adam 1–3, Zarah 4–5, Philipp 6–8, Simon 9–12), handover lines and click cues, ≈ 9:45 min. |
+| `Moderation_Cards_Simon.pdf` | Moderator cards for Simon (slides 9–12): A4, three cards per page (210 × 99 mm), cut along the dashed lines. Build others with `python3 scripts/cards.py build <Name> out.pdf`. |
 | `Liebherr_Speaker_Notes.pdf` / `Speaker_Notes.md` | Same notes plus the backup slides. |
 
 ## Backup slides (13–52)
