@@ -69,6 +69,8 @@ def add_backup(slides, frame, band, dots):
                         hdr("B | Business model", "Competitive forces squeeze the margin", "Porter's five forces") + rws +
                         '<div class="pill" style="top:880px"><b>Investor lens</b> Limited industry profit potential – consistent with the fall to 2.8 %</div>'))
 
+    X.value_chain(slides, frame, hdr, card, ul, "B | Business model")
+
     # ---------------------------------------------------------------- A3 VRIO + SWOT
     vrio = ul(["<b>Sustained advantage:</b> in-house key technologies (40+ production sites in 16 countries), application engineering (R&amp;D €708 m, 4.8 % of revenue), family ownership with permanent capital (equity ratio 53.5 %)",
                "<b>Parity only:</b> wholly-owned sales and service network, decentralised divisional structure",
@@ -82,6 +84,8 @@ def add_backup(slides, frame, band, dots):
     slides.append(frame(16, "Report §3.2 and §3.4, Tables E1 and D1",
                         hdr("B | Business model", "Hard-to-copy resources – locked in the asset base", "VRIO and SWOT") +
                         card(96, 250, 870, 612, "VRIO: what is hard to copy", vrio, "navy") + swot))
+
+    X.corporate_strategy(slides, frame, hdr, card, ul, "B | Business model")
 
     # ---------------------------------------------------------------- B1 Red flags
     flags = ul(["<b>Provision reversals:</b> €143 m in 2025, 34.6 % of the operating result if credited within it",
@@ -300,9 +304,7 @@ def build_index(slides, frame, band):
             html += (f'<a data-goto="{refs}" style="position:absolute;left:{x}px;top:{y + 10}px;width:412px;height:58px;display:flex;align-items:center;gap:14px;'
                      f'background:var(--navy);color:#fff;border-radius:12px;padding:0 18px;text-decoration:none;cursor:pointer">'
                      f'<span style="font-weight:800;color:var(--y);font-size:18px">{refs}</span><span class="h" style="font-size:21px;color:#fff">References (APA)</span>'
-                     f'<span style="margin-left:auto;color:var(--y);font-weight:800">▸</span></a>'
-                     f'<div style="position:absolute;left:{x}px;top:{y + 100}px;width:412px;background:var(--y);border-radius:12px;padding:16px 18px;font-size:19px;line-height:1.4">'
-                     f'<b>Most asked last year:</b> ratios, Excel, long and short list – section A.</div>')
+                     f'<span style="margin-left:auto;color:var(--y);font-weight:800">▸</span></a>')
     page = frame(INDEX, None, band("Backup", "Backup slides for the questions",
                                    "Not part of the 10-minute talk – click a slide to jump there; ◂ INDEX on every slide brings you back") +
                  "<style>.ix:hover{background:#FFF8D6}</style>" + html)
@@ -314,7 +316,9 @@ BACKUP_NOTES_BASE = [
     ("Backup index", "—", "Backup slides, not part of the 10-minute talk. Use them to answer questions: A covers ratios, formulas, what-if logic, provisions, sensitivities, the long and short list and the workbook – the most likely questions. B covers the business model, C the accounting analysis, D the financial analysis, E the recommendation and scenarios, F likely questions. Click a section to jump there; every backup slide links back to this index."),
     ("Backup B – DESTEP", "—", "The DESTEP scan shows a modest European recovery from 2026, set against higher financing costs, tariff uncertainty and a technology and labour transition that raises costs before it raises prices. Economic and political factors carry the largest near-term risk, technological and ecological factors the largest long-term opportunity. A market recovery alone does not show that the margin recovers."),
     ("Backup B – Five forces", "—", "Buyer power and rivalry are high, the threat of new entrants and supplier power are moderate and rising, and substitutes are a low to moderate threat. The industry profit potential is therefore limited and squeezed from the customer side and by low-cost entrants. This is consistent with the fall of the operating margin to 2.8 per cent in 2025 against 17.2 per cent at Caterpillar."),
+    X.NOTES["value_chain"],
     ("Backup B – VRIO and SWOT", "—", "The VRIO test shows that in-house technology, application engineering and family capital are sustained advantages, while the sales and service network is only at parity, because Caterpillar's independent dealers provide comparable access. The SWOT sums it up: vertical integration and the equity ratio are the strengths that matter, the weakness is the margin and the weakening internal funding, the opportunity is demand for low-emission and automated machines, and the threats are low-price competitors and tariffs."),
+    X.NOTES["corporate"],
     ("Backup C – Red flags", "—", "We ran nine red-flag tests over four years. Four raised a flag, three came back clean and two cannot be run. The flags are the provision reversals of 143 million euro, receivables growing faster than revenue, an effective tax rate between 37.8 and 99.2 per cent without a reconciliation, and the impairment of 55 million euro in 2023. The tests that cannot be run are related party transactions and year-end adjustments. Red flags are reasons to ask, not proof of manipulation."),
     ("Backup C – Room for judgement", "—", "Flexibility is rated on two criteria: the degree of judgement the standard permits and the materiality of the amount. It is highest for inventories and their allowance, the impairment test, the provisions and deferred tax assets. Own work capitalised, property, plant and equipment and revenue timing follow. It is lowest where the standard prescribes the mechanics, as with borrowing costs, lessee accounting and currency translation."),
     X.NOTES["conservative"],

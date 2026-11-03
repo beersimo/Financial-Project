@@ -1,6 +1,6 @@
 # Liebherr Group – Final speaker notes
 
-Talk: slides 1–12, about 9:50 min at a calm pace (~125 words per minute). Backup: slides 13–52.
+Talk: slides 1–12, about 9:50 min at a calm pace (~125 words per minute). Backup: slides 13–55.
 
 | Speaker | Slides | Time |
 |---|---|---|
@@ -179,126 +179,138 @@ Provisions under IAS 37 need a present obligation from a past event, a probable 
 
 We measure two effects without booking them. If the net provision charge had been at its 2022 to 2024 average of 1.76 per cent of revenue instead of 1.31, EBIT would be 347 million euro and the margin 2.35 per cent; without the high charge of 2023 it would be 2.68. At Caterpillar's depreciation rate depreciation would be 105 million euro higher and the margin 2.08 per cent. Both together give 242 million euro, or 1.64 per cent. Sheet D9 also shows a gross-reversal view, but the report uses the net charge because additions rose with the reversals.
 
-## 22 · Backup A – Long list to short list
+## 22 · Backup A – Six steps
+
+Our accounting analysis follows the six steps of Palepu. First, we identified the key accounting policies, a long list of 30 treatments and seven key accounts. Second, we assessed flexibility by the judgement the standard permits and the materiality of the amount. Third, we evaluated the accounting strategy, where the evidence points both ways. Fourth, we evaluated the quality of disclosure, which is the hardest limit. Fifth, we ran the red-flag screen with nine tests. Sixth, we undid the distortions we could, and built the short list of 22 findings.
+
+## 23 · Backup A – Long list to short list
 
 Step one is the long list of 30 accounting treatments with room for choice. Step two keeps the nine that combine a key account with high or medium-to-high flexibility. Step three is the red-flag screen: eight tests plus one consistency check, with four flags, three clean and two not testable. Step four is the short list of 22 findings: seven that no adjustment can remove, five reversed in the workbook and ten the disclosure does not allow us to reverse. Seven key accounts hold the nine key treatments, and the nine tests are a different count. The short list is not a subset of the 30, because it also contains red flags, disclosure gaps and comparability issues.
 
-## 23 · Backup A – Long list I
+## 24 · Backup A – Long list I
 
 The long list has 30 accounting treatments from the notes, each rated by two criteria, the judgement the standard permits and the materiality of the amount. In revenue and operating assets, the highest flexibility lies in the cost and write-down of inventories and in impairment. Own work capitalised is medium to high because it equals 77 per cent of the operating result. Borrowing costs, goodwill and lessee accounting are low, because the standard prescribes the mechanics or the amounts are small.
 
-## 24 · Backup A – Long list II
+## 25 · Backup A – Long list II
 
 The second half covers provisions, tax, financial items and presentation. All three provision categories and deferred taxes are rated high. Pensions, securities and derivatives matter only partly, because they affect solvency or the finance result rather than the operating margin. The income statement by nature is a key treatment because it affects every ratio, and we corrected it in the recast. In total nine items combine a key account with high flexibility, plus revenue timing and the by-nature format.
 
-## 25 · Backup A – Key accounts
+## 26 · Backup A – Key accounts
 
 Seven key accounts carry the judgement. Inventories under IAS 2, provisions under IAS 37, property, plant and equipment under IAS 16 and 36, own work capitalised, receivables under IFRS 9, revenue under IFRS 15 and deferred taxes under IAS 12. They are on the short list because they combine a material amount with high or medium flexibility: inventories are 36.3 per cent of total assets, provision reversals equal 34.6 per cent of the operating result, own work capitalised 77 per cent, and the tax rate swings between 37.8 and 99.2 per cent without a reconciliation.
 
-## 26 · Backup A – Red-flag screen
+## 27 · Backup A – Red-flag screen
 
 We ran the eight red-flag tests of step five over four years, plus one consistency check of step three. Four raised a flag. Provision reversals rose while the result fell, inventories and receivables grew faster than sales, the tax rate swung without a reconciliation, and the impairment of 2023 was six times the normal level. Three tests are clean, namely off-balance-sheet structures, the audit opinion and policy changes. Two cannot be run, because there are no interim figures and no related party note. A red flag is a reason to ask, not proof of manipulation.
 
-## 27 · Backup A – Short list I
+## 28 · Backup A – Short list I
 
 The short list has 22 findings. Seven are red flags or disclosure gaps that no adjustment can remove – for example the provision reversals, the unexplained tax charge and the other operating expenses without a note. Five distortions we reversed in the workbook – the most important is Caterpillar's LIFO inventory, restated to FIFO with the disclosed excess of 4,305 million dollars.
 
-## 28 · Backup A – Short list II
+## 29 · Backup A – Short list II
 
 Ten distortions cannot be reversed because the disclosure is too thin: for example the gross presentation of rental machine disposals, the missing interest split, the missing segment note, the pension assumptions and the undisclosed allowances. The different depreciation rates we measured in a sensitivity, but did not book, because the asset mixes differ.
 
-## 29 · Backup A – Workbook
+## 30 · Backup A – Workbook
 
 The workbook starts with the published statements typed exactly as printed. The B sheets recast both companies into one format by nature using formulas only, with 21 documented mapping decisions. The C sheets hold the LIFO to FIFO restatement and the note data, the D sheets the analysis. Sheet E1 documents 44 judgements and sheet E2 reconciles every recast subtotal with the published figure: zero open differences, apart from three labelled ones.
 
-## 30 · Backup B – DESTEP
+## 31 · Backup B – DESTEP
 
 The DESTEP scan shows a modest European recovery from 2026, set against higher financing costs, tariff uncertainty and a technology and labour transition that raises costs before it raises prices. Economic and political factors carry the largest near-term risk, technological and ecological factors the largest long-term opportunity. A market recovery alone does not show that the margin recovers.
 
-## 31 · Backup B – Five forces
+## 32 · Backup B – Five forces
 
 Buyer power and rivalry are high, the threat of new entrants and supplier power are moderate and rising, and substitutes are a low to moderate threat. The industry profit potential is therefore limited and squeezed from the customer side and by low-cost entrants. This is consistent with the fall of the operating margin to 2.8 per cent in 2025 against 17.2 per cent at Caterpillar.
 
-## 32 · Backup B – VRIO and SWOT
+## 33 · Backup B – Value chain
+
+The value chain is configured for differentiation and pays for it with capital intensity. Upstream, materials and personnel together take 81 per cent of revenue, so vertical integration buys technological control rather than low cost. Fixed assets are 29 per cent of revenue against 22 per cent at Caterpillar, and investment was 1.8 times depreciation. Downstream, Liebherr sells through its own companies, while Caterpillar uses about 150 independent dealers, so the working capital of distribution sits on Liebherr's balance sheet. Technology development is 4.8 per cent of revenue and expensed in full.
+
+## 34 · Backup B – VRIO and SWOT
 
 The VRIO test shows that in-house technology, application engineering and family capital are sustained advantages, while the sales and service network is only at parity, because Caterpillar's independent dealers provide comparable access. The SWOT sums it up: vertical integration and the equity ratio are the strengths that matter, the weakness is the margin and the weakening internal funding, the opportunity is demand for low-emission and automated machines, and the threats are low-price competitors and tariffs.
 
-## 33 · Backup C – Red flags
+## 35 · Backup B – Corporate strategy
+
+Corporate strategy asks whether the group is worth more than its parts. The strongest mechanism is the financial market. Liebherr runs an internal capital market and invests from retained profit, more than one billion euro in 2025 against depreciation of 587 million, while it paid out only 56 million. That continuity depends on internal funding, and operating cash flow fell from 1,171 to 530 million euro. The product market explains the large asset base, the labour market part of the cost base. Decisions are decentralised, the board consists of family members only, and the information systems are the weakest point, because there are no segment figures. Shared components are the one real operating synergy.
+
+## 36 · Backup C – Red flags
 
 We ran nine red-flag tests over four years. Four raised a flag, three came back clean and two cannot be run. The flags are the provision reversals of 143 million euro, receivables growing faster than revenue, an effective tax rate between 37.8 and 99.2 per cent without a reconciliation, and the impairment of 55 million euro in 2023. The tests that cannot be run are related party transactions and year-end adjustments. Red flags are reasons to ask, not proof of manipulation.
 
-## 34 · Backup C – Room for judgement
+## 37 · Backup C – Room for judgement
 
 Flexibility is rated on two criteria: the degree of judgement the standard permits and the materiality of the amount. It is highest for inventories and their allowance, the impairment test, the provisions and deferred tax assets. Own work capitalised, property, plant and equipment and revenue timing follow. It is lowest where the standard prescribes the mechanics, as with borrowing costs, lessee accounting and currency translation.
 
-## 35 · Backup C – Conservative or aggressive?
+## 38 · Backup C – Conservative or aggressive?
 
 The report gives no simple answer, because the evidence points both ways. On the conservative side, development costs are never capitalised, and the usual incentives to inflate profit are absent, because Liebherr is unlisted and family-owned, with no share-based pay and no disclosed covenant. On the other side, own work capitalised equals 77 per cent of the operating result, provision reversals 34.6 per cent, and deferred tax assets are recognised at announced rather than enacted rates. So conservatism is plausible but not proven. Palepu reminds us that conservative accounting can mislead as well, because reserves built in good years can be released in weak ones, which fits the other provisions built up in 2023 and released in 2025.
 
-## 36 · Backup C – Adjustments and limits
+## 39 · Backup C – Adjustments and limits
 
 The short list holds 22 accounting findings. Seven are red flags or disclosure gaps that no adjustment can remove, five were reversed in the workbook, and ten cannot be reversed because the disclosure is too thin. The quantified effects make the 2025 result look better, not worse: the operating margin of 2.8 per cent falls to between about 1.6 and 2.7 per cent in the measured scenarios, so the weakness is, if anything, understated.
 
-## 37 · Backup C – Reliability of ratios
+## 40 · Backup C – Reliability of ratios
 
 Table J13 shows what the accounting analysis does to each ratio, grouped like our ratio slides. For profitability, the operating margin trend is reliable, but its level is overstated on the measured items, so the scenarios range from 1.6 to 2.8 per cent. Net margin and after-tax return on equity are not usable because of the tax charge. For efficiency, inventory and payable days measure the capital tied up, not its quality. For leverage, the equity ratio is slightly overstated, about 50 per cent at Caterpillar's depreciation rate, and interest cover cannot be computed. Liquidity is reliable for the Liebherr trend.
 
-## 38 · Backup D – Growth and costs
+## 41 · Backup D – Growth and costs
 
 Revenue growth slowed from 11.5 per cent in 2023 to 1.0 per cent in 2025. The slowdown came from construction and mining, which fell 5.5 per cent, while the other segments grew 14.7 per cent. The margin fell from 4.6 to 2.8 per cent because personnel expense grew 5.3 per cent against revenue growth of 1.0 per cent, and other operating items added to the burden. Each margin point is worth 148 million euro.
 
-## 39 · Backup D – Common size
+## 42 · Backup D – Common size
 
 The common-size balance sheet shows that inventories are 36.3 per cent of total assets and equity 53.5 per cent. In the income statement, materials take 52.7 per cent of revenue and personnel 28.6 per cent, so only 2.8 per cent is left as operating profit. The horizontal analysis shows personnel costs up 5.3 per cent while revenue grew 1 per cent, and operating profit down 38.7 per cent. The recast matters here. As published, the materials ratio fell from 60.0 to 54.6 per cent, but after the recast it stayed between 52.7 and 53.2 per cent, so the apparent saving was only the stock build.
 
-## 40 · Backup D – DuPont
+## 43 · Backup D – DuPont
 
 We read the return on equity before tax because the tax charge is volatile. The pre-tax return fell from 7.6 per cent in 2023 to 4.8 per cent in 2025. The DuPont decomposition assigns 2.89 percentage points of the fall to the lower pre-tax margin and 0.20 points to lower asset turnover, while higher leverage added 0.28 points. Leverage is therefore not the cause – the margin is.
 
-## 41 · Backup D – Liquidity and benchmark
+## 44 · Backup D – Liquidity and benchmark
 
 Solvency is the clearest strength, with an equity ratio of 53.5 per cent and a current ratio of 2.31. The cushion is shrinking, though: the net financial position fell from 523 million euro in 2022 to a net debt of 85 million in 2023 and stood at 249 million in 2025, and debt to EBITDA rose to 2.90, above the industry's 2.30. Against the industry and Caterpillar, margins and returns are far lower and inventories tie up much more capital. Caterpillar's return on equity is not comparable because of its treasury shares.
 
-## 42 · Backup D – Cash flow
+## 45 · Backup D – Cash flow
 
 Cash flow is the weakest part of the figures. From 2022 to 2025 capital expenditure equalled 190.2 per cent of operating cash flow and free cash flow totalled minus 1,151 million euro. Operating cash flow fell from 1,171 million euro in 2024 to 530 million in 2025. Liebherr spends more than Caterpillar relative to revenue but earns a far lower margin, and borrowing helped fund investment and distributions. Caterpillar generated free cash flow of 7,453 million dollars and returned 73.1 per cent of its operating cash flow to shareholders.
 
-## 43 · Backup E – Why 3.9 %
+## 46 · Backup E – Why 3.9 %
 
 The margin of 3.9 per cent is the four-year average and therefore a realistic first test of recovery. At 2025 revenue it would add 157 million euro of operating profit. It is a trigger, not a target return: even in 2024, at a margin of 4.6 per cent, the return on capital employed was 5.9 per cent before tax, below the 7.70 per cent after-tax benchmark. Earning the benchmark would need a margin of about 6 to 8 per cent. The benchmark is that of listed US machinery companies, not Liebherr's own cost of capital.
 
-## 44 · Backup E – Scenarios
+## 47 · Backup E – Scenarios
 
 The margin scenarios apply margins Liebherr has already earned to the revenue of 2025 – illustrations on published figures, not forecasts. The industry margin shows the size of the gap and is not a target. On the cash side the net financial position of 249 million euro covers the free cash flow shortfall of 176 million euro for 1.4 years and the shortfall after distributions for 1.1 years. Capital expenditure at the level of depreciation would improve free cash flow by 119 million euro, but it would still be negative at minus 57 million. Ten fewer days in the cash conversion cycle would release about 405 million euro, once.
 
-## 45 · Backup E – Risks and drop trigger
+## 48 · Backup E – Risks and drop trigger
 
 Demand, tariffs and the cost of new technology are the main external risks. Financing is not the immediate constraint, but prolonged underperformance would make it one. The investor needs information rights because the largest cost increase of 2025 cannot be explained. The report does not assess a valuation. For a risk-averse investor an equity stake is unsuitable and a loan might fit better in principle, but its terms are not disclosed. The drop trigger is a margin near 2.8 per cent in 2026 together with a negative net financial position.
 
-## 46 · Backup E – Levers and changes
+## 49 · Backup E – Levers and changes
 
 Chapter 7 names three levers for future performance. The first is demand, which is weak until 2027. The second is the margin, where each point is worth 148 million euro. The third is working capital, where ten days less release about 405 million euro, but only once. From these, chapter 8 derives three changes to monitor. Personnel costs should follow orders and revenue, capital expenditure should be prioritised by expected return and stay within operating cash flow over time, and the cash conversion cycle should shorten. In due diligence the investor should also request segment results and assets.
 
-## 47 · Backup E – What to check in 2026
+## 50 · Backup E – What to check in 2026
 
 Table 3 lists the indicators for a reassessment. The first three rows are the conditions, namely a margin of at least 3.9 per cent, positive free cash flow that covers distributions, and information rights. The other rows are supporting signals, not automatic triggers. These are a personnel ratio falling back towards 26.4 per cent, other operating expenses back towards 13.3 per cent, capex below 100 per cent of operating cash flow over four years, a cash conversion cycle at least ten days shorter, a positive net financial position, debt to EBITDA back towards 2.30, and a ROCE rising towards the 7.70 per cent benchmark.
 
-## 48 · Backup F – Questions 1/4
+## 51 · Backup F – Questions 1/4
 
 Answer 1 is the recommendation in short. Answer 2 explains why the four-year average is only a first test. Answer 3 shows that the adjustment of Caterpillar to FIFO is small compared with the gap in margin.
 
-## 49 · Backup F – Questions 2/4
+## 52 · Backup F – Questions 2/4
 
 The red flags are reasons to ask. ROCE is low because of the low margin and the capital tied up in inventories. The balance sheet protects the investor, but it cannot replace better returns and cash conversion.
 
-## 50 · Backup F – Questions 3/4
+## 53 · Backup F – Questions 3/4
 
 We read returns before tax because the effective tax rate swung between 37.8 and 99.2 per cent without a reconciliation. Caterpillar is the world's leading maker of construction and mining equipment, the market of Liebherr's largest sector, and we only compare ratios. The Damodaran industry is a reference level, not Liebherr's cost of capital. Own work capitalised is self-built equipment, not development costs. Working-capital days use revenue because Liebherr reports no cost of sales.
 
-## 51 · Backup F – Questions 4/4
+## 54 · Backup F – Questions 4/4
 
 The sustainable growth rate is return on equity times one minus the payout ratio, so 2.4 per cent. The advice depends on the investor. For a risk-averse investor equity is unsuitable and a loan may fit better, for our long-term investor the answer is not yet, and a risk-seeking investor would need a price that reflects the risk. The pre-tax margin is above the operating margin because the finance result was positive in 2025. Days sales outstanding are 73.8 on average balances or 77 on year-end balances, so always say which basis you quote. And the guarantees for customer financing are not on the balance sheet, and their volume is not disclosed.
 
-## 52 · References
+## 55 · References
 
 Reference list for every source cited on the slides, in APA 7th edition. The full entries with URLs are in the report. Use this slide if someone asks where an external figure comes from.

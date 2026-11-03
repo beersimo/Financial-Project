@@ -142,3 +142,72 @@ NOTES = {
     "table3": ("Backup E – What to check in 2026", "—", "Table 3 lists the indicators for a reassessment. The first three rows are the conditions, namely a margin of at least 3.9 per cent, positive free cash flow that covers distributions, and information rights. The other rows are supporting signals, not automatic triggers. These are a personnel ratio falling back towards 26.4 per cent, other operating expenses back towards 13.3 per cent, capex below 100 per cent of operating cash flow over four years, a cash conversion cycle at least ten days shorter, a positive net financial position, debt to EBITDA back towards 2.30, and a ROCE rising towards the 7.70 per cent benchmark."),
     "qa4": ("Backup F – Questions 4/4", "—", "The sustainable growth rate is return on equity times one minus the payout ratio, so 2.4 per cent. The advice depends on the investor. For a risk-averse investor equity is unsuitable and a loan may fit better, for our long-term investor the answer is not yet, and a risk-seeking investor would need a price that reflects the risk. The pre-tax margin is above the operating margin because the finance result was positive in 2025. Days sales outstanding are 73.8 on average balances or 77 on year-end balances, so always say which basis you quote. And the guarantees for customer financing are not on the balance sheet, and their volume is not disclosed."),
 }
+
+
+def value_chain(slides, frame, hdr, card, ul, sec):
+    cols = [("Upstream · production", "white", [
+                "Materials 52.7 % + personnel 28.6 % = <b>81.3 % of revenue</b> – integration buys control, not low cost",
+                "PP&amp;E 29.1 % of revenue (Caterpillar 22.4 %)",
+                "Investment €1,059 m = 1.8× depreciation (incl. €305 m rental fleet)",
+                "Inventories 42.9 % of revenue; work in progress 19.7 % of stock (CAT 8.8 %)"]),
+            ("Downstream · sales and service", "white", [
+                "Own distribution and sales companies – Caterpillar: about 150 independent dealers in 190 countries",
+                "So working capital and distribution cost sit on Liebherr's books",
+                "Receivables 77 days of sales at year end (CAT 59)",
+                "Other operating expenses 13.3 % → 14.7 % of revenue"]),
+            ("Support activities", "navy", [
+                "Technology development 4.8 % of revenue (CAT 3.2 %), expensed in full – intangibles only €29 m",
+                "Components supply drive and control technology to the machine segments",
+                "Internal transfers not quantifiable – no segment data"])]
+    cc = "".join(card(96 + i * 586, 236, 556, 570, t, ul(b, 23.5), k) for i, (t, k, b) in enumerate(cols))
+    slides.append(frame(0, "Report §3.2.1 (value chain after Porter, 1985), Appendices B and C; Liebherr-International AG (2026); Caterpillar Inc. (2026)",
+        hdr(sec, "Value chain: built for differentiation, paid for with capital", "Porter's value chain – where Liebherr creates value and what it ties up") + cc +
+        '<div class="pill" style="top:830px"><b>Investor lens</b> The value chain explains the asset base – and the thin margin</div>'))
+
+
+def corporate_strategy(slides, frame, hdr, card, ul, sec):
+    rows = [("Financial market", "Strongest", "#E3F1E4", "#1E6B2A",
+             "Internal capital market – invested €1,059 m vs. depreciation €587 m; only €56 m of a €272 m profit distributed; R&amp;D 588 → 708 while EBIT fell 39 %. Depends on internal funding: OCF €1,171 m → €530 m"),
+            ("Product market", "Explains the assets", "#FFF4C2", "#6B5300",
+             "Components for extreme applications are not off the shelf – PP&amp;E and inventories are 60.9 % of total assets"),
+            ("Labour market", "Explains costs", "#FFF4C2", "#6B5300",
+             "Own training – 3,186 apprentices and interns – because skilled trades are short"),
+            ("Decision rights", "A governance issue", "#FBE3E3", "#A11B1B",
+             "Holding only coordinates; decentralised divisions; board of family members only – no capital-market scrutiny"),
+            ("Information systems", "Weakest", "#FBE3E3", "#A11B1B",
+             "No internal key figures, no remuneration report, no segment note – capital allocation cannot be assessed")]
+    rw = "".join(
+        f'<div style="position:absolute;left:96px;top:{236 + i * 124}px;width:1240px;height:112px;background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,24,46,.08);display:flex;align-items:center">'
+        f'<div style="width:270px;padding-left:24px" class="h"><span style="font-size:25px">{t}</span></div>'
+        f'<div style="width:230px">{_tag(r, bg, fg, 17)}</div><div style="flex:1;font-size:20.5px;line-height:1.32;padding-right:24px">{d}</div></div>'
+        for i, (t, r, bg, fg, d) in enumerate(rows))
+    slides.append(frame(0, "Report §3.3 (corporate strategy after Palepu et al., 2019); Liebherr-International AG (2023–2026); European Labour Authority (2026)",
+        hdr(sec, "Corporate strategy: patient capital, one real synergy", "Is the group worth more than its 13 segments? Three market imperfections, decision rights, information") + rw +
+        card(1366, 236, 458, 608, "What holds it together", "Shared components are the one genuine operating synergy.<br><br>"
+             "Where a segment shares neither components nor customers – hotels, domestic appliances – the case rests on diversification alone.<br><br>"
+             "<b>Diversification stabilised revenue in 2025, but it does not raise the margin.</b>", "navy")))
+
+
+def six_steps(slides, frame, hdr, sec):
+    st = [("1", "Identify key accounting policies", "30 treatments from notes 2 to 11 (long list); key accounts follow from the key success factors – 7 accounts", "Table G2, G1"),
+          ("2", "Assess accounting flexibility", "Judgement the standard permits × materiality – 9 items with high flexibility, plus revenue timing and the by-nature format", "Table G2"),
+          ("3", "Evaluate accounting strategy", "Evidence points both ways – conservatism plausible, not proven (no capital-market pressure)", "§4.3"),
+          ("4", "Evaluate the quality of disclosure", "The hardest limit – no tax reconciliation, pension assumptions, allowances, guarantees, related party note, note on other operating items (€2,572 m)", "§4.3"),
+          ("5", "Identify red flags", "8 standard tests (Palepu) + 1 consistency check – 4 raised, 3 clean, 2 not testable", "Table H1"),
+          ("6", "Undo distortions", "Short list of 22 findings – 7 not adjustable, 5 reversed in the workbook (e.g. LIFO → FIFO), 10 not reversible", "Table H2, H3")]
+    rw = "".join(
+        f'<div style="position:absolute;left:96px;top:{236 + i * 118}px;width:1728px;height:104px;background:{"var(--navy)" if i in (4, 5) else "#fff"};color:{"#fff" if i in (4, 5) else "var(--navy)"};'
+        f'border-radius:14px;box-shadow:0 4px 16px rgba(0,24,46,.08);display:flex;align-items:center;gap:22px;padding:0 24px">'
+        f'<div class="big" style="min-width:58px;height:58px;border-radius:50%;background:var(--y);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:30px">{n}</div>'
+        f'<div style="width:470px;font-family:Arimo,Arial,sans-serif;font-weight:700;font-size:25px;color:inherit">{t}</div>'
+        f'<div style="flex:1;font-size:21.5px;line-height:1.32">{d}</div><div style="width:130px;font-size:16px;font-weight:800;opacity:.7;text-align:right">{s}</div></div>'
+        for i, (n, t, d, s) in enumerate(st))
+    slides.append(frame(0, "Report chapter 4 and Appendices G and H; Palepu et al. (2019), six steps of accounting analysis",
+        hdr(sec, "Accounting analysis in six steps", "The framework of Palepu et al. (2019), applied to Liebherr") + rw))
+
+
+NOTES.update({
+    "value_chain": ("Backup B – Value chain", "—", "The value chain is configured for differentiation and pays for it with capital intensity. Upstream, materials and personnel together take 81 per cent of revenue, so vertical integration buys technological control rather than low cost. Fixed assets are 29 per cent of revenue against 22 per cent at Caterpillar, and investment was 1.8 times depreciation. Downstream, Liebherr sells through its own companies, while Caterpillar uses about 150 independent dealers, so the working capital of distribution sits on Liebherr's balance sheet. Technology development is 4.8 per cent of revenue and expensed in full."),
+    "corporate": ("Backup B – Corporate strategy", "—", "Corporate strategy asks whether the group is worth more than its parts. The strongest mechanism is the financial market. Liebherr runs an internal capital market and invests from retained profit, more than one billion euro in 2025 against depreciation of 587 million, while it paid out only 56 million. That continuity depends on internal funding, and operating cash flow fell from 1,171 to 530 million euro. The product market explains the large asset base, the labour market part of the cost base. Decisions are decentralised, the board consists of family members only, and the information systems are the weakest point, because there are no segment figures. Shared components are the one real operating synergy."),
+    "six_steps": ("Backup A – Six steps", "—", "Our accounting analysis follows the six steps of Palepu. First, we identified the key accounting policies, a long list of 30 treatments and seven key accounts. Second, we assessed flexibility by the judgement the standard permits and the materiality of the amount. Third, we evaluated the accounting strategy, where the evidence points both ways. Fourth, we evaluated the quality of disclosure, which is the hardest limit. Fifth, we ran the red-flag screen with nine tests. Sixth, we undid the distortions we could, and built the short list of 22 findings."),
+})

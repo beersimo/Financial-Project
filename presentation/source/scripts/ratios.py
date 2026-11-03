@@ -269,6 +269,9 @@ def add_ratios(slides, frame, hdr, card, ul):
             'The report uses the <b>net charge</b> (D11), because additions rose together with the reversals. Own work capitalised (€317 m) cannot be measured.</div></div>',
             "var(--light)", False)))
 
+    import extra as _X
+    _X.six_steps(slides, frame, hdr, SEC)
+
     # ------------------------------------------------------------- A7 Long list to short list
     st = [("1", "Long list", "30", "accounting treatments with room for choice", "Table G2", "yellow"),
           ("2", "Key treatments", "9", "key account × high or medium-to-high flexibility", "Table G1", "navy"),
@@ -437,12 +440,13 @@ def add_ratios(slides, frame, hdr, card, ul):
             "Liebherr's trade payables taken from note 7",
             "Caterpillar's operating costs kept as one line – no materials or personnel split published",
             "Liebherr in €, Caterpillar in $ – never added or divided across companies"], 21), "white") +
-        f'<div style="position:absolute;left:1206px;top:480px;width:618px;height:380px;background:#1E6B2A;color:#fff;border-radius:16px;padding:26px 30px">'
-        f'<div style="font-size:18px;font-weight:800;letter-spacing:2px;opacity:.85">CHECKS · SHEET E2</div>'
-        f'<div class="big" style="font-size:96px;color:#fff;line-height:1.05;margin-top:6px">0</div>'
-        f'<div style="font-size:24px;font-weight:800">open differences</div>'
-        f'<div style="font-size:20px;line-height:1.4;margin-top:14px">Every recast subtotal is a live formula against the published figure. Three deliberate differences are labelled: '
-        f'Caterpillar goodwill 2022, equity in affiliates after tax, and the depreciation difference (judgement 12).</div></div>'))
+        f'<div style="position:absolute;left:1206px;top:480px;width:618px;height:178px;background:#1E6B2A;color:#fff;border-radius:16px;padding:18px 26px;display:flex;gap:20px;align-items:center">'
+        f'<div class="big" style="font-size:84px;color:#fff;line-height:1">0</div><div><div style="font-size:16px;font-weight:800;letter-spacing:2px;opacity:.85">CHECKS · SHEET E2</div>'
+        f'<div style="font-size:22px;font-weight:800">open differences</div><div style="font-size:17px;line-height:1.35;margin-top:4px">Three deliberate differences are labelled (goodwill 2022, affiliates after tax, depreciation)</div></div></div>'
+        f'<div style="position:absolute;left:1206px;top:678px;width:618px;height:182px;background:var(--y);border-radius:16px;padding:16px 26px">'
+        f'<div style="font-size:16px;font-weight:800;letter-spacing:2px">WHY BY NATURE, NOT BY FUNCTION</div>'
+        f'<div style="font-size:18.5px;line-height:1.38;margin-top:6px">Liebherr reports by nature (materials, personnel, depreciation), Caterpillar by function (cost of sales, SG&amp;A, R&amp;D). '
+        f'A function format would leave every Liebherr cost line empty and show no depreciation for either group – so both are recast by nature.</div></div>'))
 
 
 NOTES = [
@@ -454,6 +458,7 @@ NOTES = [
     ("Backup A – What-if II", "—", "Accounting choices move profit, not cash. A provision addition is an expense, usage settles the obligation in cash without a profit effect, and a reversal increases profit without cash. Slower depreciation and more own work capitalised raise EBIT today. Caterpillar's switch from LIFO to FIFO raises profit and equity. That is why operating cash flow, only 28.4 per cent of EBITDA over four years, is our check on the accruals."),
     ("Backup A – Provisions", "—", "Provisions under IAS 37 need a present obligation from a past event, a probable outflow and a reliable estimate. In 2025 the opening balance of 855 million euro rose by 337 of additions, fell by 185 of usage and by 143 of reversals, to 864. Usage is the real outflow and has no profit effect; only additions and reversals touch profit. The net charge – additions less reversals – stayed at 194 against 195, so a hidden reserve being released to support profit is not visible. We keep the flag because other provisions built up in 2023 are now being released and the notes cannot explain why."),
     ("Backup A – Sensitivity", "—", "We measure two effects without booking them. If the net provision charge had been at its 2022 to 2024 average of 1.76 per cent of revenue instead of 1.31, EBIT would be 347 million euro and the margin 2.35 per cent; without the high charge of 2023 it would be 2.68. At Caterpillar's depreciation rate depreciation would be 105 million euro higher and the margin 2.08 per cent. Both together give 242 million euro, or 1.64 per cent. Sheet D9 also shows a gross-reversal view, but the report uses the net charge because additions rose with the reversals."),
+    __import__("extra").NOTES["six_steps"],
     ("Backup A – Long list to short list", "—", "Step one is the long list of 30 accounting treatments with room for choice. Step two keeps the nine that combine a key account with high or medium-to-high flexibility. Step three is the red-flag screen: eight tests plus one consistency check, with four flags, three clean and two not testable. Step four is the short list of 22 findings: seven that no adjustment can remove, five reversed in the workbook and ten the disclosure does not allow us to reverse. Seven key accounts hold the nine key treatments, and the nine tests are a different count. The short list is not a subset of the 30, because it also contains red flags, disclosure gaps and comparability issues."),
     ("Backup A – Long list I", "—", "The long list has 30 accounting treatments from the notes, each rated by two criteria, the judgement the standard permits and the materiality of the amount. In revenue and operating assets, the highest flexibility lies in the cost and write-down of inventories and in impairment. Own work capitalised is medium to high because it equals 77 per cent of the operating result. Borrowing costs, goodwill and lessee accounting are low, because the standard prescribes the mechanics or the amounts are small."),
     ("Backup A – Long list II", "—", "The second half covers provisions, tax, financial items and presentation. All three provision categories and deferred taxes are rated high. Pensions, securities and derivatives matter only partly, because they affect solvency or the finance result rather than the operating margin. The income statement by nature is a key treatment because it affects every ratio, and we corrected it in the recast. In total nine items combine a key account with high flexibility, plus revenue timing and the by-nature format."),
